@@ -1,0 +1,71 @@
+Hópmeðlimir: Diljá, Hafdís Alda, Ísól, Sunna Rún og Vésteinn
+
+25.11.19
+Í dag settumst við niður og kynntumst hvor öðru og settum upp verkskipulag fyrir komandi vikur.
+Erum að fara saman yfir verkefnalýsingu til þess að skilja betur hvað við eigum að gera.
+
+- Greinum notendahópa (Ísól og Hafdís)
+- Búum til kröfulista (Vésteinn og Diljá)
+- Gera notkunartilvik (Sunna)
+
+Í lok dags settum við saman skipulag fyrir morgundaginn. Markmið morgundagsins er að klára kröfurnar og eftir fyrirlesturinn 
+byrjum við á Wireframe ("happy path"). Ætlum líka að komast vel á leið með klasa- og stöðurit.
+
+26.11.19
+Við byrjuðum daginn við morgunfund og skipulögðum daginn. Við skoðuðum hvað við gerðum í gær og erum að laga og bæta það sem
+okkur finnst þurfa.
+Verkefni dagsins eru:
+- Klára kröfulista (Vésteinn og Diljá)
+- Klára og laga notkunartilvik (Sunna)
+- Byrja á klasa- og stöðuriti
+- Byrja á Wireframe ("happy path") (Ísól og Hafdís)
+
+Við kláruðum kröfulistann og héldum áfram með notkunartilvikin og byrjuðum á Wireframe ("happy path"). Við ákváðum að byrja á 
+klasa- og stöðuritinu á morgun.
+Eins og er erum við að vinna saman í Wireframe.
+
+27.11.19
+Í gær kláruðum við Wireframe en seinna um kvöldið tókum við nokkurs konar sérfræðingaprófun og þá kom í ljós galli í hönnuninni
+sem við ætlum að laga í dag. Þannig fyrripart dags ætlum við að klára að laga Wireframe og klára notkunartilvikin út frá
+uppfærðu hönnuninni og ætlum að taka annan fund þegar það verkefni er búið og taka stöðu á hvaða verkefni við ætlum að tækla
+næst.
+Ísól og Vésteinn fara í það að laga Wireframeið og Sunna, Diljá og Hafdís fara í notkunartilvikin.
+
+Kl 17:21
+Hádegisfundurinn seinkaði smá þar sem allir meðlimir hópsins voru sokknir í verkefni dagsins. Það sem við kláruðum í dag voru
+notkunartilvikin, stöðurit og Wireframe (með fyrirvara um breytingar).
+Diljá og Ísól ætla að byrja á klasaritinu þegar þær koma heim og reyna að komast sem lengst með það fyrir morgundaginn og planið
+er að klára það á morgun.
+
+Við ætlum að hittast klukkan 12 á morgun og vinna þá lengur fram eftir degi til að klára verkefni dagsins.
+
+28.11.19
+Í dag ætlum við að klára klasaritið og við ætlum að vinna öll saman í því þar sem það er það eina sem við eigum eftir fyrir
+utan að setja upp skýrsluna og fínpússa hana.
+Verkefni dagsins er því:
+- Klára klasaritið
+
+Við erum komin langleiðina með klasaritið þegar seinni fundurinn er tekinn (núna) og höfum ákveðið að halda áfram að vinna í
+því aðeins meira áður en við segjum þetta gott í dag.
+Ísól ætlar síðan að reyna að klára klasaritið heima í kvöld svo það sé tilbúið fyrir morgundaginn þegar við ætlum að setja 
+saman lokaskýrsluna og Diljá ætlar að fínpússa notkunartilvikin og setja þau inn í lokaskýrsluna fyrir morgundaginn.
+
+29.11.19
+Í dag ætlum við að klára að setja upp hönnunarskýrlsuna þar sem allt er tilbúið.
+15:18: Hönnunarskýrlsa tilbúin og búið að skila.
+
+02.12.19
+Í dag hittumst við klukkan 10:00 og erum að fara yfir planið fyrir daginn áður en við mætum á fyrirlestur kl 12:00. 
+Eftir fyrirlestur fórum við að vinna í að setja upp GitHub og þar sem það tók frekar langan tíma fór restin af deginum í það,
+en þó náðum við að nánast klára að setja upp klasa fyrir MainPage, EmployeeManagement, VoyageManagement og PlaneManagement.
+Við unnum í þessu öll saman í dag.
+
+
+03.12.19
+Við hittumst í dag í klukkan 10:00 og skipulögðum daginn, markmiðið í dag er að klára Employee management gluggana okkar í dag.
+Status: Erum ekki alveg búin með gluggana en erum komin langleiðina með þá
+
+04.12.19
+Við hittumst kl. 11:30 - og skipulögðum daginn. Í dag ætlum við að reyna ljúka við EmployeeManagementUI, PlaneManagementUI og VoyageManagementUI gluggana.
+Við skipulögðum skránnum okkar og settum þau í möppur. Lentum í smá vesen að importa þá á milli skjala og ætlum að klára það í kvöldi
+svo við getum bryjað á datalayer á morgun.

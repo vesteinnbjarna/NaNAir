@@ -1,0 +1,34 @@
+Aircraft:
+planeInsigna    |       planetypeID
+
+
+
+AircraftType:
+
+planetypeID | planetype | model |capacity|emptyWeight|maxTakeOffWeight|unitThrust|serviceCeiling| len | height|wingspan
+    str     |   str      | str  | float  | float     | float          | float    |  float       |float| float | float
+
+
+
+Crew:
+
+SSD     |   Name    |   Role    |   Rank    |   liecence |
+str     |   str     |   str     |   str     |   str      |
+
+
+
+Past Flights:
+
+flight numb| departingfrom | arriving at |  departure | arrival |   aircraftID |cpt | cop | fsm | fa1 | fa2 | fa3 
+str        |  str          | str         |  veit e.             |  str         |str | str | str | str | str | str 
+
+
+
+Upcoming flights:
+
+flight numb| departingfrom | arriving at |  departure | arrival |
+str        |  str          | str         |  veit e.             |
+
+
+
+
