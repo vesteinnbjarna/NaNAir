@@ -1,13 +1,16 @@
 from IO.IOAPI import IOAPI
 
 class EmployeeLL ():
-    def __init__ (self):
+    def __init__ (self, ioAPI_in):
         pass
 
-    def createEmployees (self):
+    def createEmployee (self):
         pass
     
-    def updateEmployees (self):
+    def updateEmployee (self):
+        pass
+
+    def getEmployee (self):
         pass
 
     pass
