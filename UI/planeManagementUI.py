@@ -34,6 +34,7 @@ class PlaneManagementUI():
         self.seats = input("Enter number of seats: ")
         self.display_info()
 
+
     def display_info(self):
         print()
         print(''' ___________________________________________''')
@@ -57,6 +58,7 @@ class PlaneManagementUI():
                 return None
         elif user_input == "2":
             self.edit_info()
+
 
     def edit_info(self):
         print()
@@ -90,6 +92,7 @@ class PlaneManagementUI():
     def create_plane(self):
         self.plane = Plane(self.registration, self.plane_type, self.manufacturer, self.seats)
         return self.plane
+
 
     def print_confirmation(self):
         print(''' ___________________________________________''')

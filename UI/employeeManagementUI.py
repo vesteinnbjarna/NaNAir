@@ -33,24 +33,18 @@ class EmployeeManagementUI():
         print('''| (1) Pilot                                 |''')
         print('''| (2) Cabincrew                             |''')
         print('''|                                           |''')
-        print('''| (press "b" to go back)                    |''')
-        print('''|                                           |''')
         print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
         print()
         user_input = input("Input: ")
-        print()
-        print(' _________________________________________')
-        print("|  NaN Air - Enter employee information   |")
-        print(" ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ ")
         print()
         self.role = ""
         if user_input == "1":
             self.role = "Pilot"
         elif user_input == "2":
             self.role = "Cabincrew"
-        elif user_input == "b":
-            self.renderMenu()
         return self.role
+
+
 
 
     def get_employee_info(self):
