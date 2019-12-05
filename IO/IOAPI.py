@@ -8,12 +8,12 @@ from IO.permitIO import PermitIO
 class IOAPI ():
 
     def __init__(self):
-        self.desIO = DestinationIO()
-        self.voyIO = VoyageIO()
-        self.plaIO = PlaneIO()
-        self.empIO = EmployeeIO()
-        self.rouIO = RouteIO()
-        self.perIO = PermitIO()
+        self.desIO = DestinationIO('IO/Data/destinations.csv') # Hardcodes for filenames
+        self.voyIO = VoyageIO('IO/Data/voyages.csv')
+        self.plaIO = PlaneIO('IO/Data/planes.csv')
+        self.empIO = EmployeeIO('IO/Data/employees.csv')
+        self.rouIO = RouteIO('IO/Data/routes.csv')
+        self.perIO = PermitIO('IO/Data/permits.csv')
         
 
     def loadDestinationFromFile (self):
