@@ -1,8 +1,10 @@
 from UI.createEmployee import CreateEmployee
+from UI.getEmployee import GetEmployee
 
 class EmployeeManagementUI():
     def __init__(self):
         self.createEmployee = CreateEmployee()
+        self.getEmployee = GetEmployee()
 
     def renderMenu(self):
         #user_input = ""
@@ -25,7 +27,8 @@ class EmployeeManagementUI():
                     self.renderMenu()
                #if self.get_employee_info() == None:
             elif user_input == "2":
-                pass            #self.createEmployee.print_data_options()
+                if self.getEmployee.get_user_input() == None:
+                    self.renderMenu()            #self.createEmployee.print_data_options()
             elif user_input == "3":
                 pass
             elif user_input == "b":
