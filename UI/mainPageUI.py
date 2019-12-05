@@ -1,7 +1,7 @@
 from UI.employeeManagementUI import EmployeeManagementUI
 from UI.planeManagementUI import PlaneManagementUI
 from UI.voyageManagementUI import VoyageManagementUI
-
+from LL.LLAPI import LLAPI
 
 class MainPageUI():
     def __init__(self):
@@ -21,7 +21,7 @@ class MainPageUI():
             print('''|                                           |''')
             print('''| (press "q" to quit)                       |''')
             print('''|                                           |''')
-            print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ ''')
+            print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
             user_input = input("Input: ")
             if user_input == "1":
                 self.__employeeManagement.renderMenu()
