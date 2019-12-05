@@ -1,4 +1,4 @@
-from employee import Employee
+from Model.employee import Employee
 
 class EmployeeManagementUI():
     def __init__(self):

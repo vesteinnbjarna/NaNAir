@@ -1,4 +1,4 @@
-#from voyage import Voyage
+from Model.voyage import Voyage
 
 class VoyageManagementUI():
     def renderMenu(self):
