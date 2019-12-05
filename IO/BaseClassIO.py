@@ -5,7 +5,6 @@ class BaseClassIO ():
     def __init__(self, filename):
         self.filename = filename
         
-
     
     def loadFile(self):
         working_list = []
@@ -15,4 +14,9 @@ class BaseClassIO ():
                 working_list.append(line)
             
             return working_list
+
+    
+
+    
             
+    

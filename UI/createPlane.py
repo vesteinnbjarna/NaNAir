@@ -32,6 +32,8 @@ class CreatePlane():
                 return None
         elif user_input == "2":
             self.edit_info()
+        else:
+            self.display_info()
 
     def edit_info(self):
         print()

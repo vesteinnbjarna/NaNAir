@@ -1,4 +1,5 @@
 from LL.LLAPI import LLAPI
+from Model.employee import Employee
 
 class GetEmployee():
 
