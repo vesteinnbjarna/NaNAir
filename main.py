@@ -1,4 +1,3 @@
-#!/bin/bash
 from UI.mainPage import MainPage
 
 
