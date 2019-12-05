@@ -4,7 +4,7 @@ class PlaneManagementUI():
 
     def renderMenu(self):
         #user_input = "1"
-        #while user_input == "1" or user_input == "2" or user_input == "3":
+        #while True:
             print(''' ___________________________________________''')
             print('''|                  NaN Air                  |''')
             print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾| ''')
@@ -25,6 +25,8 @@ class PlaneManagementUI():
                 pass #ATH með date time, allur listi
             elif user_input == "b":
                 return None
+            else:
+                self.renderMenu()   #continue
 
 
     def get_plane_info(self):
