@@ -1,7 +1,7 @@
 from UI.employeeManagementUI import EmployeeManagementUI
 from UI.planeManagementUI import PlaneManagementUI
 from UI.voyageManagementUI import VoyageManagementUI
-
+from LL.LLAPI import LLAPI
 
 class MainPageUI():
     def __init__(self):
@@ -10,8 +10,8 @@ class MainPageUI():
         self.__planeManagement = PlaneManagementUI()
 
     def renderMenu(self):
-        user_input = "1"
-        while user_input == "1" or user_input == "2" or user_input == "3": 
+        user_input = ""
+        while user_input != "q":
             print(''' ___________________________________________''')
             print('''|                  NaN Air                  |''')
             print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
@@ -20,8 +20,8 @@ class MainPageUI():
             print('''| (3) Plane Management                      |''')
             print('''|                                           |''')
             print('''| (press "q" to quit)                       |''')
-            print('''|___________________________________________|''')
-            print()
+            print('''|                                           |''')
+            print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
             user_input = input("Input: ")
             if user_input == "1":
                 self.__employeeManagement.renderMenu()
@@ -29,6 +29,8 @@ class MainPageUI():
                 self.__voyageManagement.renderMenu()
             elif user_input == "3":
                 self.__planeManagement.renderMenu()
+            else:
+                continue
 
 
 a = MainPageUI()

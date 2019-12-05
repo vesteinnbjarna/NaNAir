@@ -1,39 +1,6 @@
-from UI.createPlane import CreatePlane
-from UI.getPlane import GetPlane
-from LL.LLAPI import LLAPI
-class PlaneManagementUI():
+from Model.plane import Plane
 
-    def __init__(self):
-        self.createPlane = CreatePlane()
-        self.getPlane = GetPlane()
-
-
-    def renderMenu(self):
-        #user_input = "1"
-        #while True:
-            print(''' ___________________________________________''')
-            print('''|                  NaN Air                  |''')
-            print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾| ''')
-            print('''|                                           |''')   
-            print('''| (1) Create plane                          |''')
-            print('''| (2) Get list of planes                    |''')
-            print('''|                                           |''')
-            print('''| (press "b" to go back)                    |''')
-            print('''|                                           |''')
-            print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
-            print()
-            user_input = input("Input: ")
-            print()
-            if user_input == "1":
-                if self.createPlane.get_plane_info() == None: # Ef fallið get_plane_info skilar None þá vill hann fara í main page
-                    return None
-            elif user_input == "2":
-                if self.getPlane.get_list() == None:
-                    return None
-            elif user_input == "b":
-                return None
-<<<<<<< HEAD
-
+class CreatePlane():
 
     def get_plane_info(self):
         self.registration = input("Enter aircraft registration: ")
@@ -41,7 +8,6 @@ class PlaneManagementUI():
         self.manufacturer = input("Enter aircraft manufacturer: ")
         self.seats = input("Enter number of seats: ")
         self.display_info()
-
 
     def display_info(self):
         print()
@@ -66,7 +32,6 @@ class PlaneManagementUI():
                 return None
         elif user_input == "2":
             self.edit_info()
-
 
     def edit_info(self):
         print()
@@ -101,7 +66,6 @@ class PlaneManagementUI():
         self.plane = Plane(self.registration, self.plane_type, self.manufacturer, self.seats)
         return self.plane
 
-
     def print_confirmation(self):
         print(''' ___________________________________________''')
         print('''|                  NaN Air                  |''')
@@ -120,8 +84,4 @@ class PlaneManagementUI():
         elif user_input == "2":
             return None     # Skil None þá vill hann fara í main page
 
-=======
-            else:
-                self.renderMenu()   #continue
->>>>>>> 65ed5fc7652e18945549bb70bcc4f39a48d03882
 

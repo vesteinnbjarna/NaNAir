@@ -1,55 +1,32 @@
 from Model.voyage import Voyage
 
-class VoyageManagementUI():
-    def renderMenu(self):
-        #user_input = "1"
-        #while user_input == "1" or user_input == "2":
-            print(''' ___________________________________________''')
-            print('''|        NaN Air - Voyage management        |''')
-            print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
-            print('''| (1) Create voyage                         |''')
-            print('''| (2) Get voyage data                       |''')
-            print('''| (3) Update voyage                         |''')
-            print('''|                                           |''')
-            print('''| (4) Go back to home page                  |''')
-            print('''|                                           |''')
-            print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
-            user_input = input()
-            if user_input == "1":
-                if self.get_input() == None:
-                    return None
-            elif user_input == "2":
-                pass
-            elif user_input == "3":
-                pass
-            elif user_input == "4":
-                return None
 
+class CreateVoyage():
 
     def get_input(self):
-            print(''' ___________________________________________''')
-            print('''|                  NaN Air                  |''')
-            print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
-            print('''| (1) Create new voyage                     |''')
-            print('''| (2) Gather crew for voyage                |''')
-            print('''| (3) Create destination                    |''')
-            print('''|                                           |''')
-            print('''| press 'b' for back                        |''')
-            print('''|                                           |''')
-            print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')       
-            print()
-            user_input = input()
-            if user_input == "1":
-                pass
-            elif user_input == "2":
-                pass
-            elif user_input == "3":
-                if self.get_destination_info() == None:
-                    return None
-            elif user_input == "b":
+        print(''' ___________________________________________''')
+        print('''|                  NaN Air                  |''')
+        print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
+        print('''| (1) Create new voyage                     |''')
+        print('''| (2) Gather crew for voyage                |''')
+        print('''| (3) Create destination                    |''')
+        print('''|                                           |''')
+        print('''| press 'b' for back                        |''')
+        print('''|                                           |''')
+        print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')       
+        print()
+        user_input = input()
+        if user_input == "1":
+            pass
+        elif user_input == "2":
+            pass
+        elif user_input == "3":
+            if self.get_destination_info() == None:
                 return None
+        elif user_input == "b":
+            return None
 
-
+    
     def get_destination_info(self):
         print()
         print(' _________________________________________')
@@ -62,7 +39,6 @@ class VoyageManagementUI():
         self.contact_name = input(" Enter contact name: ")  
         self.contact_phone = input(" Enter contact phone: ")
         self.display_destination_info()
-
 
     def display_destination_info(self):
         print()
@@ -142,4 +118,3 @@ class VoyageManagementUI():
         self.voyage = Voyage(self.country, self.airport, self.airline, self.distance, self.contact_name, self.contact_phone)
         self.print_confirmation_destination()
         return self.voyage
-
