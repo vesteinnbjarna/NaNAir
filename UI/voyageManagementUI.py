@@ -3,7 +3,7 @@ from Model.voyage import Voyage
 class VoyageManagementUI():
     def renderMenu(self):
         #user_input = "1"
-        #while user_input == "1" or user_input == "2":
+        #while True:
             print(''' ___________________________________________''')
             print('''|        NaN Air - Voyage management        |''')
             print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
@@ -11,7 +11,7 @@ class VoyageManagementUI():
             print('''| (2) Get voyage data                       |''')
             print('''| (3) Update voyage                         |''')
             print('''|                                           |''')
-            print('''| (4) Go back to home page                  |''')
+            print('''| (press "b" to go back)                    |''')
             print('''|                                           |''')
             print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
             user_input = input()
@@ -22,8 +22,10 @@ class VoyageManagementUI():
                 pass
             elif user_input == "3":
                 pass
-            elif user_input == "4":
+            elif user_input == "b":
                 return None
+            else:
+                self.renderMenu()   #continue
     
     def get_input(self):
             print(''' ___________________________________________''')
