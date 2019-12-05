@@ -89,7 +89,8 @@ class CreateEmployee():
         print('''| (6) Phone number: {:24}|'''.format(self.phone_no))
         if self.role == "Pilot":
             print('''| (7) License: {:29}|'''.format(self.license))
-        print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ ''')
+        print('''|                                           |''')
+        print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
         print()
         user_input = input("Edit selection: ")
         print()
@@ -100,7 +101,7 @@ class CreateEmployee():
             self.name = input("Enter name: ")
             self.display_info()
         elif user_input == "3":
-            self.role = self.get_role()
+            self.role = input("Enter role: ")
             self.display_info()
         elif user_input == "4":
             self.rank = input("Enter rank: ")

@@ -1,6 +1,13 @@
-from Model.voyage import Voyage
+from UI.createVoyage import CreateVoyage
+from UI.getVoyage import GetVoyage
+from UI.updateVoyage import UpdateVoyage
 
 class VoyageManagementUI():
+    def __init__(self):
+        self.createVoyage = CreateVoyage()
+        self.getVoyage = GetVoyage()
+        self.updateVoyage = UpdateVoyage()
+
     def renderMenu(self):
         #user_input = "1"
         #while user_input == "1" or user_input == "2":
@@ -11,18 +18,20 @@ class VoyageManagementUI():
             print('''| (2) Get voyage data                       |''')
             print('''| (3) Update voyage                         |''')
             print('''|                                           |''')
-            print('''| (4) Go back to home page                  |''')
+            print('''| (press "b" to go back)                    |''')
             print('''|                                           |''')
             print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
-            user_input = input()
+            user_input = input("Input: ")
             if user_input == "1":
-                if self.get_input() == None:
-                    return None
+                if self.createVoyage.get_input() == None:
+                    self.renderMenu()
             elif user_input == "2":
-                pass
+                if self.getVoyage.get_list() == None:
+                    self.renderMenu()
             elif user_input == "3":
-                pass
-            elif user_input == "4":
+                if self.updateVoyage.get_input() == None:
+                    self.renderMenu()
+            elif user_input == "b":
                 return None
 
 
