@@ -1,4 +1,5 @@
 from Model.employee import Employee
+from LL.LLAPI import LLAPI
 
 class EmployeeManagementUI():
     def __init__(self):
