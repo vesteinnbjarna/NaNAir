@@ -1,7 +1,7 @@
 class EmployeeIO ():
     
     def __init__(self):
-        self.employeeFileName = 'employees.csv'
+        self.employeeFileName = 'IO/Data/employees.csv'
     
     def loadEmployeesFromFile (self):
         pass

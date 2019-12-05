@@ -1,6 +1,6 @@
 class VoyageIO ():
     def __init__(self):
-         self.voyageFileName = 'voyages.csv'
+         self.voyageFileName = 'IO/Data/voyages.csv'
 
     def loadVoyagesFromFile(self):
         pass
