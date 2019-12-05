@@ -3,8 +3,8 @@ from Model.plane import Plane
 class PlaneManagementUI():
 
     def renderMenu(self):
-        user_input = "1"
-        while user_input == "1" or user_input == "2" or user_input == "3":
+        #user_input = "1"
+        #while user_input == "1" or user_input == "2" or user_input == "3":
             print(''' ___________________________________________''')
             print('''|                  NaN Air                  |''')
             print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾| ''')
@@ -28,10 +28,6 @@ class PlaneManagementUI():
 
 
     def get_plane_info(self):
-        print()
-        print(' _________________________________________')
-        print("|  NaN Air - Enter plane information      |")
-        print(" ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ ")
         self.registration = input("Enter aircraft registration: ")
         self.plane_type = input("Enter aircraft type: ")
         self.manufacturer = input("Enter aircraft manufacturer: ")

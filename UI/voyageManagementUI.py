@@ -2,8 +2,8 @@ from Model.voyage import Voyage
 
 class VoyageManagementUI():
     def renderMenu(self):
-        user_input = "1"
-        while user_input == "1" or user_input == "2":
+        #user_input = "1"
+        #while user_input == "1" or user_input == "2":
             print(''' ___________________________________________''')
             print('''|        NaN Air - Voyage management        |''')
             print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
