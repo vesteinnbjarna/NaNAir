@@ -8,7 +8,7 @@ from IO.permitIO import PermitIO
 class IOAPI ():
 
     def __init__(self):
-        self.desIO = DestinationIO('IO/Data/destinations.csv') # Hardcodes for filenames
+        self.desIO = DestinationIO('IO/Data/destinations.csv') # Hardcoded filenames - Only place to change the path is here
         self.voyIO = VoyageIO('IO/Data/voyages.csv')
         self.plaIO = PlaneIO('IO/Data/planes.csv')
         self.empIO = EmployeeIO('IO/Data/employees.csv')
