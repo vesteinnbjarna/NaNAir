@@ -1,8 +1,8 @@
-from UI.mainPage import MainPage
+from UI.mainPageUI import MainPageUI
 
 
 def main ():
-    a = MainPage()
+    a = MainPageUI()
     a.renderMenu()
 
 
