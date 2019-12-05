@@ -2,7 +2,7 @@ class DestinationIO ():
     pass
 
     def __init__(self):
-        self.destinationFileName = 'destinations.csv'
+        self.destinationFileName = 'IO/Data/destinations.csv'
     
     def loadDestinationFromFile(self):
         pass
