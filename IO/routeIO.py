@@ -1,6 +1,7 @@
+from IO.BaseClassIO import BaseClassIO
 class RouteIO ():
-    def __init__(self):
-        self.routeFileName = 'routes.csv'
+    def __init__(self, filename):
+        self.routeFileName = filename
 
 
     def loadRoutesFromFile (self):

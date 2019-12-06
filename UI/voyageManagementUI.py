@@ -1,15 +1,16 @@
 from UI.createVoyage import CreateVoyage
 from UI.getVoyage import GetVoyage
-from LL.LLAPI import LLAPI
+from UI.updateVoyage import UpdateVoyage
 
 class VoyageManagementUI():
     def __init__(self):
         self.createVoyage = CreateVoyage()
         self.getVoyage = GetVoyage()
+        self.updateVoyage = UpdateVoyage()
 
     def renderMenu(self):
         #user_input = "1"
-        #while True:
+        #while user_input == "1" or user_input == "2":
             print(''' ___________________________________________''')
             print('''|        NaN Air - Voyage management        |''')
             print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
@@ -20,7 +21,7 @@ class VoyageManagementUI():
             print('''| (press "b" to go back)                    |''')
             print('''|                                           |''')
             print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
-            user_input = input()
+            user_input = input("Input: ")
             if user_input == "1":
                 if self.createVoyage.get_input() == None:
                     self.renderMenu()
@@ -28,9 +29,11 @@ class VoyageManagementUI():
                 if self.getVoyage.get_list() == None:
                     self.renderMenu()
             elif user_input == "3":
-                pass
+                if self.updateVoyage.get_input() == None:
+                    self.renderMenu()
             elif user_input == "b":
                 return None
-            else:
-                self.renderMenu()   #continue
+
+
+
 
