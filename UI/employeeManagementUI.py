@@ -9,10 +9,10 @@ class EmployeeManagementUI():
         self.__llAPI_in = llAPI_in 
         self.createEmployee = CreateEmployee(self.__llAPI_in)
         self.getEmployee = GetEmployee(self.__llAPI_in)
-        #self.updateEmployee = UpdateEmployee(self.__llAPI_in)
+        self.updateEmployee = UpdateEmployee(self.__llAPI_in)
 
     def renderMenu(self):
-        #user_input = ""
+
         while True:
             print(''' ___________________________________________''')
             print('''|       NaN Air - Employee management       |''')
