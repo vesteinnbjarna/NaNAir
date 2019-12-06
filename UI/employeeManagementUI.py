@@ -8,8 +8,7 @@ class EmployeeManagementUI():
         self.getEmployee = GetEmployee()
 
     def renderMenu(self):
-        #user_input = ""
-        #while True:
+        while True:
             print(''' ___________________________________________''')
             print('''|       NaN Air - Employee management       |''')
             print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
@@ -25,14 +24,14 @@ class EmployeeManagementUI():
             print()
             if user_input == "1":
                 if self.createEmployee.get_employee_info() == None:
-                    self.renderMenu()
+                    continue
                #if self.get_employee_info() == None:
             elif user_input == "2":
                 if self.getEmployee.get_user_input() == None:
-                    self.renderMenu()            #self.createEmployee.print_data_options()
+                    continue            #self.createEmployee.print_data_options()
             elif user_input == "3":
                 pass
             elif user_input == "b":
                 return None
             else:
-                self.renderMenu()   #continue
+                continue

@@ -3,7 +3,7 @@ class EmployeeIO ():
     def __init__(self):
         self.employeeFileName = 'employees.csv'
     
-    def loadEmployeesFromFile (self):
+    def loadEmployeesFromFile(self):
         pass
 
     def storeEmployeeToFile(self):
