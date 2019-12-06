@@ -12,10 +12,6 @@ class EmployeeManagementUI():
         #self.updateEmployee = UpdateEmployee(self.__llAPI_in)
 
     def renderMenu(self):
-<<<<<<< HEAD
-=======
-        #user_input = ""
->>>>>>> c15cbd9f8333901fa074822a97eb4da3a1cf9988
         while True:
             print(''' ___________________________________________''')
             print('''|       NaN Air - Employee management       |''')
@@ -31,14 +27,6 @@ class EmployeeManagementUI():
             user_input = input("Input: ")
 
             if user_input == "1":
-<<<<<<< HEAD
-                if self.createEmployee.get_employee_info() == None:
-                    continue
-               #if self.get_employee_info() == None:
-            elif user_input == "2":
-                if self.getEmployee.get_user_input() == None:
-                    continue            #self.createEmployee.print_data_options()
-=======
                 createEmp = self.createEmployee.get_employee_info()
                 if createEmp == None:
                     return None
@@ -46,18 +34,10 @@ class EmployeeManagementUI():
                     continue
             elif user_input == "2":
                 if self.getEmployee.get_user_input() == None:
-                    return None                           #self.createEmployee.print_data_options()
->>>>>>> c15cbd9f8333901fa074822a97eb4da3a1cf9988
+                    return None            #self.createEmployee.print_data_options()
             elif user_input == "3":
                 pass
             elif user_input == "b":
                 break
             else:
-<<<<<<< HEAD
                 continue
-=======
-                continue
-
-    
-
->>>>>>> c15cbd9f8333901fa074822a97eb4da3a1cf9988

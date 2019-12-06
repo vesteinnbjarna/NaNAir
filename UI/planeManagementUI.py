@@ -10,12 +10,8 @@ class PlaneManagementUI():
 
 
     def renderMenu(self):
-<<<<<<< HEAD
         user_input = "1"
         # Runs until valid input is chosen or back
-=======
-        #user_input = "1"
->>>>>>> c15cbd9f8333901fa074822a97eb4da3a1cf9988
         while True:
             print(''' ___________________________________________''')
             print('''|                  NaN Air                  |''')
