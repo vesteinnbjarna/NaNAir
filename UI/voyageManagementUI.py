@@ -1,7 +1,7 @@
 from UI.createVoyage import CreateVoyage
 from UI.getVoyage import GetVoyage
 from UI.updateVoyage import UpdateVoyage
-
+from LL.LLAPI import LLAPI
 class VoyageManagementUI():
     def __init__(self):
         self.createVoyage = CreateVoyage()
