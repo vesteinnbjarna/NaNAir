@@ -3,10 +3,6 @@ from LL.LLAPI import LLAPI
 
 #CREMP 
 class CreateEmployee():
-
-    def __init__(self, llAPI_in):
-        self.__llAPI_in = llAPI_in
-        
     def get_role(self):
         while True:
             self.role = ""
@@ -33,8 +29,6 @@ class CreateEmployee():
                 return "Back"
             else:
                 continue
-
-
 
     def get_employee_info(self):
         self.role = self.get_role()
@@ -81,7 +75,8 @@ class CreateEmployee():
         #print()
         if user_input == "1":
             if self.print_confirmation():
-                self.employee = self.create_employee()
+                #self.employee = self.create_employee()
+                return None
             else:
                 return None
         elif user_input == "2":
@@ -91,6 +86,7 @@ class CreateEmployee():
 
     def display_info_to_edit(self):
         #print()
+
         print(''' ___________________________________________''')
         print('''|        NaN Air - Edit information         |''')
         print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
@@ -163,11 +159,11 @@ class CreateEmployee():
         else:
             self.print_confirmation()
 
-    def create_employee(self):
-        if self.role == "Pilot":
-            self.employee = Employee(self.ssn, self.name, self.role, self.rank, \
-                self.address, self.phone_no, self.license)
-        else:
-            self.employee = Employee(self.ssn, self.name, self.role, self.rank, \
-                self.address, self.phone_no, self.license)
-        return self.employee
+    #def create_employee(self):
+     #   if self.role == "Pilot":
+      #      self.employee = Employee(self.ssn, self.name, self.role, self.rank, \
+       #         self.address, self.phone_no, self.license)
+        #else:
+         #   self.employee = Employee(self.ssn, self.name, self.role, self.rank, \
+          #      self.address, self.phone_no, self.license)
+        #return self.employee
