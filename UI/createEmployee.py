@@ -1,11 +1,7 @@
 from Model.employee import Employee
-<<<<<<< HEAD
 from LL.LLAPI import LLAPI
 
 #CREMP 
-=======
-#from LL.LLAPI import LLAPI
->>>>>>> 0e541a24a2ad44cc00936abbb0d79a201864c139
 class CreateEmployee():
 
     def __init__(self, llAPI_in):
