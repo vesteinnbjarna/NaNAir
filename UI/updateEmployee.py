@@ -1,7 +1,10 @@
 from Model.employee import Employee
-from LL.LLAPI import LLAPI
+#from LL.LLAPI import LLAPI
 
 class UpdateEmployee():
+
+    def __init__(self, llAPI_in):
+        self.llAPI_in = llAPI_in
     
     def get_input(self):
         print()
@@ -32,7 +35,7 @@ class UpdateEmployee():
         #Senda uppl á data layer um að fá lista af annaðhvort pilots eða CC
         print("#####Prentast út listi frá data layer####") #####
 
-   """ def update_employee(self):
+    def update_employee(self):
         print()
         print(''' ___________________________________________''')
         print('''|        NaN Air - Edit information         |''')

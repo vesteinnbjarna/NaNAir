@@ -1,6 +1,10 @@
 from Model.employee import Employee
-from LL.LLAPI import LLAPI
+#from LL.LLAPI import LLAPI
 class CreateEmployee():
+
+    def __init__(self, llAPI_in):
+        self.__llAPI_in = llAPI_in
+        
     def get_role(self):
         self.role = ""
         print()

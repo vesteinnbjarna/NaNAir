@@ -1,8 +1,10 @@
-from LL.LLAPI import LLAPI
+#from LL.LLAPI import LLAPI
 from Model.employee import Employee
 
 class GetEmployee():
 
+    def __init__(self,llAPI_in):
+        self.llAPI_in = llAPI_in
 
     def get_user_input(self):
         self.employee_type = ""
@@ -92,7 +94,7 @@ class GetEmployee():
             user_input = input("Input: ")       #Eftir input bera listann saman við plane permit eða pilots witf specific permit
             print()
             if user_input == "1":
-                pass
+                self.llAPI_in.getEmployee()
             elif user_input == "2":
                 pass
             elif user_input == "3":

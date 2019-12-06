@@ -3,7 +3,8 @@ from UI.getVoyage import GetVoyage
 from UI.updateVoyage import UpdateVoyage
 from LL.LLAPI import LLAPI
 class VoyageManagementUI():
-    def __init__(self):
+    def __init__(self, llAPI_in):
+        self.llAPI_in = llAPI_in
         self.createVoyage = CreateVoyage()
         self.getVoyage = GetVoyage()
         self.updateVoyage = UpdateVoyage()
