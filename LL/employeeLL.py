@@ -13,8 +13,9 @@ class EmployeeLL ():
         pass
 
     def getEmployee (self):
-        self.__ioAPI.loadEmployeesFromFile()
-        pass
+        return self.__ioAPI.loadEmployeesFromFile()
+        
+        
 
     
     

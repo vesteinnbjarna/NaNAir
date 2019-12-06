@@ -1,5 +1,5 @@
 from IO.BaseClassIO import BaseClassIO
-class PermitIO ():
+class PermitIO (BaseClassIO):
     def __init__(self,filename):
         self.filename = filename
 

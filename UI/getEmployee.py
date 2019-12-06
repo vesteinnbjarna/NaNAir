@@ -94,7 +94,7 @@ class GetEmployee():
             user_input = input("Input: ")       #Eftir input bera listann saman við plane permit eða pilots witf specific permit
             print()
             if user_input == "1":
-                self.llAPI_in.getEmployee()
+                print(self.llAPI_in.getEmployee())
             elif user_input == "2":
                 pass
             elif user_input == "3":

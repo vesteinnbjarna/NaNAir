@@ -1,5 +1,5 @@
 from IO.BaseClassIO import BaseClassIO
-class RouteIO ():
+class RouteIO (BaseClassIO):
     def __init__(self, filename):
         self.routeFileName = filename
 

@@ -105,4 +105,6 @@ class UpdateEmployee():
         else:
             self.update_confirmation()
 
+    def display_info(self):
+        pass
 

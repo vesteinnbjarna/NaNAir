@@ -1,14 +1,14 @@
 from UI.createEmployee import CreateEmployee
 from UI.getEmployee import GetEmployee
-from UI.updateEmployee import UpdateEmployee
-from LL.LLAPI import LLAPI
+#from UI.updateEmployee import UpdateEmployee
+#from LL.LLAPI import LLAPI
 
 class EmployeeManagementUI():
     def __init__(self, llAPI_in):
         self.__llAPI_in = llAPI_in 
         self.createEmployee = CreateEmployee(self.__llAPI_in)
         self.getEmployee = GetEmployee(self.__llAPI_in)
-        self.updateEmployee = UpdateEmployee(self.__llAPI_in)
+        #self.updateEmployee = UpdateEmployee(self.__llAPI_in)
 
     def renderMenu(self):
         #user_input = ""
