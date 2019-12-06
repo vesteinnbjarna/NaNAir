@@ -15,7 +15,7 @@ class CreateVoyage():
         print('''|                                           |''')
         print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')       
         print()
-        user_input = input()
+        user_input = input("Input: ")
         if user_input == "1":
             pass
         elif user_input == "2":
@@ -28,7 +28,7 @@ class CreateVoyage():
 
     
     def get_destination_info(self):
-        print()
+        #print()
         print(' _________________________________________')
         print("| NaN Air - Enter destination information |")
         print(" ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ ")
@@ -41,7 +41,7 @@ class CreateVoyage():
         self.display_destination_info()
 
     def display_destination_info(self):
-        print()
+        #print()
         print(''' ___________________________________________''')
         print('''| NaN Air - Review destination information  |''')
         print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
@@ -57,7 +57,7 @@ class CreateVoyage():
         print('''| (2) Edit                                  |''')
         print('''|                                           |''')
         print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
-        print()
+        #print()
         user_input = input("Input: ")
         if user_input == '1':
             self.print_confirmation_destination()
@@ -65,7 +65,7 @@ class CreateVoyage():
             self.edit_info()
 
     def edit_info(self):
-        print()
+        #print()
         print(''' ___________________________________________''')
         print('''|  NaN Air - Edit destination information   |''')
         print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
@@ -77,9 +77,9 @@ class CreateVoyage():
         print('''| (6) Contact phone: {:23}|'''.format(self.contact_phone))
         print('''|                                           |''')
         print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
-        print()
+        #print()
         user_input = input("Edit selection: ")
-        print()
+        #print()
         if user_input == '1':
             self.country = input("Enter country: ")
         elif user_input == '2':
@@ -95,7 +95,7 @@ class CreateVoyage():
         self.display_destination_info()
 
     def print_confirmation_destination(self):
-        print()
+        #print()
         print(''' ___________________________________________''')
         print('''|                  NaN Air                  |''')
         print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
@@ -105,9 +105,9 @@ class CreateVoyage():
         print('''| (2) Go back to home page                  |''')
         print('''|                                           |''')
         print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
-        print()
+        #print()
         user_input = input("Input: ")
-        print()
+        #print()
         if user_input == "1":
             pass
         elif user_input == "2":

@@ -1,7 +1,9 @@
-class EmployeeIO ():
+from IO.BaseClassIO import BaseClassIO
+
+class EmployeeIO (BaseClassIO):
     
-    def __init__(self):
-        self.employeeFileName = 'employees.csv'
+    #def __init__(self,filename):
+        #self.employeeFileName = filename
     
     def loadEmployeesFromFile(self):
         pass

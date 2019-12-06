@@ -1,10 +1,9 @@
-from IO.IOAPI import IOAPI
+#from IO.IOAPI import IOAPI
 
 class VoyageLL ():
-    pass 
 
     def __init__(self, ioAPI_in):
-        pass
+        self.__ioAPI_in = ioAPI_in
 
     def createVoyage(self):
         pass

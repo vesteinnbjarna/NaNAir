@@ -5,9 +5,10 @@ from LL.LLAPI import LLAPI
 
 class MainPageUI():
     def __init__(self):
-        self.__employeeManagement = EmployeeManagementUI()
-        self.__voyageManagement = VoyageManagementUI()
-        self.__planeManagement = PlaneManagementUI()
+        self.__llAPI_in = LLAPI()
+        self.__employeeManagement = EmployeeManagementUI(self.__llAPI_in)
+        self.__voyageManagement = VoyageManagementUI(self.__llAPI_in)
+        self.__planeManagement = PlaneManagementUI(self.__llAPI_in)
 
     def renderMenu(self):
         user_input = ""

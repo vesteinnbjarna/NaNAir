@@ -1,16 +1,18 @@
-from IO.IOAPI import IOAPI
+#from IO.IOAPI import IOAPI
 
 class DestinationLL ():
     def __init__(self, ioAPI_in):
-        self.ioAPI = ioAPI_in
-        pass
+        self.__ioAPI = ioAPI_in
+        
+    def storeDestinationToFile(self):
+        self.__ioAPI.storeDestinationToFile()
 
     def getDestination(self):
-        pass
+        self.__ioAPI.loadDestinationFromFile()
     
 
-    def getDestinationInIceland(self):
-        pass
-
     def updateContactInfo(self):
-        pass
+        self.__ioAPI.updateContactInfoInFile()
+        
+
+    
