@@ -1,9 +1,10 @@
 from UI.createPlane import CreatePlane
 from UI.getPlane import GetPlane
-from LL.LLAPI import LLAPI
+
 class PlaneManagementUI():
 
-    def __init__(self):
+    def __init__(self, llAPI_in):
+        self.__llAPI_in = llAPI_in 
         self.createPlane = CreatePlane()
         self.getPlane = GetPlane()
 

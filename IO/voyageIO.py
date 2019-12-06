@@ -1,6 +1,6 @@
 from IO.BaseClassIO import BaseClassIO
 
-class VoyageIO ():
+class VoyageIO (BaseClassIO):
     def __init__(self,filename):
          self.voyageFileName = filename
 

@@ -1,10 +1,13 @@
-class EmployeeIO ():
+from IO.BaseClassIO import BaseClassIO
+
+class EmployeeIO (BaseClassIO):
     
-    def __init__(self,filename):
-        self.employeeFileName = filename
+    #def __init__(self,filename):
+        #self.employeeFileName = filename
     
-    def loadEmployeesFromFile (self):
-        pass
+    #def loadEmployeesFromFile (self):
+        
+        
 
     def storeEmployeeToFile(self):
         pass

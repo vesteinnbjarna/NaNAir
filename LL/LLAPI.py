@@ -5,14 +5,12 @@ from LL.voyageLL import VoyageLL
 from IO.IOAPI import IOAPI
 
 class LLAPI():
-    pass
-
     def __init__(self):
-        self.ioAPI = IOAPI()
-        self.destLL = DestinationLL(self.ioAPI)
-        self.voyLL = VoyageLL(self.ioAPI)
-        self.plaLL = PlaneLL(self.ioAPI)
-        self.empLL = EmployeeLL(self.ioAPI)
+        self.__ioAPI = IOAPI()
+        self.destLL = DestinationLL(self.__ioAPI)
+        self.voyLL = VoyageLL(self.__ioAPI)
+        self.plaLL = PlaneLL(self.__ioAPI)
+        self.empLL = EmployeeLL(self.__ioAPI)
 
     def getDestinations(self):
         return self.destLL.getDestination()

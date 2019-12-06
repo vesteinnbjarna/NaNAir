@@ -1,6 +1,6 @@
 from IO.BaseClassIO import BaseClassIO
 
-class PlaneIO ():
+class PlaneIO (BaseClassIO):
     def __init__(self,filename):
         self.planeFileName = filename
         

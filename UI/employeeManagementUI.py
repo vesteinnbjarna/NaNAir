@@ -1,12 +1,15 @@
 from UI.createEmployee import CreateEmployee
 from UI.getEmployee import GetEmployee
-from LL.LLAPI import LLAPI
+#from UI.updateEmployee import UpdateEmployee
+#from LL.LLAPI import LLAPI
 
 #EMP
 class EmployeeManagementUI():
-    def __init__(self):
-        self.createEmployee = CreateEmployee()
-        self.getEmployee = GetEmployee()
+    def __init__(self, llAPI_in):
+        self.__llAPI_in = llAPI_in 
+        self.createEmployee = CreateEmployee(self.__llAPI_in)
+        self.getEmployee = GetEmployee(self.__llAPI_in)
+        #self.updateEmployee = UpdateEmployee(self.__llAPI_in)
 
     def renderMenu(self):
         #user_input = ""
@@ -38,7 +41,13 @@ class EmployeeManagementUI():
             elif user_input == "b":
                 break
             else:
+<<<<<<< HEAD
                 continue
 
     
 
+=======
+                self.renderMenu()   #continue
+
+            
+>>>>>>> 0e541a24a2ad44cc00936abbb0d79a201864c139
