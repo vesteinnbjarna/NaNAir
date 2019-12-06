@@ -1,36 +1,44 @@
 from Model.employee import Employee
 from LL.LLAPI import LLAPI
+
+#CREMP 
 class CreateEmployee():
     def get_role(self):
-        self.role = ""
-        print()
-        print(''' ___________________________________________''')
-        print('''|           NaN Air - Select role           |''')
-        print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
-        print('''| (1) Pilot                                 |''')
-        print('''| (2) Cabincrew                             |''')
-        print('''|                                           |''')
-        print('''| (press "b" to go back)                    |''')
-        print('''|                                           |''')
-        print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
-        print()
-        user_input = input("Input: ")
-        print()
-        if user_input == "1":
-            self.role = "Pilot"
-            return self.role
-        elif user_input == "2":
-            self.role = "Cabincrew"
-            return self.role
-        elif user_input == "b":
-            return None
-        else:
-            self.get_role()
+        while True:
+            self.role = ""
+            #print()
+            print(''' ___________________________________________''')
+            print('''|           NaN Air - Select role           |''')
+            print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
+            print('''| (1) Pilot                                 |''')
+            print('''| (2) Cabincrew                             |''')
+            print('''|                                           |''')
+            print('''| (press "b" to go back)                    |''')
+            print('''|                                           |''')
+            print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
+            #print()
+            user_input = input("Input: ")
+            #print()
+            if user_input == "1":
+                self.role = "Pilot"
+                return self.role
+            elif user_input == "2":
+                self.role = "Cabincrew"
+                return self.role
+            elif user_input == "b":
+                return "Back"
+            else:
+                continue
+
 
 
     def get_employee_info(self):
         self.role = self.get_role()
-        if self.role:
+        if self.role != "Back":
+            #print()
+            print(' _________________________________________')
+            print("| NaN Air - Enter employee information    |")
+            print(" ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ ")
             self.ssn = input("Enter SSN: ")
             self.name = input("Enter name: ")
             self.rank = input("Enter rank: ")
@@ -42,10 +50,12 @@ class CreateEmployee():
                 self.license = "N/A"
             if self.display_info() == None:
                 return None
+        else:
+            return "Back"
 
 
     def display_info(self):
-        print()
+        #print()
         print(''' ___________________________________________''')
         print('''|       NaN Air - Review information        |''')
         print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
@@ -62,12 +72,11 @@ class CreateEmployee():
         print('''| (2) Edit                                  |''')
         print('''|                                           |''')
         print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
-        print()
+        #print()
         user_input = input("Input: ")
-        print()
+        #print()
         if user_input == "1":
             if self.print_confirmation():
-                self.print_confirmation()
                 self.employee = self.create_employee()
             else:
                 return None
@@ -77,7 +86,7 @@ class CreateEmployee():
             self.display_info()
 
     def display_info_to_edit(self):
-        print()
+        #print()
         print(''' ___________________________________________''')
         print('''|        NaN Air - Edit information         |''')
         print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
@@ -90,8 +99,8 @@ class CreateEmployee():
         if self.role == "Pilot":
             print('''| (7) License: {:29}|'''.format(self.license))
         print('''|                                           |''')
-        print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
-        print()
+        print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ ''')
+        #print()
         user_input = input("Edit selection: ")
         print()
         if user_input == "1":
@@ -101,7 +110,7 @@ class CreateEmployee():
             self.name = input("Enter name: ")
             self.display_info()
         elif user_input == "3":
-            self.role = input("Enter role: ")
+            self.role = self.get_role()
             self.display_info()
         elif user_input == "4":
             self.rank = input("Enter rank: ")
@@ -115,9 +124,9 @@ class CreateEmployee():
         if self.role == "Pilot":
             if user_input == "7":
                 self.license = input("Enter license: ")
-                self.display_info()
+                self.display_info()           
             else:
-                self.display_info_to_edit()
+                return None
         else:
             self.display_info_to_edit()
 
@@ -127,15 +136,15 @@ class CreateEmployee():
         print(''' ___________________________________________''')
         print('''|                  NaN Air                  |''')
         print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
-        print('''| Empployee successfullly created!          |''')
+        print('''| Employee successfullly created!           |''')
         print('''|                                           |''')
         print('''| (1) Create another employee               |''')
         print('''| (2) Go back to home page                  |''')
         print('''|                                           |''')
         print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ ''')
-        print()
+        #print()
         user_input = input("Input: ")
-        print()
+        #print()
         if user_input == "1":
             self.get_employee_info()
         elif user_input == "2":

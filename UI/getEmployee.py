@@ -30,7 +30,7 @@ class GetEmployee():
             if self.choose_list_sorting() == None:
                 return None
         elif user_input == "3":
-            self.employee_type = "all employees"
+            self.employee_type = "employees"
             if self.choose_list_sorting() == None:
                 return None
         elif user_input == "4":

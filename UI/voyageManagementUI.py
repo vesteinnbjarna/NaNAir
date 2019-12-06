@@ -10,7 +10,7 @@ class VoyageManagementUI():
 
     def renderMenu(self):
         #user_input = "1"
-        #while user_input == "1" or user_input == "2":
+        while True:
             print(''' ___________________________________________''')
             print('''|        NaN Air - Voyage management        |''')
             print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
@@ -24,15 +24,17 @@ class VoyageManagementUI():
             user_input = input("Input: ")
             if user_input == "1":
                 if self.createVoyage.get_input() == None:
-                    self.renderMenu()
+                    return None
             elif user_input == "2":
                 if self.getVoyage.get_list() == None:
-                    self.renderMenu()
+                    return None
             elif user_input == "3":
                 if self.updateVoyage.get_input() == None:
-                    self.renderMenu()
+                    return None
             elif user_input == "b":
                 return None
+            else:
+                continue
 
 
 

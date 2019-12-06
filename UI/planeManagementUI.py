@@ -10,7 +10,7 @@ class PlaneManagementUI():
 
     def renderMenu(self):
         #user_input = "1"
-        #while True:
+        while True:
             print(''' ___________________________________________''')
             print('''|                  NaN Air                  |''')
             print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾| ''')
@@ -21,9 +21,9 @@ class PlaneManagementUI():
             print('''| (press "b" to go back)                    |''')
             print('''|                                           |''')
             print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
-            print()
+            #print()
             user_input = input("Input: ")
-            print()
+            #print()
             if user_input == "1":
                 if self.createPlane.get_plane_info() == None: # Ef fallið get_plane_info skilar None þá vill hann fara í main page
                     return None
@@ -33,5 +33,5 @@ class PlaneManagementUI():
             elif user_input == "b":
                 return None
             else:
-                self.renderMenu()   #continue
+                continue
 

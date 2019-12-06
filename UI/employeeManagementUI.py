@@ -2,6 +2,7 @@ from UI.createEmployee import CreateEmployee
 from UI.getEmployee import GetEmployee
 from LL.LLAPI import LLAPI
 
+#EMP
 class EmployeeManagementUI():
     def __init__(self):
         self.createEmployee = CreateEmployee()
@@ -9,7 +10,7 @@ class EmployeeManagementUI():
 
     def renderMenu(self):
         #user_input = ""
-        #while True:
+        while True:
             print(''' ___________________________________________''')
             print('''|       NaN Air - Employee management       |''')
             print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
@@ -20,19 +21,24 @@ class EmployeeManagementUI():
             print('''| (press "b" to go back)                    |''')
             print('''|                                           |''')
             print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
-            print()
+
             user_input = input("Input: ")
-            print()
+
             if user_input == "1":
-                if self.createEmployee.get_employee_info() == None:
-                    self.renderMenu()
-               #if self.get_employee_info() == None:
+                createEmp = self.createEmployee.get_employee_info()
+                if createEmp == None:
+                    return None
+                if createEmp == "Back":
+                    continue
             elif user_input == "2":
                 if self.getEmployee.get_user_input() == None:
-                    self.renderMenu()            #self.createEmployee.print_data_options()
+                    return None                           #self.createEmployee.print_data_options()
             elif user_input == "3":
                 pass
             elif user_input == "b":
-                return None
+                break
             else:
-                self.renderMenu()   #continue
+                continue
+
+    
+
