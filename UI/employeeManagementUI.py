@@ -1,7 +1,7 @@
 from UI.createEmployee import CreateEmployee
 from UI.getEmployee import GetEmployee
-#from UI.updateEmployee import UpdateEmployee
-#from LL.LLAPI import LLAPI
+from UI.updateEmployee import UpdateEmployee
+from LL.LLAPI import LLAPI
 
 #EMP
 class EmployeeManagementUI():
