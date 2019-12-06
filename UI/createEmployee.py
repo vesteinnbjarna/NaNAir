@@ -76,6 +76,7 @@ class CreateEmployee():
         if user_input == "1":
             if self.print_confirmation():
                 self.employee = self.create_employee()
+                return None
             else:
                 return None
         elif user_input == "2":
@@ -104,28 +105,35 @@ class CreateEmployee():
         print()
         if user_input == "1":
             self.ssn = input("Enter SSN: ")
-            self.display_info()
+            if self.display_info() == None:
+                return None
         elif user_input == "2":
             self.name = input("Enter name: ")
-            self.display_info()
+            if self.display_info() == None:
+                return None
         elif user_input == "3":
             self.role = self.get_role()
-            self.display_info()
+            if self.display_info() == None:
+                return None
         elif user_input == "4":
             self.rank = input("Enter rank: ")
-            self.display_info()
+            if self.display_info() == None:
+                return None
         elif user_input == "5":
             self.address = input("Enter address: ")
-            self.display_info()
+            if self.display_info() == None:
+                return None
         elif user_input == "6":
             self.phone_no = input("Enter phone number: ")
-            self.display_info()
+            if self.display_info() == None:
+                return None
         if self.role == "Pilot":
             if user_input == "7":
                 self.license = input("Enter license: ")
-                self.display_info()           
-            else:
-                return None
+                if self.display_info() == None:
+                    return None         
+                else:
+                    self.display_info_to_edit()
         else:
             self.display_info_to_edit()
 

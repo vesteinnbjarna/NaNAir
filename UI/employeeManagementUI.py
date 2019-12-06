@@ -41,13 +41,7 @@ class EmployeeManagementUI():
             elif user_input == "b":
                 break
             else:
-<<<<<<< HEAD
                 continue
 
     
 
-=======
-                self.renderMenu()   #continue
-
-            
->>>>>>> 0e541a24a2ad44cc00936abbb0d79a201864c139
