@@ -89,6 +89,7 @@ class CreateVoyage():
             elif user_input == "5":
                 self.address = input("Enter address: ")
                 if self.display_info() == None:
+                    pass
 
 
 ########### create new destination #######################################

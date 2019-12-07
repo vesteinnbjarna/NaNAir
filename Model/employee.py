@@ -1,5 +1,5 @@
 class Employee():
-    def __init__(self, ssn, name, role, rank, address, phone_no, license):
+    def __init__(self, ssn, name, role, rank, address, phone_no, emp_license = 'N/A'):
         self.ssn = str(ssn)
         self.name = str(name)
         self.role = str(role)
@@ -7,7 +7,9 @@ class Employee():
         self.address = str(address)
         self.phone_no = str(phone_no)
         self.email = self.name.replace(" ",".").lower() + "@" + "nanair.is"
+        self.emp_license = str(emp_license)
         self.id = 0
+        
 
     def get_email(self):
         return self.email
@@ -35,6 +37,9 @@ class Employee():
     
     def get_id(self):
         return self.id
+
+    def get_license(self):
+        return self.emp_license
 
 #line[-1][0] = max_id 
 #isol = Employee("0110972519", "Isol Sigurdardottir", "pilot", "captain", "Einiberg 21", "6613536", "tecnam")
