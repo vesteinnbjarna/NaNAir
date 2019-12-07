@@ -4,9 +4,9 @@ class CreatePlane():
 
     def get_plane_info(self):
         #print()
-        print(' _________________________________________')
-        print("| NaN Air - Enter plane information       |")
-        print(" ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ ")
+        print(' __________________________________________')
+        print("| NaN Air - Enter plane information        |")
+        print(" ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ ")
         self.registration = input("Enter aircraft registration: ")
         self.plane_type = input("Enter aircraft type: ")
         self.manufacturer = input("Enter aircraft manufacturer: ")

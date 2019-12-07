@@ -7,9 +7,9 @@ class CreateEmployee():
         self.llAPI_in = llAPI_in
 
     def get_role(self):
+        ''' Returns role of new employee'''
         while True:
             self.role = ""
-            #print()
             print(''' ___________________________________________''')
             print('''|           NaN Air - Select role           |''')
             print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
@@ -19,9 +19,7 @@ class CreateEmployee():
             print('''| (press "b" to go back)                    |''')
             print('''|                                           |''')
             print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
-            #print()
             user_input = input("Input: ")
-            #print()
             if user_input == "1":
                 self.role = "Pilot"
                 return self.role
@@ -29,15 +27,17 @@ class CreateEmployee():
                 self.role = "Cabincrew"
                 return self.role
             elif user_input == "b":
-                return "Back"
-            else:
+                return "Back to emp_m"      #goes back to employee management class
+            else:                     
+                #print("Please enter valid input :)")
                 continue
 
     def get_employee_info(self):
+        ''' Method that gets role from get_role method and returns input from user whether
+        pilot or cabincrew'''
         self.role = self.get_role()
-        if self.role != "Back":
-            #print()
-            print(' _________________________________________')
+        if self.role != "Back to emp_m":                            #if user enters back in previous method it 
+            print(' _________________________________________')     #will not ask for input and goes back to emp_m
             print("| NaN Air - Enter employee information    |")
             print(" ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ ")
             self.ssn = input("Enter SSN: ")
@@ -45,18 +45,21 @@ class CreateEmployee():
             self.rank = input("Enter rank: ")
             self.address = input("Enter address: ")
             self.phone_no = input("Enter phone number: ")
+            #get licence if pilot
             if self.role == "Pilot":
                 self.license = input("Enter license: ")
-            else:                               # Cabincrew
+            #cabincrew
+            else:                               
                 self.license = "N/A"
+            #
             if self.display_info() == None:
                 return None
         else:
-            return "Back"
+            return "Back to emp_m"
 
 
     def display_info(self):
-        #print()
+        ''' Method thatn prints review of employee information. '''
         while True:
             print(''' ___________________________________________''')
             print('''|       NaN Air - Review information        |''')
@@ -74,9 +77,7 @@ class CreateEmployee():
             print('''| (2) Edit                                  |''')
             print('''|                                           |''')
             print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
-            #print()
             user_input = input("Input: ")
-            #print()
             if user_input == "1":
                 if self.print_confirmation():
                     self.employee = self.create_employee()
@@ -87,10 +88,11 @@ class CreateEmployee():
                 if self.display_info_to_edit() == None:
                     return None
             else:
+                #print("Please enter valid input :)")
                 continue
 
-    def display_info_to_edit(self):
-        
+    def display_info_to_edit(self):  
+        ''' Method that asks user what information to edit. '''
         while True:
             print(''' ___________________________________________''')
             print('''|        NaN Air - Edit information         |''')
@@ -105,7 +107,6 @@ class CreateEmployee():
                 print('''| (7) License: {:29}|'''.format(self.license))
             print('''|                                           |''')
             print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ ''')
-            #print()
             user_input = input("Edit selection: ")
             print()
             if user_input == "1":
@@ -140,11 +141,13 @@ class CreateEmployee():
                 else:
                     return None
             else:
+                #print("Please enter valid input :)")
                 continue
 
 
 
     def print_confirmation(self):
+        ''' Method that prints confirmation of employee creation. '''
         while True:
             print(''' ___________________________________________''')
             print('''|                  NaN Air                  |''')
@@ -155,15 +158,15 @@ class CreateEmployee():
             print('''| (2) Go back to home page                  |''')
             print('''|                                           |''')
             print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ ''')
-            #print()
             user_input = input("Input: ")
-            #print()
             if user_input == "1":
                 if self.get_employee_info() == None:
                     return None
             elif user_input == "2":
                 return None
             else:
+                #print()
+                #print("Please enter valid input :)")
                 continue
 
     def create_employee(self):
