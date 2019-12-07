@@ -79,10 +79,11 @@ class CreateEmployee():
             print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
             user_input = input("Input: ")
             if user_input == "1":
-                if self.print_confirmation():
-                    self.employee = self.create_employee()
+                if self.create_employee():
+                    self.print_confirmation()
                     return None
                 else:
+                    print('try again')
                     return None
             elif user_input == "2":
                 if self.display_info_to_edit() == None:
@@ -176,4 +177,5 @@ class CreateEmployee():
         else:
             self.employee = Employee(self.ssn, self.name, self.role, self.rank, \
                 self.address, self.phone_no, self.license)
+        self.llAPI_in.createEmployee(self.employee)
         return self.employee

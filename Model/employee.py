@@ -1,16 +1,47 @@
 class Employee():
-    def __init__(self, ssn, name, role, rank, address, phone_no, license):
-        self.ssn = ssn
-        self.name = name
-        self.role = role
-        self.rank = rank
-        self.address = address
-        self.phone_no = phone_no
+    def __init__(self, ssn, name, role, rank, address, phone_no, emp_license = 'N/A'):
+        self.ssn = str(ssn)
+        self.name = str(name)
+        self.role = str(role)
+        self.rank = str(rank)
+        self.address = str(address)
+        self.phone_no = str(phone_no)
         self.email = self.name.replace(" ",".").lower() + "@" + "nanair.is"
-    
+        self.emp_license = str(emp_license)
+        self.id = 0
+        
+
     def get_email(self):
         return self.email
 
+    def assign_id(self, next_id):
+        self.id = next_id
+    
+    def get_ssn(self):
+        return self.ssn
+
+    def get_name(self):
+        return self.name
+
+    def get_role(self):
+        return self.role
+
+    def get_rank(self):
+        return self.rank
+
+    def get_address(self):
+        return self.address
+
+    def get_phonenumber(self):
+        return self.phone_no
+    
+    def get_id(self):
+        return self.id
+
+    def get_license(self):
+        return self.emp_license
+
+#line[-1][0] = max_id 
 #isol = Employee("0110972519", "Isol Sigurdardottir", "pilot", "captain", "Einiberg 21", "6613536", "tecnam")
 #isol_email = isol.get_email()
 

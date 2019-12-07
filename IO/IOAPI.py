@@ -5,6 +5,7 @@ from IO.employeeIO import EmployeeIO
 from IO.routeIO import RouteIO
 from IO.permitIO import PermitIO
 
+
 class IOAPI ():
 
     def __init__(self):
@@ -43,8 +44,8 @@ class IOAPI ():
     def loadEmployeesFromFile(self):
         return self.empIO.loadFile()
 
-    def storeEmployeeToFile(self):
-        return self.empIO.storeEmployeeToFile()
+    def storeEmployeeToFile(self,employee):
+        return self.empIO.storeEmployeeToFile(employee)
 
     def updateEmployeeInFile(self):
         return self.empIO.updateEmployeeInFile()
