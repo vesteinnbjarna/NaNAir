@@ -173,4 +173,5 @@ class CreateEmployee():
         else:
             self.employee = Employee(self.ssn, self.name, self.role, self.rank, \
                 self.address, self.phone_no, self.license)
+        self.llAPI_in.createEmployee(self.employee)
         return self.employee
