@@ -36,8 +36,9 @@ class GetEmployee():
                 if self.get_list() == None:
                     continue
             elif user_input == "4":
-                self.specific_emp_info() == None:
-                    continue
+                pass
+                #self.specific_emp_info() == None:
+                 #   continue
             elif user_input == "b":
                 return "Back to emp_m"
             else:
@@ -154,7 +155,7 @@ class GetEmployee():
         #pilots eða cabincrew eða all employees
         list_of_all()
         chosen_emp = input("Enter ID of employee: ")
-        if 
+        if True: 
             return None
         else:
             print("Employee not found!")
