@@ -36,7 +36,7 @@ class GetEmployee():
                 if self.get_list() == None:
                     continue
             elif user_input == "4":
-                self.specific_emp_info() == None:
+                if self.specific_emp_info() == None:
                     continue
             elif user_input == "b":
                 return "Back to emp_m"
@@ -149,16 +149,16 @@ class GetEmployee():
 
 ########################### SPECIFIC EMPLOYEE ###############################
 
-    def specific_emp_info(self):
-        #Ef þú velur specific employee þá geturu valið um að velja í lista af 
-        #pilots eða cabincrew eða all employees
-        list_of_all()
-        chosen_emp = input("Enter ID of employee: ")
-        if 
-            return None
-        else:
-            print("Employee not found!")
-            continue
+    # def specific_emp_info(self):
+    #     #Ef þú velur specific employee þá geturu valið um að velja í lista af 
+    #     #pilots eða cabincrew eða all employees
+    #     list_of_all()
+    #     chosen_emp = input("Enter ID of employee: ")
+    #     if 
+    #         return None
+    #     else:
+    #         print("Employee not found!")
+    #         continue
 
 
     def specific_employee(self):
