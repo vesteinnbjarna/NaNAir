@@ -3,27 +3,28 @@ from Model.voyage import Voyage
 class GetVoyage():
 
     def get_list(self):
-        print()
-        print(''' ___________________________________________''')
-        print('''|                  NaN Air                  |''')
-        print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
-        print('''| (1) List of destinations                  |''')
-        print('''| (2) List of voyages                       |''')
-        print('''|                                           |''')
-        print('''| press 'b' for back                        |''')
-        print('''|                                           |''')
-        print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')       
-        print()
-        user_input = input("Input: ")
-        print()
-        if user_input == "1":
-            self.get_list_of_destinations()
-        elif user_input == "2":
-            self.get_list_of_voyages()
-        elif user_input == "b":
-            return None
-        else:
-            self.get_list()
+        while True:
+            print()
+            print(''' ___________________________________________''')
+            print('''|                  NaN Air                  |''')
+            print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
+            print('''| (1) List of destinations                  |''')
+            print('''| (2) List of voyages                       |''')
+            print('''|                                           |''')
+            print('''| press 'b' for back                        |''')
+            print('''|                                           |''')
+            print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')       
+            print()
+            user_input = input("Input: ")
+            print()
+            if user_input == "1":
+                self.get_list_of_destinations()
+            elif user_input == "2":
+                self.get_list_of_voyages()
+            elif user_input == "b":
+                return "Back to voy_m"
+            else:
+                continue
     
     def get_list_of_destinations(self):
         #Prentast út listi af destinations sem data layer er búinn að senda til baka

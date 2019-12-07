@@ -12,6 +12,7 @@ class EmployeeManagementUI():
         self.updateEmployee = UpdateEmployee(self.__llAPI_in)
 
     def renderMenu(self):
+        ''' Method that gets user input and calls correct class. '''
         while True:
             print(''' ___________________________________________''')
             print('''|       NaN Air - Employee management       |''')
@@ -30,12 +31,12 @@ class EmployeeManagementUI():
                 createEmp = self.createEmployee.get_employee_info()
                 if createEmp == None:
                     return None
-                if createEmp == "Back":
+                if createEmp == "Back to emp_m":
                     continue
             elif user_input == "2":
                 emp_user_input = self.getEmployee.get_user_input()
                 if emp_user_input == None:
-                    return None            #self.createEmployee.print_data_options()
+                    return None            
                 if emp_user_input == "Back":
                     continue
             elif user_input == "3":

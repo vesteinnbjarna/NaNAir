@@ -4,29 +4,30 @@ from LL.LLAPI import LLAPI
 class UpdateVoyage():
 
     def get_input(self):
-        print()
-        print(''' ___________________________________________''')
-        print('''|         NaN Air - Update Voyage           |''')
-        print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
-        print('''| (1) Update voyage                         |''')
-        print('''| (2) Update contact information            |''')
-        print('''|                                           |''')
-        print('''| (press "b" to go back)                    |''')
-        print('''|                                           |''')
-        print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
-        print()
-        user_input = input("Input: ")
-        print()
-        if user_input == "1":
-            if self.list_of_voyage() == None:
-                return None
-        elif user_input == "2":
-            if self.list_of_contact_list() == None:
-                return None
-        elif user_input == "b":
-            return None
-        else:
-            self.get_input()
+        while True:
+            print()
+            print(''' ___________________________________________''')
+            print('''|         NaN Air - Update Voyage           |''')
+            print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
+            print('''| (1) Update voyage                         |''')
+            print('''| (2) Update contact information            |''')
+            print('''|                                           |''')
+            print('''| (press "b" to go back)                    |''')
+            print('''|                                           |''')
+            print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
+            print()
+            user_input = input("Input: ")
+            print()
+            if user_input == "1":
+                if self.list_of_voyage() == None:
+                    return None
+            elif user_input == "2":
+                if self.list_of_contact_list() == None:
+                    return None
+            elif user_input == "b":
+                return "Back to voy_m"
+            else:
+                continue
 
 
 ########### UPDATE CONTACT INFO ###############
