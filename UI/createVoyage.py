@@ -6,7 +6,7 @@ class CreateVoyage():
         while True:
             print(''' ___________________________________________''')
             print('''|                  NaN Air                  |''')
-            print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
+            print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
             print('''| (1) Create new voyage                     |''')
             print('''| (2) Gather crew for voyage                |''')
             print('''| (3) Create destination                    |''')
@@ -89,6 +89,7 @@ class CreateVoyage():
             elif user_input == "5":
                 self.address = input("Enter address: ")
                 if self.display_info() == None:
+                    return None
 
 
 ########### create new destination #######################################
@@ -123,7 +124,6 @@ class CreateVoyage():
             print('''| (2) Edit                                  |''')
             print('''|                                           |''')
             print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
-            #print()
             user_input = input("Input: ")
             if user_input == '1':
                 if self.print_confirmation_destination() == None:

@@ -37,7 +37,7 @@ class EmployeeManagementUI():
                 emp_user_input = self.getEmployee.get_user_input()
                 if emp_user_input == None:
                     return None            
-                if emp_user_input == "Back":
+                if emp_user_input == "Back to emp_m":
                     continue
             elif user_input == "3":
                 pass
