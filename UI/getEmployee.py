@@ -77,7 +77,7 @@ class GetEmployee():
 
     def choose_list_sorting(self):
         self.employee_list = self.get_list()
-        if self.employee_list != None:       #Kominn með réttann lista  (all, availablea eða unavailable)
+        while self.employee_list != None:       #Kominn með réttann lista  (all, availablea eða unavailable)
             print()
             print(''' ___________________________________________''')
             print('''|           NaN Air -                       |''')
@@ -94,7 +94,24 @@ class GetEmployee():
             user_input = input("Input: ")       #Eftir input bera listann saman við plane permit eða pilots witf specific permit
             print()
             if user_input == "1":
-                print(self.llAPI_in.getEmployee())
+                line_index = 0
+                employees_list = self.llAPI_in.getEmployee()
+                counter = 0
+                for line in employees_list:
+                    if counter < 1:
+                        for key in line.keys():
+                            print(key, end="\t")
+                        counter += 1
+                    else:
+                        print()
+                        break
+                for line in employees_list:
+                    for key,val in line.items():
+                        print(val, end="\t")
+                        line_index += 1
+                    print()
+                print()
+                user_input = input("Press enter to go back to home page")
             elif user_input == "2":
                 pass
             elif user_input == "3":

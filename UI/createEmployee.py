@@ -5,7 +5,7 @@ from LL.LLAPI import LLAPI
 class CreateEmployee():
     def __init__(self, llAPI_in):
         self.llAPI_in = llAPI_in
-        
+
     def get_role(self):
         while True:
             self.role = ""
@@ -57,112 +57,116 @@ class CreateEmployee():
 
     def display_info(self):
         #print()
-        print(''' ___________________________________________''')
-        print('''|       NaN Air - Review information        |''')
-        print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
-        print('''| SSN: {:37}|'''.format(self.ssn))
-        print('''| Name: {:36}|'''.format(self.name))
-        print('''| Role: {:36}|'''.format(self.role))
-        print('''| Rank: {:36}|'''.format(self.rank))
-        print('''| Address: {:33}|'''.format(self.address))
-        print('''| Phone number: {:28}|'''.format(self.phone_no))
-        print('''| License: {:33}|'''.format(self.license))
-        print('''|                                           |''')
-        print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
-        print('''| (1) Confirm                               |''')
-        print('''| (2) Edit                                  |''')
-        print('''|                                           |''')
-        print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
-        #print()
-        user_input = input("Input: ")
-        #print()
-        if user_input == "1":
-            if self.print_confirmation():
-                self.employee = self.create_employee()
-                return None
+        while True:
+            print(''' ___________________________________________''')
+            print('''|       NaN Air - Review information        |''')
+            print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
+            print('''| SSN: {:37}|'''.format(self.ssn))
+            print('''| Name: {:36}|'''.format(self.name))
+            print('''| Role: {:36}|'''.format(self.role))
+            print('''| Rank: {:36}|'''.format(self.rank))
+            print('''| Address: {:33}|'''.format(self.address))
+            print('''| Phone number: {:28}|'''.format(self.phone_no))
+            print('''| License: {:33}|'''.format(self.license))
+            print('''|                                           |''')
+            print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
+            print('''| (1) Confirm                               |''')
+            print('''| (2) Edit                                  |''')
+            print('''|                                           |''')
+            print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
+            #print()
+            user_input = input("Input: ")
+            #print()
+            if user_input == "1":
+                if self.print_confirmation():
+                    self.employee = self.create_employee()
+                    return None
+                else:
+                    return None
+            elif user_input == "2":
+                if self.display_info_to_edit() == None:
+                    return None
             else:
-                return None
-        elif user_input == "2":
-            self.display_info_to_edit()
-        else:
-            self.display_info()
+                continue
 
     def display_info_to_edit(self):
-        #print()
-
-        print(''' ___________________________________________''')
-        print('''|        NaN Air - Edit information         |''')
-        print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
-        print('''| (1) SSN: {:33}|'''.format(self.ssn))
-        print('''| (2) Name: {:32}|'''.format(self.name))
-        print('''| (3) Role: {:32}|'''.format(self.role))
-        print('''| (4) Rank: {:32}|'''.format(self.rank))
-        print('''| (5) Address: {:29}|'''.format(self.address))
-        print('''| (6) Phone number: {:24}|'''.format(self.phone_no))
-        if self.role == "Pilot":
-            print('''| (7) License: {:29}|'''.format(self.license))
-        print('''|                                           |''')
-        print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ ''')
-        #print()
-        user_input = input("Edit selection: ")
-        print()
-        if user_input == "1":
-            self.ssn = input("Enter SSN: ")
-            if self.display_info() == None:
-                return None
-        elif user_input == "2":
-            self.name = input("Enter name: ")
-            if self.display_info() == None:
-                return None
-        elif user_input == "3":
-            self.role = self.get_role()
-            if self.display_info() == None:
-                return None
-        elif user_input == "4":
-            self.rank = input("Enter rank: ")
-            if self.display_info() == None:
-                return None
-        elif user_input == "5":
-            self.address = input("Enter address: ")
-            if self.display_info() == None:
-                return None
-        elif user_input == "6":
-            self.phone_no = input("Enter phone number: ")
-            if self.display_info() == None:
-                return None
-        if self.role == "Pilot":
-            if user_input == "7":
-                self.license = input("Enter license: ")
+        
+        while True:
+            print(''' ___________________________________________''')
+            print('''|        NaN Air - Edit information         |''')
+            print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
+            print('''| (1) SSN: {:33}|'''.format(self.ssn))
+            print('''| (2) Name: {:32}|'''.format(self.name))
+            print('''| (3) Role: {:32}|'''.format(self.role))
+            print('''| (4) Rank: {:32}|'''.format(self.rank))
+            print('''| (5) Address: {:29}|'''.format(self.address))
+            print('''| (6) Phone number: {:24}|'''.format(self.phone_no))
+            if self.role == "Pilot":
+                print('''| (7) License: {:29}|'''.format(self.license))
+            print('''|                                           |''')
+            print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ ''')
+            #print()
+            user_input = input("Edit selection: ")
+            print()
+            if user_input == "1":
+                self.ssn = input("Enter SSN: ")
                 if self.display_info() == None:
-                    return None          
+                    return None
+            elif user_input == "2":
+                self.name = input("Enter name: ")
+                if self.display_info() == None:
+                    return None
+            elif user_input == "3":
+                self.role = self.get_role()
+                if self.display_info() == None:
+                    return None
+            elif user_input == "4":
+                self.rank = input("Enter rank: ")
+                if self.display_info() == None:
+                    return None
+            elif user_input == "5":
+                self.address = input("Enter address: ")
+                if self.display_info() == None:
+                    return None
+            elif user_input == "6":
+                self.phone_no = input("Enter phone number: ")
+                if self.display_info() == None:
+                    return None
+            if self.role == "Pilot":
+                if user_input == "7":
+                    self.license = input("Enter license: ")
+                    if self.display_info() == None:
+                        return None          
+                else:
+                    return None
             else:
-                return None
-        else:
-            self.display_info_to_edit()
+                continue
 
 
 
     def print_confirmation(self):
-        print(''' ___________________________________________''')
-        print('''|                  NaN Air                  |''')
-        print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
-        print('''| Employee successfullly created!           |''')
-        print('''|                                           |''')
-        print('''| (1) Create another employee               |''')
-        print('''| (2) Go back to home page                  |''')
-        print('''|                                           |''')
-        print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ ''')
-        #print()
-        user_input = input("Input: ")
-        #print()
-        if user_input == "1":
-            self.get_employee_info()
-        elif user_input == "2":
-            return None
-        else:
-            self.print_confirmation()
+        while True:
+            print(''' ___________________________________________''')
+            print('''|                  NaN Air                  |''')
+            print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
+            print('''| Employee successfullly created!           |''')
+            print('''|                                           |''')
+            print('''| (1) Create another employee               |''')
+            print('''| (2) Go back to home page                  |''')
+            print('''|                                           |''')
+            print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ ''')
+            #print()
+            user_input = input("Input: ")
+            #print()
+            if user_input == "1":
+                if self.get_employee_info() == None:
+                    return None
+            elif user_input == "2":
+                return None
+            else:
+                continue
 
-    #def create_employee(self):
+    def create_employee(self):
         if self.role == "Pilot":
             self.employee = Employee(self.ssn, self.name, self.role, self.rank, \
                 self.address, self.phone_no, self.license)

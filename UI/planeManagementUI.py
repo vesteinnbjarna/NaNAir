@@ -15,8 +15,7 @@ class PlaneManagementUI():
         while True:
             print(''' ___________________________________________''')
             print('''|                  NaN Air                  |''')
-            print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾| ''')
-            print('''|                                           |''')   
+            print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')  
             print('''| (1) Create plane                          |''')
             print('''| (2) Get list of planes                    |''')
             print('''|                                           |''')
