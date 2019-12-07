@@ -33,8 +33,11 @@ class EmployeeManagementUI():
                 if createEmp == "Back":
                     continue
             elif user_input == "2":
-                if self.getEmployee.get_user_input() == None:
+                emp_user_input = self.getEmployee.get_user_input()
+                if emp_user_input == None:
                     return None            #self.createEmployee.print_data_options()
+                if emp_user_input == "Back":
+                    continue
             elif user_input == "3":
                 pass
             elif user_input == "b":
