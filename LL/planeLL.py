@@ -3,10 +3,9 @@ class PlaneLL ():
     def __init__(self, ioAPI_in):
         self.__ioAPI_in = ioAPI_in
 
-    def createPlane(self):
-        pass
+    def createPlane(self,plane):
+        return self.__ioAPI_in.storePlaneToFile(plane)
 
     def getPlanes(self):
         pass
 
-    pass

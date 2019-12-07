@@ -1,6 +1,8 @@
 from Model.voyage import Voyage
 
 class GetVoyage():
+    def __init__(self, llAPI_in):
+        self.llAPI_in = llAPI_in
 
     def get_list(self):
         while True:
