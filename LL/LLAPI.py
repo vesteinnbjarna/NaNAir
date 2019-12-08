@@ -39,8 +39,8 @@ class LLAPI():
     def createEmployee(self,employee):
         return self.empLL.createEmployee(employee)
     
-    def getEmployee(self):
-        return self.empLL.getEmployee()
+    def getEmployees(self):
+        return self.empLL.getEmployees()
 
     def updateEmployee(self):
         return self.empLL.updateEmployee()

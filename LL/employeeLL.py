@@ -12,7 +12,7 @@ class EmployeeLL ():
         self.__ioAPI.updateEmployeeInFile()
         pass
 
-    def getEmployee (self):
+    def getEmployees(self):
         return self.__ioAPI.loadEmployeesFromFile()
 
     def getPilotsOrFAs(self,empType, sorting):

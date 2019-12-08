@@ -1,4 +1,4 @@
-#from LL.LLAPI import LLAPI
+#from LL.LLAPI import LLAPI 
 from Model.employee import Employee
 
 class GetEmployee():
@@ -69,6 +69,10 @@ class GetEmployee():
                 elif self.employee_type == "Cabincrew":
                     fa_list = self.llAPI_in.getPilotsOrFAs(empType=self.employee_type)
                     if self.print_list(fa_list) == None:
+                        continue
+                elif self.employee_type == "employees":
+                    emp_list = self.llAPI_in.getEmployees()
+                    if self.print_list(emp_list) == None:
                         continue
             elif user_input == "2":
                 if self.employee_type == "Pilot":
@@ -156,7 +160,7 @@ class GetEmployee():
     # def specific_emp_info(self):
     #     #Ef þú velur specific employee þá geturu valið um að velja í lista af 
     #     #pilots eða cabincrew eða all employees
-    #     list_of_all()
+    #     print_list()
     #     chosen_emp = input("Enter ID of employee: ")
     #     if 
     #         return None

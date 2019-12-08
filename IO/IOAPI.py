@@ -10,7 +10,7 @@ class IOAPI ():
 
     def __init__(self):
         self.desIO = DestinationIO('IO/Data/Destinations.csv') # Hardcoded filenames - Only place to change the path is here
-        self.voyIO = VoyageIO('IO/Data/voyages.csv')
+        self.voyIO = VoyageIO('IO/Data/AllFlights.csv')
         self.plaIO = PlaneIO('IO/Data/AircraftType.csv')
         self.empIO = EmployeeIO('IO/Data/Crew.csv')
         self.rouIO = RouteIO('IO/Data/routes.csv')
@@ -18,7 +18,7 @@ class IOAPI ():
         
 
     def loadDestinationFromFile (self):
-        return self.desIO.loadDestinationFromFile()
+        return self.desIO.loadFile()
     
     def storeDestinationToFile(self,dest):
         return self.desIO.storeDestinationToFile(dest)
@@ -27,7 +27,7 @@ class IOAPI ():
         return self.desIO.updateContactInfoInFile()
 
     def loadVoyagesFromFile (self):
-        return self.voyIO.loadVoyagesFromFile()
+        return self.voyIO.loadFile()
     
     def storeVoyageToFile(self):
         return self.voyIO.storeVoyageToFile()
@@ -36,7 +36,7 @@ class IOAPI ():
         return self.voyIO.updateVoyageInFile()
 
     def loadPlanesFromFile(self):
-        return self.plaIO.loadPlanesFromFiles()
+        return self.plaIO.loadFile()
 
     def storePlaneToFile(self,plane):
         return self.plaIO.storePlaneToFile(plane)
