@@ -22,14 +22,23 @@ class EmployeeLL ():
         if empType == "Pilot":
             for line in list_of_employees:
                 for key,val in line.items():
-                    if key == "role":
+                    if key == "Role":
                         if val == empType:
                             listOfPilots.append(line)
             return listOfPilots
         elif empType == "Cabincrew":
             for line in list_of_employees:
                 for key,val in line.items():
-                    if key == "role":
+                    if key == "Role":
                         if val == empType:
                             listOfFAs.append(line)
             return listOfFAs
+
+    def getSpecificEmployee(self, id):
+        list_of_employees = self.__ioAPI.loadEmployeesFromFile()
+        for line in list_of_employees:
+            for key,val in line.items():
+                if key == "ID":
+                    if val == id:
+                        return line
+

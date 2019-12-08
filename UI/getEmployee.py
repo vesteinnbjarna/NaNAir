@@ -1,4 +1,4 @@
-#from LL.LLAPI import LLAPI 
+#from LL.LLAPI import LLAPI
 from Model.employee import Employee
 
 class GetEmployee():
@@ -36,14 +36,13 @@ class GetEmployee():
                 if self.get_list() == None:
                     continue
             elif user_input == "4":
-                pass
-                #self.specific_emp_info() == None:
-                 #   continue
+                self.employee_type = "Specific"
+                if self.get_specific_employee() == None:
+                    return None
             elif user_input == "b":
                 return "Back to emp_m"
             else:
                 continue
-
 
     def get_list(self):
         self.employee_list = ""              #Fá lista af öllum pilots
@@ -141,7 +140,11 @@ class GetEmployee():
                 #line_index += 1
             print()
         print()
-        user_input = input("Press enter to go back")
+        if self.employee_type == "Specific":
+            self.id = input("Enter employee ID: ")
+            return self.id
+        else:
+            user_input = input("Press enter to go back")
 
     def list_sorted_by_permit(self): #B #Sorted in LL
         pass
@@ -155,21 +158,40 @@ class GetEmployee():
     def list_of_unavailable(): #A
         pass
 
-########################### SPECIFIC EMPLOYEE ###############################
+########################### SPECIFIC EMPLOYEE ###########################
 
-    # def specific_emp_info(self):
-    #     #Ef þú velur specific employee þá geturu valið um að velja í lista af 
-    #     #pilots eða cabincrew eða all employees
-    #     print_list()
-    #     chosen_emp = input("Enter ID of employee: ")
-    #     if 
-    #         return None
-    #     else:
-    #         print("Employee not found!")
-    #         continue
+    def get_specific_employee(self):
+        emp_list = self.llAPI_in.getEmployees()
+        self.print_list(emp_list)
+        print()
+        if self.print_specific_employee() == None:
+            return None
+
+    def print_specific_employee(self):
+        while True:
+            specific_emp = self.llAPI_in.getSpecificEmployee(self.id)
+            print(''' ___________________________________________''')
+            print('''|     NaN Air - Employee information        |''')
+            print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ ''')
+            for key, val in specific_emp.items():
+                print(" {}: {}".format(key,val))
+            print('''                                             ''')
+            print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
+            print('''| (1) Get information on another employee   |''')
+            print('''| (2) Go back to home page                  |''')
+            print('''|                                           |''')
+            print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
+            print()
+            user_input = input("Input: ")
+            if user_input == "1":
+                self.get_specific_employee()
+            elif user_input == "2":
+                return None
+            else:
+                continue
 
 
-    def specific_employee(self):
-        self.specific_type = self.specific_list()
-        #Prentar lista af lista sem user velur
-        pass 
+
+
+
+
