@@ -15,6 +15,16 @@ class BaseClassIO ():
             
             return working_list
 
+    def getNextID(self):
+        maxList = []
+        with open (self.filename, 'r') as f:
+            for line in f:
+                maxList.append(line.split(','))
+        
+        self.maxId = int(maxList[-1][0]) + 1
+        return self.maxId 
+
+            
     
 
     

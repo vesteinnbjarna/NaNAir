@@ -1,6 +1,8 @@
 from Model.plane import Plane
 
 class GetPlane():
+    def __init__(self, llAPI_in):
+        self.llAPI_in  = llAPI_in
 
     def get_list(self):
         print()

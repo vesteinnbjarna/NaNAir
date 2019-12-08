@@ -5,8 +5,8 @@ class PlaneManagementUI():
 
     def __init__(self, llAPI_in):
         self.__llAPI_in = llAPI_in 
-        self.createPlane = CreatePlane()
-        self.getPlane = GetPlane()
+        self.createPlane = CreatePlane(self.__llAPI_in)
+        self.getPlane = GetPlane(self.__llAPI_in)
 
 
     def renderMenu(self):

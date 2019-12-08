@@ -1,12 +1,13 @@
 from Model.plane import Plane
 
 class CreatePlane():
+    def __init__(self, llAPI_in):
+        self.llAPI_in = llAPI_in
 
     def get_plane_info(self):
-        #print()
-        print(' _________________________________________')
-        print("| NaN Air - Enter plane information       |")
-        print(" ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ ")
+        print(' __________________________________________')
+        print("| NaN Air - Enter plane information        |")
+        print(" ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ ")
         self.registration = input("Enter aircraft registration: ")
         self.plane_type = input("Enter aircraft type: ")
         self.manufacturer = input("Enter aircraft manufacturer: ")
@@ -14,9 +15,7 @@ class CreatePlane():
         self.display_info()
 
     def display_info(self):
-        #go_again = True
         while True:
-            #print()
             print(''' ___________________________________________''')
             print('''|        NaN Air - Review information       |''')
             print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
@@ -30,11 +29,10 @@ class CreatePlane():
             print('''| (2) Edit                                  |''')
             print('''|                                           |''')
             print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
-            #print()
             user_input = input("Input: ")
-            #print()
             if user_input == "1":
-                if self.print_confirmation() == None:   # Ef fallið get_plane_info skilar None þá vill hann fara í main page
+                if self.create_plane():
+                    self.print_confirmation()   # Ef fallið get_plane_info skilar None þá vill hann fara í main page
                     return None
             elif user_input == "2":
                 self.edit_info()
@@ -43,7 +41,6 @@ class CreatePlane():
             
 
     def edit_info(self):
-        #print()
         print(''' ___________________________________________''')
         print('''|        NaN Air - Edit information         |''')
         print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
@@ -55,9 +52,7 @@ class CreatePlane():
         print('''| (press "b" to go back)                    |''')
         print('''|                                           |''')
         print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
-        #print()
         user_input = input("Edit selection: ")
-        #print()
         if user_input == "1":
             self.registration = input("Enter aircraft registration: ")
         elif user_input == "2":
@@ -73,6 +68,7 @@ class CreatePlane():
 
     def create_plane(self):
         self.plane = Plane(self.registration, self.plane_type, self.manufacturer, self.seats)
+        self.llAPI_in.createPlane(self.plane)
         return self.plane
 
     def print_confirmation(self):
@@ -87,7 +83,6 @@ class CreatePlane():
         print('''|___________________________________________|''')
         print()
         user_input = input("Input: ")
-        #print()
         if user_input == "1":
             self.get_plane_info()
         elif user_input == "2":
