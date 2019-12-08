@@ -7,5 +7,5 @@ class PlaneLL ():
         return self.__ioAPI_in.storePlaneToFile(plane)
 
     def getPlanes(self):
-        pass
+        return self.__ioAPI_in.loadPlanesFromFile()
 

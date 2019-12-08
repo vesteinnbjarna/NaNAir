@@ -1,4 +1,4 @@
-#from LL.LLAPI import LLAPI
+#from LL.LLAPI import LLAPI 
 from Model.employee import Employee
 
 class GetEmployee():
@@ -67,7 +67,7 @@ class GetEmployee():
                     if self.pilot_list_sorting() == None:
                         continue
                 else:
-                    if self.list_of_all() == None:
+                    if self.print_list() == None:
                         continue
             elif user_input == "2":
                 if self.employee_type == "pilots":
@@ -106,7 +106,7 @@ class GetEmployee():
             user_input = input("Input: ")       #Eftir input bera listann saman við plane permit eða pilots witf specific permit
             print()
             if user_input == "1":
-                self.list_of_all()
+                self.print_list()
             elif user_input == "2":
                 pass
             elif user_input == "3":
@@ -116,7 +116,7 @@ class GetEmployee():
             else:
                 continue
 
-    def list_of_all(self): #C #Sorted by ID
+    def print_list(self): #C #Sorted by ID
         line_index = 0
         employees_list = self.llAPI_in.getEmployee()
         counter = 0
@@ -153,7 +153,7 @@ class GetEmployee():
     # def specific_emp_info(self):
     #     #Ef þú velur specific employee þá geturu valið um að velja í lista af 
     #     #pilots eða cabincrew eða all employees
-    #     list_of_all()
+    #     print_list()
     #     chosen_emp = input("Enter ID of employee: ")
     #     if 
     #         return None

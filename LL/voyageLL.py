@@ -9,7 +9,7 @@ class VoyageLL ():
         pass
 
     def getVoyages(self):
-        pass
+        return self.__ioAPI_in.loadVoyagesFromFile()
 
 
     def updateVoyage(self):

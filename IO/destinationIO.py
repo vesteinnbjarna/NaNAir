@@ -1,5 +1,5 @@
 from IO.BaseClassIO import BaseClassIO
-from Model.destination import Destination
+from Model.Destination import Destination
 class DestinationIO (BaseClassIO):
     
     def loadDestinationFromFile(self):

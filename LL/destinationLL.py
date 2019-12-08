@@ -8,7 +8,7 @@ class DestinationLL ():
         self.__ioAPI.storeDestinationToFile(dest)
 
     def getDestination(self):
-        self.__ioAPI.loadDestinationFromFile()
+        return self.__ioAPI.loadDestinationFromFile()
     
 
     def updateContactInfo(self):

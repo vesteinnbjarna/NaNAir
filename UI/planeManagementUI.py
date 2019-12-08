@@ -29,7 +29,7 @@ class PlaneManagementUI():
                 if self.createPlane.get_plane_info() == None: # Ef fallið get_plane_info skilar None þá vill hann fara í main page
                     return None
             elif user_input == "2":
-                if self.getPlane.get_list() == None:
+                if self.getPlane.choose_list() == None:
                     return None
             elif user_input == "b":
                 return None
