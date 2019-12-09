@@ -53,7 +53,7 @@ class UpdateEmployee():
                 print(val, end="\t")
             print()
         print()
-        self.id = input("Enter ID of employee: ")
+        self.id = input("Enter ID of employee: ") # can also be used to index line in the csv file
         self.update_employee()
 
 
@@ -65,7 +65,7 @@ class UpdateEmployee():
             print(''' ___________________________________________''')
             print('''|                  NaN Air                  |''')
             print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
-            counter =1
+            counter = 1
             for key, val in self.specific_emp.items():
                 print(" ({}) {}: {}".format(counter,key,val))
                 counter += 1
@@ -78,28 +78,54 @@ class UpdateEmployee():
                 print("Can't change ID!") ###ATH
             elif user_input == "2":
                 print("Can't change SSN!")
-                self.ssn = self.ssn
             elif user_input == "3":
                 print("Can't change name!")
-                self.name = self.name
             elif user_input == "4":
                 self.role = input("Enter role: ")
-            elif user_input == "5":
+                self.updated_info = self.role
+                self.row_index = 3
+            elif user_input == "5": # ATH er held ég ekki í csv
                 self.rank = input("Enter rank: ")
+                self.updated_info = self.rank
+                self.row_index = 4
             elif user_input == "6":
-                self.address = input("Enter address: ")
-            elif user_input == "7":
-                self.phone_no = input("Enter phone number: ")
-            if self.employee_type == "Pilot":
-                if user_input == "8":
-                    self.license = input("Enter license: ")
+                if self.employee_type != 'Pilot':
+                    print("Not a pilot!")
                 else:
-                    pass 
+                    self.license = input("Enter license: ")
+                    self.updated_info = self.license
+                    self.row_index = 5
+            elif user_input == "7":
+                self.address = input("Enter address: ")
+                self.updated_info = self.address
+                self.row_index = 6
+           
+            elif user_input == "8":
+                self.phone_no = input("Enter phone number: ")
+                self.updated_info = self.phone_no
+                self.row_index = 7
+
+            elif user_input == "9":
+                self.email = input("Enter email")
+                self.updated_info = self.email
+                self.row_index = 8
+
+            # else:
+            #     pass 
             else:
                 continue
             #if self.update_employee():
             #    self.display_info()
 
+            self.update_csv()   # ATH hérna erum við að breyta csv!!  
+                                # þurfum mögulega að finna betri
+                                # leið til að gera þetta!
+
+    def update_csv(self):
+        self.llAPI_in.updateEmployee(self.id,self.row_index,self.updated_info)
+        self.display_info()
+        # ATH að self.id virkar alveg eins og index á línuna sem
+        # við viljum breyta :)
 
     def display_info(self):
         ''' Method thatn prints review of employee information. '''
@@ -107,8 +133,11 @@ class UpdateEmployee():
             print(''' ___________________________________________''')
             print('''|       NaN Air - Review information        |''')
             print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
-            for key, val in self.specific_emp.items():
-                print(" {}: {}".format(key,val))
+            for key, val in self.specific_emp.items():  # Gæti mögulega
+                print(" {}: {}".format(key,val))        # verið betra að búa til lista
+                                                        # eins og við gerðum í contact info, 
+                                                        # en það er spr. hvort það eigi að gerast
+                                                        # í LL?
             print('''                                             ''')
             print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
             print('''| (1) Confirm                               |''')
