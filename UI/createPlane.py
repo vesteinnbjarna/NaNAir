@@ -1,6 +1,8 @@
 from Model.plane import Plane
 
 class CreatePlane():
+    def __init__(self, llAPI_in):
+        self.llAPI_in = llAPI_in
 
     def get_plane_info(self):
         print(' __________________________________________')
@@ -29,7 +31,8 @@ class CreatePlane():
             print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
             user_input = input("Input: ")
             if user_input == "1":
-                if self.print_confirmation() == None:   # Ef fallið get_plane_info skilar None þá vill hann fara í main page
+                if self.create_plane():
+                    self.print_confirmation()   # Ef fallið get_plane_info skilar None þá vill hann fara í main page
                     return None
             elif user_input == "2":
                 self.edit_info()
@@ -65,6 +68,7 @@ class CreatePlane():
 
     def create_plane(self):
         self.plane = Plane(self.registration, self.plane_type, self.manufacturer, self.seats)
+        self.llAPI_in.createPlane(self.plane)
         return self.plane
 
     def print_confirmation(self):

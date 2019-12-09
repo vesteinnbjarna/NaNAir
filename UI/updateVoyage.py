@@ -1,7 +1,11 @@
 from Model.voyage import Voyage
-from LL.LLAPI import LLAPI
+#from LL.LLAPI import LLAPI
 
 class UpdateVoyage():
+
+    def __init__(self, llAPI_in):
+        self.llAPI_in = llAPI_in
+
 
     def get_input(self):
         while True:

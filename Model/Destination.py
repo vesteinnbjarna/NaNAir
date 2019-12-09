@@ -1,5 +1,6 @@
 class Destination():
-    def __init__(self, country, airport, airtime, distance, contactName, contactPhone):
+    def __init__(self, destination, country, airport, airtime, distance, contactName, contactPhone):
+        self.destination = destination
         self.country = country
         self.airport = airport
         self.airtime = airtime
@@ -8,11 +9,26 @@ class Destination():
         self.contactPhone = contactPhone
 
     
-    def get_contact_info(self):
-        return self.contactName, self.contactPhone
-    
     def get_destination(self):
-        return self.country, self.airport, self.airtime, self.distance
+        return self.destination
+
+    def get_country(self):
+        return self.country
+    
+    def get_airport(self):
+        return self.airport
+
+    def get_airtime(self):
+        return self.airtime
+
+    def get_distance(self):
+        return self.distance
+
+    def get_contact_name (self):
+        return self.contactName
+    
+    def get_contact_phone (self):
+        return self.contactPhone
 
 
 

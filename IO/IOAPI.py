@@ -9,25 +9,25 @@ from IO.permitIO import PermitIO
 class IOAPI ():
 
     def __init__(self):
-        self.desIO = DestinationIO('IO/Data/destinations.csv') # Hardcoded filenames - Only place to change the path is here
-        self.voyIO = VoyageIO('IO/Data/voyages.csv')
-        self.plaIO = PlaneIO('IO/Data/planes.csv')
+        self.desIO = DestinationIO('IO/Data/Destinations.csv') # Hardcoded filenames - Only place to change the path is here
+        self.voyIO = VoyageIO('IO/Data/AllFlights.csv')
+        self.plaIO = PlaneIO('IO/Data/AircraftType.csv')
         self.empIO = EmployeeIO('IO/Data/Crew.csv')
         self.rouIO = RouteIO('IO/Data/routes.csv')
         self.perIO = PermitIO('IO/Data/permits.csv')
         
 
     def loadDestinationFromFile (self):
-        return self.desIO.loadDestinationFromFile()
+        return self.desIO.loadFile()
     
-    def storeDestinationToFile(self):
-        return self.desIO.storeDestinationToFile()
+    def storeDestinationToFile(self,dest):
+        return self.desIO.storeDestinationToFile(dest)
 
     def updateContactInfoInFile(self):
         return self.desIO.updateContactInfoInFile()
 
     def loadVoyagesFromFile (self):
-        return self.voyIO.loadVoyagesFromFile()
+        return self.voyIO.loadFile()
     
     def storeVoyageToFile(self):
         return self.voyIO.storeVoyageToFile()
@@ -36,10 +36,10 @@ class IOAPI ():
         return self.voyIO.updateVoyageInFile()
 
     def loadPlanesFromFile(self):
-        return self.plaIO.loadPlanesFromFiles()
+        return self.plaIO.loadFile()
 
-    def storePlaneToFile(self):
-        return self.plaIO.storePlaneToFile()
+    def storePlaneToFile(self,plane):
+        return self.plaIO.storePlaneToFile(plane)
 
     def loadEmployeesFromFile(self):
         return self.empIO.loadFile()

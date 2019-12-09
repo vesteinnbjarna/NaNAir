@@ -15,8 +15,8 @@ class LLAPI():
     def getDestinations(self):
         return self.destLL.getDestination()
     
-    # def getDestinationInIceland(self):
-    #     return self.destLL.getDestinationInIceland()
+    def createDestination(self,dest):
+        return self.destLL.storeDestinationToFile(dest)
     
     def updateContactInfo(self):
         return self.destLL.updateContactInfo()
@@ -30,8 +30,8 @@ class LLAPI():
     def updateVoyage(self):
         return self.voyLL.updateVoyage()
     
-    def createPlane(self):
-        return self.plaLL.createPlane()
+    def createPlane(self,plane):
+        return self.plaLL.createPlane(plane)
 
     def getPlanes(self):
         return self.plaLL.getPlanes()
@@ -39,14 +39,14 @@ class LLAPI():
     def createEmployee(self,employee):
         return self.empLL.createEmployee(employee)
     
-    def getEmployee(self):
-        return self.empLL.getEmployee()
+    def getEmployees(self):
+        return self.empLL.getEmployees()
 
     def updateEmployee(self):
         return self.empLL.updateEmployee()
 
+    def getPilotsOrFAs(self, empType, sorting = ''):
+        return self.empLL.getPilotsOrFAs(empType, sorting)
     
-
-
-
-    
+    def getSpecificEmployee(self, id = ''):
+        return self.empLL.getSpecificEmployee(id)

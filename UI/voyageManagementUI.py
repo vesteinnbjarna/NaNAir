@@ -5,9 +5,9 @@ from LL.LLAPI import LLAPI
 class VoyageManagementUI():
     def __init__(self, llAPI_in):
         self.llAPI_in = llAPI_in
-        self.createVoyage = CreateVoyage()
-        self.getVoyage = GetVoyage()
-        self.updateVoyage = UpdateVoyage()
+        self.createVoyage = CreateVoyage(llAPI_in)
+        self.getVoyage = GetVoyage(llAPI_in)
+        self.updateVoyage = UpdateVoyage(llAPI_in)
 
     def renderMenu(self):
         while True:

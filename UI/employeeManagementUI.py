@@ -3,7 +3,7 @@ from UI.getEmployee import GetEmployee
 from UI.updateEmployee import UpdateEmployee
 from LL.LLAPI import LLAPI
 
-#EMP
+#EM
 class EmployeeManagementUI():
     def __init__(self, llAPI_in):
         self.__llAPI_in = llAPI_in 
@@ -40,7 +40,11 @@ class EmployeeManagementUI():
                 if emp_user_input == "Back to emp_m":
                     continue
             elif user_input == "3":
-                pass
+                updateEmp = self.updateEmployee.get_input()
+                if updateEmp == None:
+                    return None
+                if updateEmp == "Back to emp_m":
+                    continue
             elif user_input == "b":
                 break
             else:

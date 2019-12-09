@@ -5,8 +5,8 @@ class PlaneManagementUI():
 
     def __init__(self, llAPI_in):
         self.__llAPI_in = llAPI_in 
-        self.createPlane = CreatePlane()
-        self.getPlane = GetPlane()
+        self.createPlane = CreatePlane(self.__llAPI_in)
+        self.getPlane = GetPlane(self.__llAPI_in)
 
 
     def renderMenu(self):
@@ -29,7 +29,7 @@ class PlaneManagementUI():
                 if self.createPlane.get_plane_info() == None: # Ef fallið get_plane_info skilar None þá vill hann fara í main page
                     return None
             elif user_input == "2":
-                if self.getPlane.get_list() == None:
+                if self.getPlane.choose_list() == None:
                     return None
             elif user_input == "b":
                 return None
