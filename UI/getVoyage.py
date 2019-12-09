@@ -1,4 +1,5 @@
 from Model.voyage import Voyage
+import datetime
 
 class GetVoyage():
     def __init__(self, llAPI_in):
@@ -66,26 +67,40 @@ class GetVoyage():
             user_input = input("Input: ")
             print()
             if user_input == "1":
-                self.print_choosen_list()
+                voyage_list = self.llAPI_in.getVoyages()
+                print(voyage_list)
+                self.print_choosen_list(voyage_list)
             elif user_input == "2":
-                self.get_date = input("Enter date (mm/dd/yy): ")
-                self.print_choosen_list()
+                self.get_year = int(input("Enter year: "))
+                self.get_month = int(input("Enter month (1-12): "))
+                self.get_day = int(input("Enter day (1-31): "))
+                self.date = datetime.date(self.get_year, self.get_month, self.get_day)
+                voyage_list_day = self.llAPI_in.getVoyagesDay(self.date)
+                self.print_choosen_list(voyage_list_day)
                 #Senda date áfram í data layer 
             elif user_input == "3":
-                self.get_week = input("Enter week (1-52): ") 
-                self.print_choosen_list()
+                print()
+                print(''' ___________________________________________''')
+                print('''|             First day of week             |''')
+                print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ ''')
+                self.get_year = int(input("Enter year: "))
+                self.get_month = int(input("Enter month (1-12): "))
+                self.get_day = int(input("Enter day (1-31): "))
+                print()
+                self.date = datetime.date(self.get_year, self.get_month, self.get_day)
+                voyage_list_week = self.llAPI_in.getVoyagesWeek(self.date)
+                self.print_choosen_list(voyage_list_week)
                 #Senda week áfram í data layer
             elif user_input == "b":
-                self.get_list()
+                return None
             else:
                 continue
 
 
-    def print_choosen_list(self):
-        line_index = 0
-        voyage_list = self.llAPI_in.getVoyages()
+    def print_choosen_list(self, list_of_voyages):
+        #line_index = 0
         counter = 0
-        for line in voyage_list:
+        for line in list_of_voyages:
             if counter < 1:
                 for key in line.keys():
                     print(key, end="\t")
@@ -93,10 +108,10 @@ class GetVoyage():
             else:
                 print()
                 break
-        for line in voyage_list:
+        for line in list_of_voyages:
             for key,val in line.items():
                 print(val, end="\t")
-                line_index += 1
+                #line_index += 1
             print()
         print()
         user_input = input("Press enter to go back")
