@@ -134,11 +134,8 @@ class UpdateEmployee():
             print(''' ___________________________________________''')
             print('''|       NaN Air - Review information        |''')
             print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
-            for key, val in updated_emp.items():  # Gæti mögulega
-                print(" {}: {}".format(key,val))        # verið betra að búa til lista
-                                                        # eins og við gerðum í contact info, 
-                                                        # en það er spr. hvort það eigi að gerast
-                                                        # í LL?
+            for key, val in updated_emp.items():  
+                print(" {}: {}".format(key,val))        
             print('''                                             ''')
             print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
             print('''| (1) Confirm                               |''')
