@@ -129,11 +129,12 @@ class UpdateEmployee():
 
     def display_info(self):
         ''' Method thatn prints review of employee information. '''
+        updated_emp = self.llAPI_in.getSpecificEmployee(self.id)
         while True:
             print(''' ___________________________________________''')
             print('''|       NaN Air - Review information        |''')
             print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
-            for key, val in self.specific_emp.items():  # Gæti mögulega
+            for key, val in updated_emp.items():  # Gæti mögulega
                 print(" {}: {}".format(key,val))        # verið betra að búa til lista
                                                         # eins og við gerðum í contact info, 
                                                         # en það er spr. hvort það eigi að gerast
