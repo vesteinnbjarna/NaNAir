@@ -9,3 +9,11 @@ class PlaneLL ():
     def getPlanes(self):
         return self.__ioAPI_in.loadPlanesFromFile()
 
+    def getAvailablePlanes(self,date):
+        planes = self.__ioAPI_in.loadPlanesFromFile()
+        voyages = self.__ioAPI_in.loadVoyagesFromFile()
+        availablePlanes_list = []
+        for line in planes:
+            pass
+                    
+

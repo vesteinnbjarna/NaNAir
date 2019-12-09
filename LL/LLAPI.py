@@ -36,6 +36,9 @@ class LLAPI():
     def getPlanes(self):
         return self.plaLL.getPlanes()
 
+    def getAvailablePlanes(self, date):
+        return self.getAvailablePlanes(date)
+
     def createEmployee(self,employee):
         return self.empLL.createEmployee(employee)
     

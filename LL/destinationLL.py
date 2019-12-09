@@ -9,10 +9,10 @@ class DestinationLL ():
 
     def getDestination(self):
         return self.__ioAPI.loadDestinationFromFile()
-    
 
     def updateContactInfo(self):
         self.__ioAPI.updateContactInfoInFile()
+    
         
 
     
