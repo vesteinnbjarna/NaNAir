@@ -1,4 +1,6 @@
 #from IO.IOAPI import IOAPI
+import datetime
+
 class PlaneLL ():
     def __init__(self, ioAPI_in):
         self.__ioAPI_in = ioAPI_in
@@ -13,6 +15,7 @@ class PlaneLL ():
         planes = self.__ioAPI_in.loadPlanesFromFile()
         voyages = self.__ioAPI_in.loadVoyagesFromFile()
         availablePlanes_list = []
+        today = date
         for line in planes:
             pass
                     

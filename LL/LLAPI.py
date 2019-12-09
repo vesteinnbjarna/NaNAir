@@ -43,7 +43,7 @@ class LLAPI():
         return self.plaLL.getPlanes()
 
     def getAvailablePlanes(self, date):
-        return self.getAvailablePlanes(date)
+        return self.plaLL.getAvailablePlanes(date)
 
     def createEmployee(self,employee):
         return self.empLL.createEmployee(employee)
@@ -54,8 +54,14 @@ class LLAPI():
     def updateEmployee(self):
         return self.empLL.updateEmployee()
 
-    def getPilotsOrFAs(self, empType, sorting = ''):
-        return self.empLL.getPilotsOrFAs(empType, sorting)
+    def getPilotsOrFAs(self, empType):
+        return self.empLL.getPilotsOrFAs(empType)
     
-    def getSpecificEmployee(self, id = ''):
-        return self.empLL.getSpecificEmployee(id)
+    def getSpecificEmployee(self, emp_id = ''):
+        return self.empLL.getSpecificEmployee(emp_id)
+
+    def getAvailabilityOfPilots(self, date, listType):
+        return self.empLL.getAvailabiltyOfPilots(date, listType)
+
+    def getAvailabiltyOfFAs(self, date, listType):
+        return self.empLL.getAvailabiltyOfFAs(date, listType)

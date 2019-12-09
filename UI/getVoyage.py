@@ -99,21 +99,24 @@ class GetVoyage():
 
     def print_choosen_list(self, list_of_voyages):
         #line_index = 0
-        counter = 0
-        for line in list_of_voyages:
-            if counter < 1:
-                for key in line.keys():
-                    print(key, end="\t")
-                counter += 1
-            else:
+        if list_of_voyages:
+            counter = 0
+            for line in list_of_voyages:
+                if counter < 1:
+                    for key in line.keys():
+                        print(key, end="\t")
+                    counter += 1
+                else:
+                    print()
+                    break
+            for line in list_of_voyages:
+                for key,val in line.items():
+                    print(val, end="\t")
+                    #line_index += 1
                 print()
-                break
-        for line in list_of_voyages:
-            for key,val in line.items():
-                print(val, end="\t")
-                #line_index += 1
             print()
-        print()
+        else:
+            print("No voyages on selected date!")
         user_input = input("Press enter to go back")
 
 

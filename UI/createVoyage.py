@@ -64,8 +64,8 @@ class CreateVoyage():
                 ValueError
                 continue
 
-   # def get_aircraft_list(self):
-   #     available_aircraft_list = self.
+    # def get_aircraft_list(self):
+    #     available_aircraft_list = self.llAPI_in.getAvailablePlanes
 
     def enter_destination_details(self):
         print()
@@ -95,7 +95,7 @@ class CreateVoyage():
             print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
             user_input = input("Input: ")  
             if user_input == "1":
-                self.
+                pass
 
 
 
@@ -159,7 +159,7 @@ class CreateVoyage():
             print('''| Destination: {:26}|'''.format(self.destination))
             print('''| Country: {:33}|'''.format(self.country))
             print('''| Airport: {:33}|'''.format(self.airport))
-            print('''| Airline: {:33}|'''.format(self.airline))
+            print('''| Airtine: {:33}|'''.format(self.airline))
             print('''| Distance: {:32}|'''.format(self.distance))
             print('''| Contact name: {:28}|'''.format(self.contact_name))
             print('''| Contact phone: {:27}|'''.format(self.contact_phone))
@@ -188,7 +188,7 @@ class CreateVoyage():
             print('''| (1) Destination: {:25}|'''.format(self.destination))
             print('''| (2) Country: {:29}|'''.format(self.country))
             print('''| (3) Airport: {:29}|'''.format(self.airport))
-            print('''| (4) Airline: {:29}|'''.format(self.airline))
+            print('''| (4) Airtine: {:29}|'''.format(self.airline))
             print('''| (5) Distance: {:28}|'''.format(self.distance))
             print('''| (6) Contact name: {:24}|'''.format(self.contact_name))
             print('''| (7) Contact phone: {:23}|'''.format(self.contact_phone))
