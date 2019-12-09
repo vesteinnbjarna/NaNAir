@@ -53,3 +53,6 @@ class LLAPI():
 
     def getPilotsOrFAs(self, empType, sorting = ''):
         return self.empLL.getPilotsOrFAs(empType, sorting)
+    
+    def getSpecificEmployee(self, id = ''):
+        return self.empLL.getSpecificEmployee(id)
