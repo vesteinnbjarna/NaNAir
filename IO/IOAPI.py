@@ -23,8 +23,8 @@ class IOAPI ():
     def storeDestinationToFile(self,dest):
         return self.desIO.storeDestinationToFile(dest)
 
-    def updateContactInfoInFile(self):
-        return self.desIO.updateContactInfoInFile()
+    def updateContactInfoInFile(self,line_index,row_index,updated_info):
+        return self.desIO.updateContactInfoInFile(line_index,row_index,updated_info)
 
     def loadVoyagesFromFile (self):
         return self.voyIO.loadFile()

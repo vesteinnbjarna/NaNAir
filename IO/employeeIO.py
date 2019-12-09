@@ -40,8 +40,12 @@ class EmployeeIO (BaseClassIO):
             for line in f:
                 line = line.split(',')
                 temp_list.append(line)
+        max_length = len(temp_list[0])-1
+        if row_index == max_length:
+            temp_list[line_index][row_index] = updated_info + '\n'
+        else:
+            temp_list[line_index][row_index] = updated_info
 
-        temp_list[line_index][row_index] = updated_info
         with open(self.temp_filename,'w+') as f:
             for line in temp_list:
                 emp_id = line[0]
