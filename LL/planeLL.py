@@ -18,5 +18,4 @@ class PlaneLL ():
         today = date
         for line in planes:
             pass
-                    
-
+    

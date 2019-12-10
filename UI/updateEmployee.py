@@ -109,13 +109,9 @@ class UpdateEmployee():
                 self.email = input("Enter email")
                 self.updated_info = self.email
                 self.row_index = 8
-
-            # else:
-            #     pass 
+ 
             else:
                 continue
-            #if self.update_employee():
-            #    self.display_info()
 
             self.update_csv()   # ATH hérna erum við að breyta csv!!  
                                 # þurfum mögulega að finna betri
@@ -129,7 +125,7 @@ class UpdateEmployee():
 
     def display_info(self):
         ''' Method thatn prints review of employee information. '''
-        updated_emp = self.llAPI_in.getSpecificEmployee(self.id)
+        updated_emp = self.llAPI_in.getSpecificEmployee(self.id) #Sæki réttar update-aðar upplýsingar til að prenta út.
         while True:
             print(''' ___________________________________________''')
             print('''|       NaN Air - Review information        |''')
