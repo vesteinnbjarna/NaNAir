@@ -70,9 +70,19 @@ class CreateVoyage():
     def get_availalbe_aircraft_list(self):
         totalTime = self.chosen_destinaiton.totalTime
         available_aircrafts_list = self.llAPI_in.getAvailablePlanes(self.dateTime, totalTime)
-        pass
+        print(''' ___________________________________________''')
+        print('''|         NaN Air - Choose aircraft         |''')
+        print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
+        counter = 1
+        for aircraft in available_aircrafts_list:
+            print('({})'.format(counter), end=" ")
+            for val in aircraft.values():
+                print(val, end="  ")
+            print()
+            counter += 1
+        user_choice = input("Input: ")
 
-    def enter_voyage_details(self):
+    def enter_voyage_details(self): 
         print()
         #self.date = input("Enter date of departure (yyyy-mm-dd): ")
         #self.time_depart = input("Enter time of departure (hh:mm): ")

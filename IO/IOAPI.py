@@ -3,19 +3,17 @@ from IO.voyageIO import VoyageIO
 from IO.planeIO import PlaneIO
 from IO.employeeIO import EmployeeIO
 from IO.routeIO import RouteIO
-from IO.permitIO import PermitIO
 
 
 class IOAPI ():
 
     def __init__(self):
-        self.desIO = DestinationIO('IO/Data/destinations.csv') # Hardcoded filenames - Only place to change the path is here
-        self.voyIO = VoyageIO('IO/Data/AllFlights.csv')
-        self.plaIO = PlaneIO('IO/Data/AircraftType.csv')
+        self.desIO = DestinationIO('IO/Data/Destinations.csv') # Hardcoded filenames - Only place to change the path is here
+        self.voyIO = VoyageIO('IO/Data/Voyages.csv')
+        self.plaIO = PlaneIO('IO/Data/Planes.csv')
         self.empIO = EmployeeIO('IO/Data/Crew.csv')
-        self.rouIO = RouteIO('IO/Data/routes.csv')
-        self.perIO = PermitIO('IO/Data/permits.csv')
-        
+        self.rouIO = RouteIO('IO/Data/Routes.csv')
+        #self.typIO = TypeIO('IO/Data/AircraftType.csv')
 
     def loadDestinationFromFile (self):
         return self.desIO.loadFile()
@@ -55,9 +53,3 @@ class IOAPI ():
 
     def storeRouteToFile(self):
         return self.rouIO.storeRouteToFile()
-
-    def loadPermitsFromFile(self):
-        return self.perIO.loadPermitsFromFile()
-    
-    def storePermitToFile(self):
-        return self.perIO.storePermitToFile()

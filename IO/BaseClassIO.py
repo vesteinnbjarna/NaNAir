@@ -4,8 +4,7 @@ class BaseClassIO ():
 
     def __init__(self, filename):
         self.filename = filename
-        
-    
+
     def loadFile(self):
         working_list = []
         with open(self.filename, 'r') as csvfile:
