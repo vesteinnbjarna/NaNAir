@@ -13,7 +13,7 @@ class BaseClassIO ():
             for line in csv_reader:
                 working_list.append(line)
             
-            return working_list
+        return working_list
 
     def getNextID(self):
         maxList = []
