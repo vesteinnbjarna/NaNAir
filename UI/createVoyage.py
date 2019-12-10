@@ -64,14 +64,14 @@ class CreateVoyage():
                 ValueError
                 continue
 
-    # def get_aircraft_list(self):
-    #     available_aircraft_list = self.llAPI_in.getAvailablePlanes
+    def get_availalbe_aircraft_list(self):
+        available_aircrafts_list = self.llAPI_in.getAvailablePlanes
+        pass
 
     def enter_destination_details(self):
         print()
         self.date = input("Enter date of departure (yyyy-mm-dd): ")
         self.time_depart = input("Enter time of departure (hh:mm): ")
-        #self.aircraft = 
         #self.time_back = input("Enter time of trip back (hh:mm): ")
         #self.flight_number = input("Enter flight number: ")
         self.review_voyage_info()

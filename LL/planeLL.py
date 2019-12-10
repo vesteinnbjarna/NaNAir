@@ -15,7 +15,7 @@ class PlaneLL ():
         planes = self.__ioAPI_in.loadPlanesFromFile()
         voyages = self.__ioAPI_in.loadVoyagesFromFile()
         availablePlanes_list = []
-        today = date
+        list_of_voyages_on_date = []
         for line in planes:
             pass
                     
