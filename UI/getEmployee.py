@@ -288,7 +288,7 @@ class GetEmployee():
             for key, val in specific_emp.items():
                 if key == "SSN" or key == "Name":
                     print(" {}: {}".format(key,val))
-            print("\n\n")
+            print("\n")
             print('''                                             ''')
             print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
             print('''| (1) Get working schedule                  |''')
@@ -306,6 +306,8 @@ class GetEmployee():
                 for key, val in specific_emp.items():
                     print(" {}: {}".format(key,val))
                 print()
+                input("Press enter to go back")
+                continue
             elif user_input == "b":
                 return None
             else:
