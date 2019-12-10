@@ -16,14 +16,14 @@ class EmployeeIO (BaseClassIO):
         ssn = Employee.get_ssn(employee)
         name = Employee.get_name(employee)
         role = Employee.get_role(employee)
-        #rank = Employee.get_rank(employee)
+        rank = Employee.get_rank(employee)
         address = Employee.get_address(employee)
         phone_no = Employee.get_phonenumber(employee)
         email = Employee.get_email(employee)
         emp_id = next_id   #str(Employee.get_id(employee))
         emp_license = Employee.get_license(employee)
 
-        employee_info = '\n{},{},{},{},{},{},{},{}'.format(emp_id,ssn,name,role,emp_license,address,phone_no,email)
+        employee_info = '\n{},{},{},{},{},{},{},{},{}'.format(emp_id,ssn,name,role,rank,emp_license,address,phone_no,email)
         print(employee_info)
         
         
