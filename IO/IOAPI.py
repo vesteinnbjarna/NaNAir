@@ -9,7 +9,7 @@ from IO.permitIO import PermitIO
 class IOAPI ():
 
     def __init__(self):
-        self.desIO = DestinationIO('IO/Data/Destinations.csv') # Hardcoded filenames - Only place to change the path is here
+        self.desIO = DestinationIO('IO/Data/destinations.csv') # Hardcoded filenames - Only place to change the path is here
         self.voyIO = VoyageIO('IO/Data/AllFlights.csv')
         self.plaIO = PlaneIO('IO/Data/AircraftType.csv')
         self.empIO = EmployeeIO('IO/Data/Crew.csv')
@@ -23,8 +23,8 @@ class IOAPI ():
     def storeDestinationToFile(self,dest):
         return self.desIO.storeDestinationToFile(dest)
 
-    def updateContactInfoInFile(self):
-        return self.desIO.updateContactInfoInFile()
+    def updateContactInfoInFile(self,line_index,row_index,updated_info):
+        return self.desIO.updateContactInfoInFile(line_index,row_index,updated_info)
 
     def loadVoyagesFromFile (self):
         return self.voyIO.loadFile()
@@ -47,8 +47,8 @@ class IOAPI ():
     def storeEmployeeToFile(self,employee):
         return self.empIO.storeEmployeeToFile(employee)
 
-    def updateEmployeeInFile(self):
-        return self.empIO.updateEmployeeInFile()
+    def updateEmployeeInFile(self,line_index,row_index,updated_info):
+        return self.empIO.updateEmployeeInFile(line_index,row_index,updated_info)
 
     def loadRoutesFromFile(self):
         return self.rouIO.loadRoutesFromFile()

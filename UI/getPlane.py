@@ -37,9 +37,9 @@ class GetPlane():
                 for key in line.keys():
                     print(key, end="\t")
                 counter += 1
-            else:
-                print()
-                break
+        print()
+        print("___________________________________________")
+        print()
         for line in plane_list:
             for key,val in line.items():
                 print(val, end="\t")

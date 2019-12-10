@@ -18,5 +18,4 @@ class PlaneLL ():
         list_of_voyages_on_date = []
         for line in planes:
             pass
-                    
-
+    

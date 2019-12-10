@@ -8,9 +8,8 @@ class EmployeeLL ():
         self.__ioAPI.storeEmployeeToFile(employee)
         
     
-    def updateEmployee (self):
-        self.__ioAPI.updateEmployeeInFile()
-        pass 
+    def updateEmployee (self,line_index, row_index, updated_info):
+        self.__ioAPI.updateEmployeeInFile(line_index, row_index, updated_info)
 
     def getEmployees(self):
         return self.__ioAPI.loadEmployeesFromFile()

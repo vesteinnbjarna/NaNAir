@@ -141,13 +141,107 @@ class GetEmployee():
                     self.print_list(pilot_list)
                     
             elif user_input == "2":
-                pass
+                if self.list_type == "all":
+                    pilot_list = self.llAPI_in.getPilotsOrFAs(empType=self.employee_type)
+                    self.sorted_plane_permit_list(pilot_list)
+                else:
+                    self.year = int(input("Enter year: "))
+                    self.month = int(input("Enter month: "))
+                    self.day = int(input("Enter day: "))
+                    self.date = datetime.date(self.year, self.month, self.day)
+                    pilot_list = self.llAPI_in.getAvailabilityOfPilots(self.date,self.list_type)
+                    self.sorted_plane_permit_list(pilot_list)
             elif user_input == "3":
-                pass
+                if self.list_type == "all":
+                    pilot_list = self.llAPI_in.getPilotsOrFAs(empType=self.employee_type)
+                    self.sorted_by_specific_permit(pilot_list)
+                else:
+                    self.year = int(input("Enter year: "))
+                    self.month = int(input("Enter month: "))
+                    self.day = int(input("Enter day: "))
+                    self.date = datetime.date(self.year, self.month, self.day)
+                    pilot_list = self.llAPI_in.getAvailabilityOfPilots(self.date,self.list_type)
+                    self.sorted_by_specific_permit(pilot_list)
             elif user_input == "b":
                 return None 
             else:
                 continue
+
+
+    def sorted_plane_permit_list(self, listOfEmployees):
+        ''' Prints out list of pilots sorted by plane permit'''
+        print()
+        planeTypeId = {}
+        emp_name = ""
+        for line in listOfEmployees:
+            for key,val in line.items():
+                if key == "Name":
+                    emp_name = val
+                elif key == "Licence":
+                    if val not in planeTypeId:
+                        planeTypeId[val] = emp_name
+                    else:
+                        planeTypeId[val] += "," + emp_name
+            emp_name = ""
+        for permit, names in planeTypeId.items(): #Getum líka látið user 
+                                                  #velja hvaða permit hann vill skoða 
+                                                  #og svo prenta út lista á pilots með það permit
+            print()
+            print(''' _________________''')
+            print('''|   {:14}|'''.format(permit))
+            print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
+            names_list = names.split(",")
+            
+            for name in sorted(names_list):
+                print("{}".format(name))
+        print("\n\n")
+        print(input("Press enter to continue!"))
+
+
+    def sorted_by_specific_permit(self, listOfEmployees):
+        plane_list = self.llAPI_in.getPlanes()
+        permit_list = []
+        chosen_permit = ""
+        for line in plane_list:
+            for key, val in line.items():
+                if key == "planeTypeId":
+                    permit_list.append(val)
+        print()
+        print(''' ___________________________________________''')
+        print('''|         NaN Air - Choose permit           |''')
+        print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
+        counter = 1
+        for permit in permit_list:
+            print("({}) {}".format(counter,permit))
+            counter += 1
+        print()
+        user_input = int(input("Input: "))
+
+        #Finna permit sem user valdi
+        for index in range(len(permit_list) + 1):
+            if index == user_input:
+                chosen_permit = permit_list[index - 1]
+
+        # Ath núna hvaða stm eru með þetta ákveðna permit
+        emp_name = ""
+        list_of_employees = []
+        for line in listOfEmployees:
+            for key,val in line.items():
+                if key == "Name":
+                    emp_name = val
+                elif key == "Licence":
+                    if val == chosen_permit:
+                        list_of_employees.append(emp_name)
+            emp_name = ""
+        print()
+        print(''' _________________''')
+        print('''|   {:14}|'''.format(chosen_permit))
+        print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
+        for name in list_of_employees:
+            print(name)
+        print("\n\n")
+        print(input("Press enter to continue!"))
+
 
 
     def print_list(self, listOfEmployees): #C #Sorted by ID
