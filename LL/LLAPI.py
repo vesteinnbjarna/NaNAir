@@ -68,3 +68,6 @@ class LLAPI():
 
     def getAvailabiltyOfFAs(self, date, listType):
         return self.empLL.getAvailabiltyOfFAs(date, listType)
+    
+    def getAvailabilityOfAll(self, date, listType):
+        return self.empLL.getAvailabilityOfAll(date, listType)
