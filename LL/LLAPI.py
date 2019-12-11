@@ -45,8 +45,8 @@ class LLAPI():
     def getPlanes(self):
         return self.plaLL.getPlanes()
 
-    def getAvailablePlanes(self, date):
-        return self.plaLL.getAvailablePlanes(date)
+    def getAvailablePlanes(self, date, totalTime):
+        return self.plaLL.getAvailablePlanes(date,totalTime)
 
     def createEmployee(self,employee):
         return self.empLL.createEmployee(employee)
@@ -68,3 +68,6 @@ class LLAPI():
 
     def getAvailabiltyOfFAs(self, date, listType):
         return self.empLL.getAvailabiltyOfFAs(date, listType)
+    
+    def getAvailabilityOfAll(self, date, listType):
+        return self.empLL.getAvailabilityOfAll(date, listType)

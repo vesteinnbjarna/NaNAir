@@ -1,3 +1,5 @@
+import datetime
+
 class Destination():
     def __init__(self, destination, country, airport, airtime, distance, contactName, contactPhone):
         self.destination = destination
@@ -7,8 +9,26 @@ class Destination():
         self.distance = distance
         self.contactName = contactName
         self.contactPhone = contactPhone
-
+        self.totalTime = self.calculate_total_time()
     
+    def calculate_total_time(self):
+        hours = self.airtime[:2]
+        if hours[0] == '0':
+            hours_int = int(hours[1:])
+        else:
+            hours_int = int(hours)
+        minutes = self.airtime[3:]
+        if minutes[0] == '0':
+            minutes_int = int(minutes[1:])
+        else:
+            minutes_int = int(minutes)
+
+        tdelta_oneHour = datetime.timedelta(hours=1)
+        tdelta_leg = datetime.timedelta(hours=hours_int, minutes=minutes_int)
+
+        totalTime = tdelta_leg + tdelta_oneHour + tdelta_leg
+        return totalTime
+
     def get_destination(self):
         return self.destination
 
@@ -32,8 +52,9 @@ class Destination():
 
 
 
-#akureyri = Destination('Ísland', 'Akureyrarvöllur','00:45',383.0,'Gunnar Grímsson','5812345')
-#akureyri_CI = akureyri.get_contact_info()
-#akureyri_info = akureyri.get_destination()
+# akureyri = Destination('Reykjavik','Iceland','Reykjarvíkurflugvöllur','03:14','1000','isol','6613536')
+# print(akureyri.calculate_total_time())
+# #akureyri_CI = akureyri.get_contact_info()
+# akureyri_info = akureyri.get_destination()
 
-#print(akureyri_CI, akureyri_info)
+# #print(akureyri_CI, akureyri_info)
