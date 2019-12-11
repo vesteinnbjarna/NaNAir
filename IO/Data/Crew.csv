@@ -1,5 +1,5 @@
 ID,SSN,Name,Role,Rank,Licence,Address,Phonenumber,Email
-1,3009907461,William Carillo,Pilot,Captain,NAFokkerF100,Fellsmúli 1,8571077,william.carillo@nanair.is
+1,3009907461,William Carillo,Pilot,Captain,NAFokkerF100,Fellsmúli 1,8571077,william@nanair.is
 2,2910858778,Virginia Ho,Pilot,Captain,NABAE146,Fellsmúli 2,8998802,virginia.ho@nanair.is
 3,2706838569,Gerard Nelson,Pilot,Captain,NAFokkerF100,Fellsmúli 3,8571077,gerard.nelson@nanair.is
 4,2209955782,Allen Ley,Pilot,Captain,NABAE146,Fellsmúli 4,8998804,allen.ley@nanair.is
@@ -34,7 +34,7 @@ ID,SSN,Name,Role,Rank,Licence,Address,Phonenumber,Email
 33,1110732819,Arthur Karr,Cabincrew,Flight Attendant,N/A,Fellsmúli 33,8998833,arthur.karr@nanair.is
 34,2602806942,Teresa Thruman,Cabincrew,Flight Attendant,N/A,Fellsmúli 34,8998834,teresa.thruman@nanair.is
 35,1107951952,Elizabeth Mcfadden,Cabincrew,Flight Attendant,N/A,Fellsmúli 35,8998835,elizabeth.mcfadden@nanair.is
-36,0303932799,Vésteinn Bjarnason,Pilot,Captain,NAFOKKER420,Furuvellir 28,8697278,vésteinn.bjarnason@nanair.is
+36,0303932799,Vésteinn Bjarnason,Pilot,Captain,NAFOKKER420,Furuvellir 28,8697278,vesteinnb@nanair.is
 37,0110972519,Isol Sigurdardottir,Cabincrew,Captain,N/A,Einiberg 21,6613536,isol.sigurdardottir@nanair.is
 38,0203002050,Dilja Sigurdardottir,Cabincrew,Flight Service Manager,N/A,Einiberg 21,6613136,dilja.sigurdardottir@nanair.is
 39,2007734479,Sunna Run,Pilot,Captain,NAFokkerF100,Kirkjuvegur 5,8571077,sunna.run@nanair.is

@@ -44,7 +44,6 @@ class UpdateEmployee():
 
 
     def show_list(self, listOfEmployees):
-<<<<<<< HEAD
         ''' Method that prints out list of chosen employees, and gets ID of employee
             that user wants to update. '''
         while True:
@@ -60,31 +59,21 @@ class UpdateEmployee():
             print()
             self.id = input("Enter ID of employee: ") # can also be used to index line in the csv file
             self.specific_emp = self.llAPI_in.getChosenEmployee(self.ID_list, self.id)
-=======
-        header_list = self.llAPI_in.getEmployeeHeader(listOfEmployees)
-        value_list = self.llAPI_in.getEmployeeValue(listOfEmployees)
-        print("{:<11}{:<20}{:<30}{:<20}".format(header_list[0],header_list[1],header_list[2],header_list[4]))
-        print("__"*41)
-        for line in value_list:
-            print("|{:<10}{:<20}{:<30}{:<20}|".format(line[0],line[1],line[2],line[4]))
-        print("|","__"*39,"|")
-        print()
-        self.id = input("Enter ID of employee: ") # can also be used to index line in the csv file
-        if self.update_employee() == None:
-            return None
+            self.line_index = self.id
 
+            print()
+            
+            if self.update_employee() == None:
 
-    
->>>>>>> 22acf31b2047ec2b1824cc204ef76380b4f95943
+                if self.specific_emp == None:
+                    input("Press enter to try again!")
+                    continue
 
-            if self.specific_emp == None:
-                input("Press enter to try again!")
-                continue
+                else:
+                    if self.update_employee() == None:
+                        return None
 
-            else:
-                if self.update_employee() == None:
-                    return None
-
+                return None
 
     def update_employee(self):
         ''' Method that prints out information about chosen employee and
@@ -105,25 +94,17 @@ class UpdateEmployee():
             print()
 
             if user_input == "1":
-<<<<<<< HEAD
                 print("Can't change ID!")
+                continue
 
             elif user_input == "2":
                 print("Can't change SSN!")
+                continue
 
             elif user_input == "3":
                 print("Can't change name!")
+                continue
 
-=======
-                print("Can't change ID!") ###ATH
-                continue
-            elif user_input == "2":
-                print("Can't change SSN!")
-                continue
-            elif user_input == "3":
-                print("Can't change name!")
-                continue
->>>>>>> 22acf31b2047ec2b1824cc204ef76380b4f95943
             elif user_input == "4":
                 self.role = input("Enter role: ")
                 self.updated_info = self.role
@@ -153,7 +134,7 @@ class UpdateEmployee():
                 self.row_index = 7
 
             elif user_input == "9":
-                self.email = input("Enter email")
+                self.email = input("Enter email: ")
                 self.updated_info = self.email
                 self.row_index = 8
  
@@ -181,6 +162,8 @@ class UpdateEmployee():
             user_input = input("Input: ")
 
             if user_input == "1":
+                self.llAPI_in.updateEmployee(self.line_index,self.row_index,self.updated_info)
+
                 if self.update_confirmation() == None:
                     return None
             else:
