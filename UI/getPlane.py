@@ -18,7 +18,8 @@ class GetPlane():
             print('''| (press "b" to go back)                    |''')
             print('''|                                           |''')
             print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
-            user_input = input("Input: ") 
+            user_input = input("Input: ")
+            print() 
             if user_input == "1":
                 self.print_list()
             elif user_input == "2":
@@ -42,7 +43,7 @@ class GetPlane():
         print()
         for line in plane_list:
             for key,val in line.items():
-                print(val, end="\t")
+                print(val, end=" "*10)
                 line_index += 1
             print()
         print()

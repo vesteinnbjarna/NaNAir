@@ -1,12 +1,13 @@
 from Model.employee import Employee
-#from LL.LLAPI import LLAPI
 
 class UpdateEmployee():
 
     def __init__(self, llAPI_in):
         self.llAPI_in = llAPI_in
     
+
     def get_input(self):
+        ''' Get employee type user wants to update. '''
         while True:
             self.employee_type = ""
             print()
@@ -22,45 +23,62 @@ class UpdateEmployee():
             print()
             user_input = input("Input: ")
             print()
+
             if user_input == "1":
                 self.employee_type = "Pilot"
-                pilot_list = self.llAPI_in.getPilotsOrFAs(empType=self.employee_type) #Sækja lista af Pilots
+                pilot_list = self.llAPI_in.getPilotsOrFAs(empType=self.employee_type) #Get list of pilots.
                 if self.show_list(pilot_list) == None:
                     return None
+
             elif user_input == "2":
                 self.employee_type = "Cabincrew"
-                fa_list = self.llAPI_in.getPilotsOrFAs(empType=self.employee_type) #Sæka lista af FAs
+                fa_list = self.llAPI_in.getPilotsOrFAs(empType=self.employee_type) #Get list of FAs.
                 if self.show_list(fa_list) == None:
                     return None
+
             elif user_input == "b":
                 return "Back to emp_m"
+
             else:
                 continue
 
 
     def show_list(self, listOfEmployees):
-        counter = 0
-        for line in listOfEmployees:
-            if counter < 1:
-                for key in line.keys():
-                    print(key, end="\t")
-                counter += 1
-        print()
-        print("_____________________________________________________________________________")
-        print()
-        for line in listOfEmployees:
-            for key,val in line.items():
-                print(val, end="\t")
+        ''' Method that prints out list of chosen employees, and gets ID of employee
+            that user wants to update. '''
+        while True:
+            self.ID_list = []
+            header_list = self.llAPI_in.getEmployeeHeader(listOfEmployees)
+            value_list = self.llAPI_in.getEmployeeValue(listOfEmployees)
+            print("{:<10}{:<20}{:<30}{:<20}".format(header_list[0],header_list[1],header_list[2],header_list[4]))
+            print("__"*42)
+
+            for line in value_list:
+                print("{:<10}{:<20}{:<30}{:<20}".format(line[0],line[1],line[2],line[4]))
+                self.ID_list.append(line[0])
             print()
-        print()
-        self.id = input("Enter ID of employee: ") # can also be used to index line in the csv file
-        self.update_employee()
+            self.id = input("Enter ID of employee: ") # can also be used to index line in the csv file
+            self.specific_emp = self.llAPI_in.getChosenEmployee(self.ID_list, self.id)
+            self.line_index = self.id
 
+            print()
+            
+            if self.update_employee() == None:
 
+                if self.specific_emp == None:
+                    input("Press enter to try again!")
+                    continue
+
+                else:
+                    if self.update_employee() == None:
+                        return None
+
+                return None
 
     def update_employee(self):
+        ''' Method that prints out information about chosen employee and
+            asks user what information he wants to update. '''
         while True:
-            self.specific_emp = self.llAPI_in.getSpecificEmployee(self.id)
             print()
             print(''' ___________________________________________''')
             print('''|                  NaN Air                  |''')
@@ -74,20 +92,29 @@ class UpdateEmployee():
             print()
             user_input = input("Update: ")
             print()
+
             if user_input == "1":
-                print("Can't change ID!") ###ATH
+                print("Can't change ID!")
+                continue
+
             elif user_input == "2":
                 print("Can't change SSN!")
+                continue
+
             elif user_input == "3":
                 print("Can't change name!")
+                continue
+
             elif user_input == "4":
                 self.role = input("Enter role: ")
                 self.updated_info = self.role
                 self.row_index = 3
-            elif user_input == "5": # ATH er held ég ekki í csv
+
+            elif user_input == "5":
                 self.rank = input("Enter rank: ")
                 self.updated_info = self.rank
                 self.row_index = 4
+
             elif user_input == "6":
                 if self.employee_type != 'Pilot':
                     print("Not a pilot!")
@@ -95,6 +122,7 @@ class UpdateEmployee():
                     self.license = input("Enter license: ")
                     self.updated_info = self.license
                     self.row_index = 5
+
             elif user_input == "7":
                 self.address = input("Enter address: ")
                 self.updated_info = self.address
@@ -106,26 +134,20 @@ class UpdateEmployee():
                 self.row_index = 7
 
             elif user_input == "9":
-                self.email = input("Enter email")
+                self.email = input("Enter email: ")
                 self.updated_info = self.email
                 self.row_index = 8
  
             else:
                 continue
 
-            self.update_csv()   # ATH hérna erum við að breyta csv!!  
-                                # þurfum mögulega að finna betri
-                                # leið til að gera þetta!
-
-    def update_csv(self):
-        self.llAPI_in.updateEmployee(self.id,self.row_index,self.updated_info)
-        self.display_info()
-        # ATH að self.id virkar alveg eins og index á línuna sem
-        # við viljum breyta :)
+            if self.update_csv() == None:
+                return None       
+       
 
     def display_info(self):
-        ''' Method thatn prints review of employee information. '''
-        updated_emp = self.llAPI_in.getSpecificEmployee(self.id) #Sæki réttar update-aðar upplýsingar til að prenta út.
+        ''' Method that prints review of employee information after update. '''
+        updated_emp = self.llAPI_in.getSpecificEmployee(self.id) 
         while True:
             print(''' ___________________________________________''')
             print('''|       NaN Air - Review information        |''')
@@ -138,13 +160,18 @@ class UpdateEmployee():
             print('''|                                           |''')
             print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
             user_input = input("Input: ")
+
             if user_input == "1":
-                    self.update_confirmation()
+                self.llAPI_in.updateEmployee(self.line_index,self.row_index,self.updated_info)
+
+                if self.update_confirmation() == None:
                     return None
             else:
                 continue
 
+
     def update_confirmation(self):
+        ''' Method that prints out confirmation of update. '''
         while True:
             print()
             print(''' ___________________________________________''')
@@ -161,11 +188,21 @@ class UpdateEmployee():
             print()
             user_input = input("Input: ")
             print()
+
             if user_input == "1":
                 self.update_employee()
+
             elif user_input == "2":
                 self.get_input()
+
             elif user_input == "3":
                 return None
+
             else:
                 continue
+
+
+    def update_csv(self):
+        self.llAPI_in.updateEmployee(self.id,self.row_index,self.updated_info)
+        if self.display_info() == None:
+            return None
