@@ -168,6 +168,7 @@ class GetEmployee():
                 continue
 
 
+
     def sorted_plane_permit_list(self, listOfEmployees):
         ''' Prints out list of pilots sorted by plane permit'''
         print()
@@ -199,13 +200,14 @@ class GetEmployee():
 
 
     def sorted_by_specific_permit(self, listOfEmployees):
-        plane_list = self.llAPI_in.getPlanes()
+        #plane_list = self.llAPI_in.getPlanes()
         permit_list = []
         chosen_permit = ""
-        for line in plane_list:
+        for line in listOfEmployees:
             for key, val in line.items():
-                if key == "planeTypeId":
-                    permit_list.append(val)
+                if key == "Licence":
+                    if val not in permit_list:
+                        permit_list.append(val)
         print()
         print(''' ___________________________________________''')
         print('''|         NaN Air - Choose permit           |''')
