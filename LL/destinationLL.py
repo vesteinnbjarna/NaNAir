@@ -51,12 +51,12 @@ class DestinationLL ():
         dest_list = []
         for line in temp_list:
             for k,v in line.items():
-                if k == 'destination':
+                if k == 'Destination':
                     dest = v
-                elif k == 'contact name':
+                elif k == 'Contact name':
                     con_name = v
                 
-                elif k == 'contact phone':
+                elif k == 'Contact phone':
                     con_phone = v
 
             dest_list.append([dest,con_name,con_phone])
