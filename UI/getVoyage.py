@@ -38,20 +38,20 @@ class GetVoyage():
         counter = 0
         for line in dest_list_header:
             if counter < 1:
-                print("{:<5}{:<15}{:<15}{:<20}{:<12}{:<12}{:<22}{:<18}{:<5}".format(
+                print("{:<5}{:<15}{:<15}{:<20}{:<12}{:<12}{:<22}{:<18}".format(
                     dest_list_header[0],dest_list_header[1],dest_list_header[2],dest_list_header[3],dest_list_header[4],
-                    dest_list_header[5],dest_list_header[6],dest_list_header[7],dest_list_header[8]))
+                    dest_list_header[5],dest_list_header[6],dest_list_header[7]))
                 counter += 1
-                print("__"*70)
+                print("__"*60)
                 print()
             else:
                 #print()
                 break
         for line in dest_list_value:
-            print("{:<5}{:<15}{:<15}{:<20}{:<12}{:<12}{:<22}{:<18}{:<5}".format(
+            print("{:<5}{:<15}{:<15}{:<20}{:<12}{:<12}{:<22}{:<18}".format(
                 line[0],line[1],line[2],line[3],line[4],
-                line[5],line[6],line[7],line[8]))
-            #print()
+                line[5],line[6],line[7]))
+            print()
         print()
         user_input = input("Press enter to go back")
     

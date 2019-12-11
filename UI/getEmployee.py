@@ -235,17 +235,37 @@ class GetEmployee():
                     if val != "N/A":
                         if val not in permit_list:
                             permit_list.append(val)
-        
-        print()
-        print(''' ___________________________________________''')
-        print('''|         NaN Air - Choose permit           |''')
-        print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
-        counter = 1
-        for permit in permit_list:
-            print("({}) {}".format(counter,permit))
-            counter += 1
-        print()
-        user_input = int(input("Input: "))
+
+        valid_input = False
+        while valid_input == False:
+            print()
+            print(''' ___________________________________________''')
+            print('''|         NaN Air - Choose permit           |''')
+            print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
+            counter = 1
+            for permit in permit_list:
+                print("({}) {}".format(counter,permit))
+                counter += 1
+            print()
+            #valid_input = False
+            #while valid_input == False:
+            try:
+                user_input = int(input("Input: "))
+                valid_input = True
+            except ValueError:
+                print()
+                print(''' _________________________''')
+                print('''|Invalid input! try again.|''')
+                print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
+
+
+            if user_input not in range(0, len(permit_list)+1):
+                print()
+                print(''' _________________________''')
+                print('''|Invalid input! try again.|''')
+                print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')                
+                valid_input = False
+                continue
 
         # Find what permit user chose
         for index in range(len(permit_list) + 1):
@@ -271,6 +291,7 @@ class GetEmployee():
             print(name)
         print("\n\n")
         print(input("Press enter to continue!"))
+        
 
 
 
@@ -387,16 +408,22 @@ class GetEmployee():
         ''' Method that gets date input and check if valid,
             and returns date in datetime format. '''
         while True:
-            self.year = int(input("Enter year (yyyy): "))
-            self.month = int(input("Enter month (mm): "))
-            self.day = int(input("Enter day (dd): "))
+            try:
+                self.year = int(input("Enter year (yyyy): "))
+                self.month = int(input("Enter month (mm): "))
+                self.day = int(input("Enter day (dd): "))
+            except ValueError:
+                print(''' _________________________''')
+                print('''|Invalid input! try again.|''')
+                print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')                
+                continue
             print("\n\n")
             try:
                 self.date = datetime.date(self.year, self.month, self.day)
                 return self.date
             except ValueError:
-                print()
-                print("Invalid date! try again.")
-                print()
+                print(''' _________________________''')
+                print('''|Invalid date! try again.|''')
+                print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')                
                 continue
             

@@ -85,3 +85,6 @@ class LLAPI():
     
     def getAvailabilityOfAll(self, date, listType):
         return self.empLL.getAvailabilityOfAll(date, listType)
+    
+    def getChosenEmployee(self, id_list, emp_id):
+        return self.empLL.getChosenEmployee(id_list, emp_id)

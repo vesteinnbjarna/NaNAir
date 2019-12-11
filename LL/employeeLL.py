@@ -72,7 +72,17 @@ class EmployeeLL ():
             for line in list_of_employees:
                 if line['ID'] == emp_id:
                     return line
-        
+
+    def getChosenEmployee(self, id_list, emp_id):
+        list_of_employees = self.__ioAPI.loadEmployeesFromFile()
+        if emp_id not in id_list:
+            print("ID not found!")
+            return None
+        else:
+            for line in list_of_employees:
+                if line['ID'] == emp_id:
+                    return line
+
 
     def getAvailabiltyOfPilots(self, date, listType):
         ''' Returns a list of either available or unavailable pilots. '''
