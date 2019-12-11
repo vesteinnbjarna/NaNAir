@@ -34,3 +34,7 @@ ID,SSN,Name,Role,Rank,Licence,Address,Phonenumber,Email
 33,1110732819,Arthur Karr,Cabincrew,Flight Attendant,N/A,Fellsmúli 33,8998833,arthur.karr@nanair.is
 34,2602806942,Teresa Thruman,Cabincrew,Flight Attendant,N/A,Fellsmúli 34,8998834,teresa.thruman@nanair.is
 35,1107951952,Elizabeth Mcfadden,Cabincrew,Flight Attendant,N/A,Fellsmúli 35,8998835,elizabeth.mcfadden@nanair.is
+36,0303932799,Vésteinn Bjarnason,Pilot,Captain,NAFOKKER420,Furuvellir 28,8697278,vésteinn.bjarnason@nanair.is
+37,0110972519,Isol Sigurdardottir,Cabincrew,Captain,N/A,Einiberg 21,6613536,isol.sigurdardottir@nanair.is
+38,0203002050,Dilja Sigurdardottir,Cabincrew,Flight Service Manager,N/A,Einiberg 21,6613136,dilja.sigurdardottir@nanair.is
+39,2007734479,Sunna Run,Pilot,Captain,NAFokkerF100,Kirkjuvegur 5,8571077,sunna.run@nanair.is

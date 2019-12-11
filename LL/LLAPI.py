@@ -12,6 +12,14 @@ class LLAPI():
         self.plaLL = PlaneLL(self.__ioAPI)
         self.empLL = EmployeeLL(self.__ioAPI)
 
+    def getDestinationHeader(self,list_of_destination):
+        return self.destLL.getDestinationHeader(list_of_destination)
+
+
+    def getDestinationValue(self,list_of_destination):
+        return self.destLL.getDestinationValue(list_of_destination)
+
+
     def getDestinations(self):
         return self.destLL.getDestination()
     
@@ -57,6 +65,12 @@ class LLAPI():
     def updateEmployee(self, line_index, row_index, updated_info):
        return self.empLL.updateEmployee(line_index, row_index, updated_info)
 
+    def getEmployeeHeader(self,employee_list):
+        return self.empLL.getEmployeeHeader(employee_list)
+
+    def getEmployeeValue(self,employee_list):
+        return self.empLL.getEmployeeValue(employee_list)
+
     def getPilotsOrFAs(self, empType):
         return self.empLL.getPilotsOrFAs(empType)
     
@@ -71,3 +85,14 @@ class LLAPI():
     
     def getAvailabilityOfAll(self, date, listType):
         return self.empLL.getAvailabilityOfAll(date, listType)
+    
+<<<<<<< HEAD
+    def getChosenEmployee(self, id_list, emp_id):
+        return self.empLL.getChosenEmployee(id_list, emp_id)
+=======
+    def getVoyageHeader(self, voyage_list):
+        return self.voyLL.getVoyageHeader(voyage_list)
+
+    def getVoyageValue(self,voyage_list):
+        return self.voyLL.getVoyageValue(voyage_list)
+>>>>>>> 22acf31b2047ec2b1824cc204ef76380b4f95943

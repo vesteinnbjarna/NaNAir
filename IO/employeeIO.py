@@ -5,9 +5,6 @@ class EmployeeIO (BaseClassIO):
     def __init__(self,filename):
        self.filename = filename
        self.temp_filename = 'IO/Data/temp_emp.csv'
-    
-    #def loadEmployeesFromFile(self):
-    #    pass
 
     def storeEmployeeToFile(self,employee):
         next_id = self.getNextID()
@@ -26,13 +23,9 @@ class EmployeeIO (BaseClassIO):
         employee_info = '\n{},{},{},{},{},{},{},{},{}'.format(emp_id,ssn,name,role,rank,emp_license,address,phone_no,email)
         print(employee_info)
         
-        
         with open(self.filename,'a') as f:
             f.write(employee_info)
         
-
-
-
     def updateEmployeeInFile(self, line_index, row_index, updated_info):
         line_index = int(line_index)
         temp_list = []

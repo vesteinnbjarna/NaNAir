@@ -70,9 +70,19 @@ class CreateVoyage():
     def get_availalbe_aircraft_list(self):
         totalTime = self.chosen_destinaiton.totalTime
         available_aircrafts_list = self.llAPI_in.getAvailablePlanes(self.dateTime, totalTime)
-        pass
+        print(''' ___________________________________________''')
+        print('''|         NaN Air - Choose aircraft         |''')
+        print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
+        counter = 1
+        for aircraft in available_aircrafts_list:
+            print('({})'.format(counter), end=" ")
+            for val in aircraft.values():
+                print(val, end="  ")
+            print()
+            counter += 1
+        user_choice = input("Input: ")
 
-    def enter_voyage_details(self):
+    def enter_voyage_details(self): 
         print()
         #self.date = input("Enter date of departure (yyyy-mm-dd): ")
         #self.time_depart = input("Enter time of departure (hh:mm): ")
@@ -158,28 +168,29 @@ class CreateVoyage():
 ########### create new destination #######################################
 
     def get_destination_info(self):
-        #print()
+        ''' Method that gets information about new destination from user. '''
         print(' _________________________________________')
         print("| NaN Air - Enter destination information |")
         print(" ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ ")
-        self.destination = input("Enter destination: ")
+        self.destination = input(" Enter destination: ")
         self.country = input(" Enter country: ")
         self.airport = input(" Enter airport: ")
-        self.airline = input(" Enter airline: ")
+        self.airtime = input(" Enter airtime: ")
         self.distance = input(" Enter distance: ")
         self.contact_name = input(" Enter contact name: ")  
         self.contact_phone = input(" Enter contact phone: ")
         self.display_destination_info()
 
     def display_destination_info(self):
+        ''' Method that displays '''
         while True:
             print(''' ___________________________________________''')
             print('''| NaN Air - Review destination information  |''')
             print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
-            print('''| Destination: {:26}|'''.format(self.destination))
+            print('''| Destination: {:29}|'''.format(self.destination))
             print('''| Country: {:33}|'''.format(self.country))
             print('''| Airport: {:33}|'''.format(self.airport))
-            print('''| Airtine: {:33}|'''.format(self.airline))
+            print('''| Airtime: {:33}|'''.format(self.airtime))
             print('''| Distance: {:32}|'''.format(self.distance))
             print('''| Contact name: {:28}|'''.format(self.contact_name))
             print('''| Contact phone: {:27}|'''.format(self.contact_phone))
@@ -208,7 +219,7 @@ class CreateVoyage():
             print('''| (1) Destination: {:25}|'''.format(self.destination))
             print('''| (2) Country: {:29}|'''.format(self.country))
             print('''| (3) Airport: {:29}|'''.format(self.airport))
-            print('''| (4) Airtine: {:29}|'''.format(self.airline))
+            print('''| (4) Airtime: {:29}|'''.format(self.airtime))
             print('''| (5) Distance: {:28}|'''.format(self.distance))
             print('''| (6) Contact name: {:24}|'''.format(self.contact_name))
             print('''| (7) Contact phone: {:23}|'''.format(self.contact_phone))
@@ -228,7 +239,7 @@ class CreateVoyage():
                 if self.display_destination_info() == None:
                     return None
             elif user_input == '4':
-                self.airline = input("Enter airline: ")
+                self.airtime = input("Enter airtime: ")
                 if self.display_destination_info() == None:
                     return None
             elif user_input == '5':
@@ -269,12 +280,7 @@ class CreateVoyage():
 
 
     def create_destination(self):
-        self.dest = Destination(self.destination, self.country, self.airport, self.airline, self.distance, self.contact_name, self.contact_phone)
-        #self.print_confirmation_destination()
+        self.dest = Destination(self.destination, self.country, self.airport, self.airtime, self.distance, self.contact_name, self.contact_phone)
         self.llAPI_in.createDestination(self.dest)
         return self.dest
 
-    # def create_voyage(self):
-    #     self.voy = Voyage(self.flight_number, )
-
-#flightNumber,departingFrom,arrivingAt,departure,arrival,aircraftID
