@@ -5,6 +5,7 @@ import datetime
 class GetEmployee():
     def __init__(self,llAPI_in):
         self.llAPI_in = llAPI_in
+        self.list_type = "All"
 
     def get_user_input(self):
         self.employee_type = ""

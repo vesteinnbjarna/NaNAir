@@ -5,4 +5,4 @@ def main ():
     a.renderMenu()
 
 if __name__ =='main':
-    main ()
+    main () s
