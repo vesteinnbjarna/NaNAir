@@ -39,22 +39,24 @@ class UpdateEmployee():
 
 
     def show_list(self, listOfEmployees):
-        counter = 0
-        for line in listOfEmployees:
-            if counter < 1:
-                for key in line.keys():
-                    print(key, end="\t")
-                counter += 1
-        print()
-        print("_____________________________________________________________________________")
-        print()
-        for line in listOfEmployees:
-            for key,val in line.items():
-                print(val, end="\t")
+        while True:
+            counter = 0
+            for line in listOfEmployees:
+                if counter < 1:
+                    for key in line.keys():
+                        print(key, end="\t")
+                    counter += 1
             print()
-        print()
-        self.id = input("Enter ID of employee: ") # can also be used to index line in the csv file
-        self.update_employee()
+            print("_____________________________________________________________________________")
+            print()
+            for line in listOfEmployees:
+                for key,val in line.items():
+                    print(val, end="\t")
+                print()
+            print()
+            self.id = input("Enter ID of employee: ") # can also be used to index line in the csv file
+            if self.update_employee() == None:
+                return None
 
 
 
@@ -113,13 +115,15 @@ class UpdateEmployee():
             else:
                 continue
 
-            self.update_csv()   # ATH hérna erum við að breyta csv!!  
+            if self.update_csv() == None:
+                return None       # ATH hérna erum við að breyta csv!!  
                                 # þurfum mögulega að finna betri
                                 # leið til að gera þetta!
 
     def update_csv(self):
         self.llAPI_in.updateEmployee(self.id,self.row_index,self.updated_info)
-        self.display_info()
+        if self.display_info() == None:
+            return None
         # ATH að self.id virkar alveg eins og index á línuna sem
         # við viljum breyta :)
 
@@ -139,10 +143,11 @@ class UpdateEmployee():
             print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
             user_input = input("Input: ")
             if user_input == "1":
-                    self.update_confirmation()
+                if self.update_confirmation() == None:
                     return None
             else:
                 continue
+
 
     def update_confirmation(self):
         while True:

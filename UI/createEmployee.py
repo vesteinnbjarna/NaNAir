@@ -1,7 +1,6 @@
 from Model.employee import Employee
 from LL.LLAPI import LLAPI
 
-#CREMP 
 class CreateEmployee():
     def __init__(self, llAPI_in):
         self.llAPI_in = llAPI_in
@@ -29,7 +28,6 @@ class CreateEmployee():
             elif user_input == "b":
                 return "Back to emp_m"      #goes back to employee management class
             else:                     
-                #print("Please enter valid input :)")
                 continue
 
     def get_employee_info(self):
@@ -51,7 +49,6 @@ class CreateEmployee():
             #cabincrew
             else:                               
                 self.license = "N/A"
-            #
             if self.display_info() == None:
                 return None
         else:
@@ -89,7 +86,6 @@ class CreateEmployee():
                 if self.display_info_to_edit() == None:
                     return None
             else:
-                #print("Please enter valid input :)")
                 continue
 
     def display_info_to_edit(self):  
@@ -142,7 +138,6 @@ class CreateEmployee():
                 else:
                     return None
             else:
-                #print("Please enter valid input :)")
                 continue
 
 
@@ -166,8 +161,6 @@ class CreateEmployee():
             elif user_input == "2":
                 return None
             else:
-                #print()
-                #print("Please enter valid input :)")
                 continue
 
     def create_employee(self):

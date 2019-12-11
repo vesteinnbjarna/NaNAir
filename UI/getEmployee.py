@@ -7,10 +7,12 @@ class GetEmployee():
         self.llAPI_in = llAPI_in
 
     def get_user_input(self):
+        ''' Method that gets user input and determines employee type,
+            stores it and calls appropriate method. '''
         self.employee_type = ""
         while True:
             print()
-            print(''' _________________________________________''')
+            print(''' ___________________________________________''')
             print('''|                 NaN Air                   |''')
             print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
             print('''| (1) Pilots                                |''')
@@ -38,19 +40,23 @@ class GetEmployee():
                     continue
             elif user_input == "4":
                 self.employee_type = "Specific"
+                self.list_type = ''
                 if self.print_specific_employee() == None:
                     return None
             elif user_input == "b":
                 return "Back to emp_m"
             else:
-                continue
+                continue        #if invalid input, continue.
 
     def get_list(self):
-        self.employee_list = ""              #Fá lista af öllum pilots
+        ''' Method that gets what type of list user wants,
+            stores it and calls the appropriate function that
+            returns right list. '''
+        self.employee_list = ""
         while True:
             print()
             print(''' ___________________________________________''')
-            print('''|           NaN Air -                       |''')
+            print('''|                  NaN Air                  |''')
             print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
             print('''| (1) Get list of all {:22}|'''.format(self.employee_type + "s"))
             print('''| (2) Get list of available {:16}|'''.format(self.employee_type + "s"))
@@ -60,9 +66,12 @@ class GetEmployee():
             print('''|                                           |''')
             print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
             print()
-            user_input = input("Input: ")       #Eftir input að bera saman lista af all pilots við vinnutíma og sortera þá í available og unavailable
+            user_input = input("Input: ")
             print()
 
+            #Check input, then check employee type.
+            #If employee type pilot then we call pilot_list_sorting method and 
+            #ask for another input.
             if user_input == "1":
                 if self.employee_type == "Pilot":
                     self.list_type = "All"
@@ -79,6 +88,8 @@ class GetEmployee():
                     if self.print_list(emp_list) == None:
                         continue
 
+            #If user chooses available or unavailable, then we ask for
+            #what date user wants to check.
             elif user_input == "2":
                 if self.employee_type == "Pilot":
                     self.list_type = "Available"
@@ -86,10 +97,7 @@ class GetEmployee():
                         continue
                 else:
                     self.list_type = "Available"
-                    self.year = int(input("Enter year: "))
-                    self.month = int(input("Enter month: "))
-                    self.day = int(input("Enter day: "))
-                    self.date = datetime.date(self.year, self.month, self.day)
+                    self.date = self.get_date_input()
                     if self.employee_type == "Cabincrew":
                         fa_list = self.llAPI_in.getAvailabiltyOfFAs(self.date, self.list_type)
                         if self.print_list(fa_list) == None:
@@ -106,10 +114,7 @@ class GetEmployee():
                         continue
                 else:
                     self.list_type = "Unavailable"
-                    self.year = int(input("Enter year: "))
-                    self.month = int(input("Enter month: "))
-                    self.day = int(input("Enter day: "))
-                    self.date = datetime.date(self.year, self.month, self.day)
+                    self.date = self.get_date_input()
                     if self.employee_type == "Cabincrew":
                         fa_list = self.llAPI_in.getAvailabiltyOfFAs(self.date, self.list_type)
                         if self.print_list(fa_list) == None:
@@ -122,11 +127,13 @@ class GetEmployee():
             elif user_input == "b":
                 return None
             else:
-                continue
+                continue        #if invalid input, continue.
 
 
     def pilot_list_sorting(self):
-        while True:        #Kominn með réttann lista  (all, availablea eða unavailable)
+        ''' If employee type is pilot then we call this method.
+            User can choose sorting of list. '''
+        while True:        
             print()
             print(''' ___________________________________________''')
             print('''|         NaN Air - Choose sorting          |''')
@@ -140,17 +147,17 @@ class GetEmployee():
             print('''|                                           |''')
             print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
             print()
-            user_input = input("Input: ")       #Eftir input bera listann saman við plane permit eða pilots witf specific permit
+            user_input = input("Input: ")   
             print()
+
+            #Check input and call appropriate class and method to get correct list
+
             if user_input == "1":
                 if self.list_type == "All":
                     pilot_list = self.llAPI_in.getPilotsOrFAs(empType=self.employee_type)
                     self.print_list(pilot_list)
                 else:
-                    self.year = int(input("Enter year: "))
-                    self.month = int(input("Enter month: "))
-                    self.day = int(input("Enter day: "))
-                    self.date = datetime.date(self.year, self.month, self.day)
+                    self.date = self.get_date_input()
                     pilot_list = self.llAPI_in.getAvailabilityOfPilots(self.date,self.list_type)
                     if self.list_type == "Unavailable":
                         self.print_list(pilot_list)
@@ -162,10 +169,7 @@ class GetEmployee():
                     pilot_list = self.llAPI_in.getPilotsOrFAs(empType=self.employee_type)
                     self.sorted_plane_permit_list(pilot_list)
                 else:
-                    self.year = int(input("Enter year: "))
-                    self.month = int(input("Enter month: "))
-                    self.day = int(input("Enter day: "))
-                    self.date = datetime.date(self.year, self.month, self.day)
+                    self.date = self.get_date_input()
                     pilot_list = self.llAPI_in.getAvailabilityOfPilots(self.date,self.list_type)
                     self.sorted_plane_permit_list(pilot_list)
 
@@ -174,10 +178,7 @@ class GetEmployee():
                     pilot_list = self.llAPI_in.getPilotsOrFAs(empType=self.employee_type)
                     self.sorted_by_specific_permit(pilot_list)
                 else:
-                    self.year = int(input("Enter year: "))
-                    self.month = int(input("Enter month: "))
-                    self.day = int(input("Enter day: "))
-                    self.date = datetime.date(self.year, self.month, self.day)
+                    self.date = self.get_date_input()
                     pilot_list = self.llAPI_in.getAvailabilityOfPilots(self.date,self.list_type)
                     self.sorted_by_specific_permit(pilot_list)
 
@@ -217,19 +218,23 @@ class GetEmployee():
 
 
     def sorted_by_specific_permit(self, listOfEmployees):
-        #plane_list = self.llAPI_in.getPlanes()
+        plane_list = self.llAPI_in.getPlanes()
+        all_employees = self.llAPI_in.getEmployees()
         permit_list = []
         chosen_permit = ""
-<<<<<<< HEAD
-        for line in listOfEmployees:
-=======
         # Print out list of permits and let user choose specific permit
         for line in plane_list:
->>>>>>> bb8330d3f420a7edcc403090b224f2b10f2fa5e5
             for key, val in line.items():
-                if key == "Licence":
+                if key == "planeTypeId":
                     if val not in permit_list:
                         permit_list.append(val)
+        for line in all_employees:
+            for key, val in line.items():
+                if key == "Licence":
+                    if val != "N/A":
+                        if val not in permit_list:
+                            permit_list.append(val)
+        
         print()
         print(''' ___________________________________________''')
         print('''|         NaN Air - Choose permit           |''')
@@ -261,7 +266,7 @@ class GetEmployee():
         print(''' _________________''')
         print('''|   {:14}|'''.format(chosen_permit))
         print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
-        for name in list_of_employees:
+        for name in sorted(list_of_employees):
             print(name)
         print("\n\n")
         print(input("Press enter to continue!"))
@@ -269,51 +274,53 @@ class GetEmployee():
 
 
     def print_list(self, listOfEmployees):
+        while True:
         #Sorted by ID
-        # if self.list_type == "Available" or self.list_type == "Unavailable":
-        #     print()
-        #     print(''' ___________________________________________''')
-        #     print('''|   {:11} employees  on  {:4}-{:2}-{:2}   |'''.format(self.list_type,self.year,self.month,self.day))
-        #     print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
-        #     print()
-        if listOfEmployees:
-            counter = 0
-            for line in listOfEmployees:
-                if counter < 1:
-                    for key in line.keys():
-                        if key == "ID" or key == "SSN" or key == "Name":
-                            print(key, end="\t  ")
-                    if self.list_type == "Unavailable":
-                        print("Destination")
-                    counter += 1
-            print()
-            print("___________________________________________")
-            print()
-            #If unavailable we want to print out destination
-            if self.list_type == "Unavailable":
+            if self.list_type == "Available" or self.list_type == "Unavailable":
+                print()
+                print(''' ___________________________________________''')
+                print('''|   {:>11} employees on {:15}|'''.format(self.list_type,str(self.date)))
+                print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
+                print()
+            if listOfEmployees:
+                counter = 0
                 for line in listOfEmployees:
-                    if len(line) == 1:
-                        print("\t"," ".join(line))
-                        print()
-                    else:
+                    if counter < 1:
+                        for key in line.keys():
+                            if key == "ID" or key == "SSN" or key == "Name" or key == "Role":
+                                print(key, end="\t  ")
+                        if self.list_type == "Unavailable":
+                            print("Destination")
+                        counter += 1
+                print()
+                print("___________________________________________")
+                print()
+                #If unavailable we want to print out destination
+                if self.list_type == "Unavailable":
+                    for line in listOfEmployees:
+                        if len(line) == 1:
+                            print("\t"," ".join(line))
+                            print()
+                        else:
+                            for key,val in line.items():
+                                if key == "ID" or key == "SSN" or key == "Name" or key == "Role":
+                                    print(val, end="\t")
+                else:
+                    for line in listOfEmployees:
                         for key,val in line.items():
-                            if key == "ID" or key == "SSN" or key == "Name":
+                            if key == "ID" or key == "SSN" or key == "Name" or key == "Role":
                                 print(val, end="\t")
+                        print()
+                print()
+                if self.employee_type == "Specific":
+                    self.id = input("Enter employee ID: ")
+                    return self.id
             else:
-                for line in listOfEmployees:
-                    for key,val in line.items():
-                        if key == "ID" or key == "SSN" or key == "Name":
-                            print(val, end="\t")
-                    print()
+                print()
+                print("No employees found")
             print()
-            if self.employee_type == "Specific":
-                self.id = input("Enter employee ID: ")
-                return self.id
-        else:
-            print()
-            print("No employees found")
-        print()
-        input("Press enter to continue")
+            input("Press enter to continue")
+            return None 
 
 
 
@@ -322,10 +329,18 @@ class GetEmployee():
 
 
     def print_specific_employee(self):
-        emp_list = self.llAPI_in.getEmployees()
-        self.print_list(emp_list)
-        print()
-        specific_emp = self.llAPI_in.getSpecificEmployee(self.id)
+        while True:
+            emp_list = self.llAPI_in.getEmployees()
+            self.print_list(emp_list)
+            print()
+            specific_emp = self.llAPI_in.getSpecificEmployee(self.id)
+            #check if input of ID is valid, if not valid then continue
+            if specific_emp == None:
+                input("Press enter to input another ID!")
+                print()
+                continue
+            else:
+                break
         # Print list of employees and let user choose a specific employee
         while True:
             print(''' ___________________________________________''')
@@ -366,3 +381,21 @@ class GetEmployee():
         #Enter day
         #Prenta út viku vaktaplan
 
+
+    def get_date_input(self):
+        ''' Method that gets date input and check if valid,
+            and returns date in datetime format. '''
+        while True:
+            self.year = int(input("Enter year (yyyy): "))
+            self.month = int(input("Enter month (mm): "))
+            self.day = int(input("Enter day (dd): "))
+            print("\n\n")
+            try:
+                self.date = datetime.date(self.year, self.month, self.day)
+                return self.date
+            except ValueError:
+                print()
+                print("Invalid date! try again.")
+                print()
+                continue
+            

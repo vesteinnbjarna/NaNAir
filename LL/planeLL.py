@@ -12,17 +12,6 @@ class PlaneLL ():
     def getPlanes(self):
         return self.__ioAPI_in.loadPlanesFromFile()
 
-<<<<<<< HEAD
-    def getAvailablePlanes(self,date):
-        planes = self.__ioAPI_in.loadPlanesFromFile()
-        voyages = self.__ioAPI_in.loadVoyagesFromFile()
-        availablePlanes_list = []
-        list_of_voyages_on_date = []
-        for line in planes:
-            pass
-    
-
-=======
     def getAvailablePlanes(self,departureDateTime,totalTime):
         arrivalDateTime = departureDateTime + totalTime
         plane_list = self.getPlanes() # Starting with all planes available -> unavailable will be removed
@@ -45,4 +34,3 @@ class PlaneLL ():
 
         return available_planes_list
  
->>>>>>> bb8330d3f420a7edcc403090b224f2b10f2fa5e5
