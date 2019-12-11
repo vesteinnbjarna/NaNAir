@@ -9,7 +9,10 @@ class EmployeeLL ():
         
     
     def updateEmployee (self,line_index, row_index, updated_info):
-        self.__ioAPI.updateEmployeeInFile(line_index, row_index, updated_info)
+        if int(row_index) > 2 and int(row_index) < 9:
+            self.__ioAPI.updateEmployeeInFile(line_index, row_index, updated_info)
+        else:
+            return None
 
     def getEmployees(self):
         return self.__ioAPI.loadEmployeesFromFile()
