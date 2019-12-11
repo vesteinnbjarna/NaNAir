@@ -1,6 +1,6 @@
 from Model.voyage import Voyage
 from Model.Destination import Destination
-
+import datetime
 
 class CreateVoyage():
     def __init__(self, llAPI_in):
@@ -44,34 +44,54 @@ class CreateVoyage():
             print('''|     NaN Air - List of destinations        |''')
             print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ ''')
             counter = 1
-            #line_index = 0
             for line in destination_list:
                 for key, val in line.items():
                     if key == "destination":
                         print("({}) {}".format(counter,val))
                         counter += 1
                         dest_list.append(val)
-               # line_index += 1
             print('''                                             ''')
             print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
             user_input = input("Input: ")
             print()
+            for destination in destination_list:
+                if destination['destination'] == dest_list[int(user_input) - 1]:
+                    destination_line = destination
             try:
                 if int(user_input) in range(len(dest_list) + 1):
-                    self.chosen_destinaiton = dest_list[int(user_input) - 1]
-                    self.enter_destination_details()
+                    self.chosen_destinaiton = Destination(destination_line['destination'],destination_line['country'],\
+                        destination_line['airport'],destination_line['airtime'],destination_line['distance'],\
+                            destination_line['contact name'],destination_line['contact phone'])
+                    self.enter_voyage_details()
             except:
                 ValueError
                 continue
 
-    # def get_aircraft_list(self):
-    #     available_aircraft_list = self.llAPI_in.getAvailablePlanes
+    def get_availalbe_aircraft_list(self):
+        totalTime = self.chosen_destinaiton.totalTime
+        available_aircrafts_list = self.llAPI_in.getAvailablePlanes(self.dateTime, totalTime)
+        pass
 
-    def enter_destination_details(self):
+    def enter_voyage_details(self):
         print()
-        self.date = input("Enter date of departure (yyyy-mm-dd): ")
-        self.time_depart = input("Enter time of departure (hh:mm): ")
-        #self.aircraft = 
+        #self.date = input("Enter date of departure (yyyy-mm-dd): ")
+        #self.time_depart = input("Enter time of departure (hh:mm): ")
+        year = int(input("Enter year: "))
+        month = int(input("Enter month: "))
+        day = int(input("Enter day: "))
+        time = input("Enter time (hh:mm): ")
+        hours = time[:2]
+        minutes = time[3:]
+        if hours[0] == '0':
+            hours = int(hours[1:])
+        else:
+            hours = int(hours)
+        if minutes[0] == '0':
+            minutes = int(minutes[1:])
+        else:
+            minutes = int(minutes)
+        self.dateTime = datetime.datetime(year,month,day,hours,minutes)
+        self.get_availalbe_aircraft_list()
         #self.time_back = input("Enter time of trip back (hh:mm): ")
         #self.flight_number = input("Enter flight number: ")
         self.review_voyage_info()
@@ -83,8 +103,8 @@ class CreateVoyage():
             print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
             print('''| Chosen destination: {:22}|'''.format(self.chosen_destinaiton))
           #  print('''| Flight number: {:27}|'''.format(self.flight_number))
-            print('''| Date of departure: {:23}|'''.format(self.date))
-            print('''| Time of departure: {:23}|'''.format(self.time_depart+":00"))
+            print('''| Date of departure: {:23}|'''.format(self.dateTime.date()))
+            print('''| Time of departure: {:23}|'''.format(self.dateTime.time()))
             print('''| Date of trip back: {:23}|'''.format(self.date))
           #  print('''| Time of trip back: {:23}|'''.format(self.time_back +":00"))
             print('''|                                           |''')

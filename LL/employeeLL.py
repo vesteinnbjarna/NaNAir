@@ -60,9 +60,9 @@ class EmployeeLL ():
                         list_of_unavailable_pilots.append(pilot)
         if not list_of_voyages_on_date: # If no voyage on date -> all employees are available
             return list_of_pilots
-        elif listType == "available":
+        elif listType == "Available":
             return list_of_available_pilots
-        elif listType == "unavailable":
+        elif listType == "Unavailable":
             return list_of_unavailable_pilots
 
     def getAvailabiltyOfFAs(self, date, listType):
@@ -84,7 +84,34 @@ class EmployeeLL ():
                         list_of_unavailable_FAs.append(fa)
         if not list_of_voyages_on_date: # If no voyage on date -> all employees are available
             return list_of_FAs
-        elif listType == "available":
+        elif listType == "Available":
             return list_of_available_FAs
-        elif listType == "unavailable":
+        elif listType == "Unavailable":
             return list_of_unavailable_FAs
+
+
+    def getAvailabilityOfAll(self, date, listType):
+        list_of_All = self.getEmployees()
+        list_of_voyages = self.__ioAPI.loadVoyagesFromFile()
+        list_of_voyages_on_date = []
+        for voyage in list_of_voyages:
+            if voyage['departure'][:10] == str(date):
+                list_of_voyages_on_date.append(voyage)
+        list_of_available_All = []
+        list_of_unavailable_All = []
+        for emp in list_of_All:
+            for voyage in list_of_voyages_on_date:
+                if voyage['captain'] != emp['SSN'] and voyage['copilot'] != emp['SSN'] and voyage['fsm'] != emp['SSN']\
+                     and voyage['fa1'] != emp['SSN'] and voyage['fa2'] != emp['SSN']:
+                    if emp not in list_of_available_All:
+                        list_of_available_All.append(emp)
+                else:
+                    if emp not in list_of_unavailable_All:
+                        list_of_unavailable_All.append(emp)
+                        list_of_unavailable_All.append([voyage['arrivingAt']])
+        if not list_of_voyages_on_date: # If no voyage on date -> all employees are available
+            return list_of_All
+        elif listType == "Available":
+            return list_of_available_All
+        elif listType == "Unavailable":
+            return list_of_unavailable_All

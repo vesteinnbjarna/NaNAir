@@ -12,8 +12,7 @@ class BaseClassIO ():
             csv_reader = csv.DictReader(csvfile)
             for line in csv_reader:
                 working_list.append(line)
-            
-            return working_list
+        return working_list
 
     def getNextID(self):
         maxList = []
