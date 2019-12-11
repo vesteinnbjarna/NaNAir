@@ -35,9 +35,17 @@ class EmployeeLL ():
 
     def getSpecificEmployee(self, emp_id):
         list_of_employees = self.__ioAPI.loadEmployeesFromFile()
+        ID_list = []
         for line in list_of_employees:
-            if line['ID'] == emp_id:
-                return line
+            ID_list.append(line["ID"])
+        if int(emp_id) not in range(1, len(ID_list)+1):
+            print("ID not found!")
+            return None
+        else:
+            for line in list_of_employees:
+                if line['ID'] == emp_id:
+                    return line
+        
 
     def getAvailabiltyOfPilots(self, date, listType):
         ''' Returns a list of either available or unavailable pilots. '''
@@ -108,7 +116,7 @@ class EmployeeLL ():
                 else:
                     if emp not in list_of_unavailable_All:
                         list_of_unavailable_All.append(emp)
-                        list_of_unavailable_All.append([voyage['arrivingAt']])
+                        list_of_unavailable_All.append([voyage['destination']])
         if not list_of_voyages_on_date: # If no voyage on date -> all employees are available
             return list_of_All
         elif listType == "Available":
