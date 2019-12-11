@@ -223,7 +223,13 @@ class GetEmployee():
         for line in plane_list:
             for key, val in line.items():
                 if key == "planeTypeId":
-                    permit_list.append(val)
+                    if val not in permit_list:
+                        permit_list.append(val)
+        for line in listOfEmployees:
+            for key,val in line.items():
+                if key == 'Licence':
+                    if val not in permit_list:
+                        permit_list.append(val)
         print()
         print(''' ___________________________________________''')
         print('''|         NaN Air - Choose permit           |''')
@@ -264,12 +270,13 @@ class GetEmployee():
 
     def print_list(self, listOfEmployees):
         #Sorted by ID
-        # if self.list_type == "Available" or self.list_type == "Unavailable":
-        #     print()
-        #     print(''' ___________________________________________''')
-        #     print('''|   {:11} employees  on  {:4}-{:2}-{:2}   |'''.format(self.list_type,self.year,self.month,self.day))
-        #     print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
-        #     print()
+        if self.list_type == "Available" or self.list_type == "Unavailable":
+            print()
+            print(''' ___________________________________________''')
+            print('''|   {:>11} employees on {:15}|'''.format(self.list_type,str(self.date)))
+            print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
+            print()
+        print()
         if listOfEmployees:
             counter = 0
             for line in listOfEmployees:

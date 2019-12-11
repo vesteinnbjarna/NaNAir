@@ -1,4 +1,4 @@
-from Model.plane import Plane
+from Model.Plane import Plane
 
 class GetPlane():
     def __init__(self, llAPI_in):

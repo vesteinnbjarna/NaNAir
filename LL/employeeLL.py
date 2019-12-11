@@ -108,7 +108,7 @@ class EmployeeLL ():
                 else:
                     if emp not in list_of_unavailable_All:
                         list_of_unavailable_All.append(emp)
-                        list_of_unavailable_All.append([voyage['arrivingAt']])
+                        list_of_unavailable_All.append([voyage['destination']])
         if not list_of_voyages_on_date: # If no voyage on date -> all employees are available
             return list_of_All
         elif listType == "Available":
