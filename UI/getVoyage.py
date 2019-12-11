@@ -33,20 +33,25 @@ class GetVoyage():
         #Prentast út listi af destinations sem data layer er búinn að senda til baka
         line_index = 0
         destination_list = self.llAPI_in.getDestinations()
+        dest_list_header = self.llAPI_in.getDestinationHeader(destination_list)
+        dest_list_value = self.llAPI_in.getDestinationValue(destination_list)
         counter = 0
-        for line in destination_list:
+        for line in dest_list_header:
             if counter < 1:
-                for key in line.keys():
-                    print(key, end="\t")
+                print("{:<5}{:<15}{:<15}{:<20}{:<12}{:<12}{:<22}{:<18}{:<5}".format(
+                    dest_list_header[0],dest_list_header[1],dest_list_header[2],dest_list_header[3],dest_list_header[4],
+                    dest_list_header[5],dest_list_header[6],dest_list_header[7],dest_list_header[8]))
                 counter += 1
-            else:
+                print("__"*70)
                 print()
+            else:
+                #print()
                 break
-        for line in destination_list:
-            for key,val in line.items():
-                print(val, end="\t")
-                line_index += 1
-            print()
+        for line in dest_list_value:
+            print("{:<5}{:<15}{:<15}{:<20}{:<12}{:<12}{:<22}{:<18}{:<5}".format(
+                line[0],line[1],line[2],line[3],line[4],
+                line[5],line[6],line[7],line[8]))
+            #print()
         print()
         user_input = input("Press enter to go back")
     

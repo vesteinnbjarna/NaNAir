@@ -5,12 +5,13 @@ import datetime
 class GetEmployee():
     def __init__(self,llAPI_in):
         self.llAPI_in = llAPI_in
+        self.list_type = 'All'
 
     def get_user_input(self):
         self.employee_type = ""
         while True:
             print()
-            print(''' _________________________________________''')
+            print(''' ___________________________________________''')
             print('''|                 NaN Air                   |''')
             print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
             print('''| (1) Pilots                                |''')
@@ -313,8 +314,8 @@ class GetEmployee():
 
 
 ########################### SPECIFIC EMPLOYEE ###########################
-
-
+    
+    
     def print_specific_employee(self):
         emp_list = self.llAPI_in.getEmployees()
         self.print_list(emp_list)

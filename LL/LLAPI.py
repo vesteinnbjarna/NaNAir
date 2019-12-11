@@ -12,6 +12,14 @@ class LLAPI():
         self.plaLL = PlaneLL(self.__ioAPI)
         self.empLL = EmployeeLL(self.__ioAPI)
 
+    def getDestinationHeader(self,list_of_destination):
+        return self.destLL.getDestinationHeader(list_of_destination)
+
+
+    def getDestinationValue(self,list_of_destination):
+        return self.destLL.getDestinationValue(list_of_destination)
+
+
     def getDestinations(self):
         return self.destLL.getDestination()
     
