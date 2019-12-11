@@ -86,5 +86,13 @@ class LLAPI():
     def getAvailabilityOfAll(self, date, listType):
         return self.empLL.getAvailabilityOfAll(date, listType)
     
+<<<<<<< HEAD
     def getChosenEmployee(self, id_list, emp_id):
         return self.empLL.getChosenEmployee(id_list, emp_id)
+=======
+    def getVoyageHeader(self, voyage_list):
+        return self.voyLL.getVoyageHeader(voyage_list)
+
+    def getVoyageValue(self,voyage_list):
+        return self.voyLL.getVoyageValue(voyage_list)
+>>>>>>> 22acf31b2047ec2b1824cc204ef76380b4f95943

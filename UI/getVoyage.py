@@ -73,7 +73,7 @@ class GetVoyage():
             print()
             if user_input == "1":
                 voyage_list = self.llAPI_in.getVoyages()
-                print(voyage_list)
+                #print(voyage_list)
                 self.print_choosen_list(voyage_list)
             elif user_input == "2":
                 self.get_year = int(input("Enter year: "))
@@ -103,26 +103,44 @@ class GetVoyage():
 
 
     def print_choosen_list(self, list_of_voyages):
-        #line_index = 0
-        if list_of_voyages:
-            counter = 0
-            for line in list_of_voyages:
-                if counter < 1:
-                    for key in line.keys():
-                        print(key, end="\t")
-                    counter += 1
-                else:
-                    print()
-                    break
-            for line in list_of_voyages:
-                for key,val in line.items():
-                    print(val, end="\t")
-                    #line_index += 1
-                print()
-            print()
+        
+        h_list = self.llAPI_in.getVoyageHeader(list_of_voyages)
+        v_list = self.llAPI_in.getVoyageValue(list_of_voyages)
+        print()
+        if v_list!= None and h_list != None:
+            print("{:<5}{:<10}{:<10}{:<15}{:<25}{:<25}{:<10}{:<15}{:<15}{:<15}{:<15}{:<15}".format(
+                h_list[0],h_list[1],h_list[2],h_list[3],h_list[4],
+                h_list[5],h_list[6],h_list[7],h_list[8],h_list[9],h_list[10],h_list[11]))
+            
+
+            for line in v_list:
+                print("{:<5}{:<10}{:<10}{:<15}{:<25}{:<25}{:<10}{:<15}{:<15}{:<15}{:<15}{:<15}".format(
+                line[0],line[1],line[2],line[3],line[4],
+                line[5],line[6],line[7],line[8],line[9],line[10],line[11]))
+
         else:
-            print("No voyages on selected date!")
-        user_input = input("Press enter to go back")
+            print('No voyages on {}'.format(self.date))
+        
+        #line_index = 0
+        # if list_of_voyages:
+        #     counter = 0
+        #     for line in list_of_voyages:
+        #         if counter < 1:
+        #             for key in line.keys():
+        #                 print(key, end="\t")
+        #             counter += 1
+        #         else:
+        #             print()
+        #             break
+        #     for line in list_of_voyages:
+        #         for key,val in line.items():
+        #             print(val, end="\t")
+        #             #line_index += 1
+        #         print()
+        #     print()
+        #else:
+        #     print("No voyages on selected date!")
+        # user_input = input("Press enter to go back")
 
 
     
