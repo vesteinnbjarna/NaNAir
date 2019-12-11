@@ -65,6 +65,12 @@ class LLAPI():
     def updateEmployee(self, line_index, row_index, updated_info):
        return self.empLL.updateEmployee(line_index, row_index, updated_info)
 
+    def getEmployeeHeader(self,employee_list):
+        return self.empLL.getEmployeeHeader(employee_list)
+
+    def getEmployeeValue(self,employee_list):
+        return self.empLL.getEmployeeValue(employee_list)
+
     def getPilotsOrFAs(self, empType):
         return self.empLL.getPilotsOrFAs(empType)
     

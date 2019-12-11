@@ -13,6 +13,33 @@ class EmployeeLL ():
 
     def getEmployees(self):
         return self.__ioAPI.loadEmployeesFromFile()
+    
+    def getEmployeeHeader(self,employee_list):
+        header_list = []
+        counter = 0
+        for line in employee_list:
+            if counter < 1:
+                for k,v in line.items():
+                    header_list.append(k)
+                counter += 1
+            else:
+                return header_list
+
+
+    def getEmployeeValue(self,employee_list):
+        value_list = []
+        for line in employee_list:
+                h_id = line["ID"]
+                h_ssn = line["SSN"]
+                h_name = line["Name"]
+                h_role = line["Role"]
+                h_rank = line["Rank"]
+                h_lice = line["Licence"]
+                h_addr = line["Address"]
+                h_nr = line["Phonenumber"]
+                h_email = line["Email"]
+                value_list.append([h_id,h_ssn,h_name,h_role,h_rank,h_lice,h_addr,h_nr,h_email])       
+        return value_list
 
     def getPilotsOrFAs(self,empType):
         list_of_employees = self.__ioAPI.loadEmployeesFromFile()

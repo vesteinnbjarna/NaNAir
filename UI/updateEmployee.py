@@ -39,24 +39,38 @@ class UpdateEmployee():
 
 
     def show_list(self, listOfEmployees):
-        while True:
-            counter = 0
-            for line in listOfEmployees:
-                if counter < 1:
-                    for key in line.keys():
-                        print(key, end="\t")
-                    counter += 1
-            print()
-            print("_____________________________________________________________________________")
-            print()
-            for line in listOfEmployees:
-                for key,val in line.items():
-                    print(val, end="\t")
-                print()
-            print()
-            self.id = input("Enter ID of employee: ") # can also be used to index line in the csv file
-            if self.update_employee() == None:
-                return None
+        header_list = self.llAPI_in.getEmployeeHeader(listOfEmployees)
+        value_list = self.llAPI_in.getEmployeeValue(listOfEmployees)
+        print("|{:<10}{:<20}{:<30}{:<20}|".format(header_list[0],header_list[1],header_list[2],header_list[4]))
+        print("__"*40)
+        for line in value_list:
+            print("|{:<10}{:<20}{:<30}{:<20}|".format(line[0],line[1],line[2],line[4]))
+        print()
+        self.id = input("Enter ID of employee: ") # can also be used to index line in the csv file
+        if self.update_employee() == None:
+            return None
+
+
+    
+
+        # # while True:
+        # #     counter = 0
+        # #     for line in listOfEmployees:
+        # #         if counter < 1:
+        # #             for key in line.keys():
+        # #                 print(key, end="\t")
+        # #             counter += 1
+        # #     print()
+        # #     print("_____________________________________________________________________________")
+        # #     print()
+        # #     for line in listOfEmployees:
+        # #         for key,val in line.items():
+        # #             print(val, end="\t")
+        # #         print()
+        # #     print()
+        #     self.id = input("Enter ID of employee: ") # can also be used to index line in the csv file
+        #     if self.update_employee() == None:
+        #         return None
 
 
 

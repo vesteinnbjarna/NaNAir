@@ -31,7 +31,7 @@ class GetVoyage():
     
     def get_list_of_destinations(self):
         #Prentast út listi af destinations sem data layer er búinn að senda til baka
-        line_index = 0
+        #line_index = 0
         destination_list = self.llAPI_in.getDestinations()
         dest_list_header = self.llAPI_in.getDestinationHeader(destination_list)
         dest_list_value = self.llAPI_in.getDestinationValue(destination_list)
