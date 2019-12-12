@@ -71,4 +71,14 @@ class VoyageLL ():
             return value_list
         except TypeError:
             return None
-        
+
+    def getUnmannedVoyages(self):
+        voyages_list = self.__ioAPI_in.loadVoyagesFromFile()
+        unmannedVoyages_list = []
+        for voyage in voyages_list:
+            if not voyage['Captain']:
+                unmannedVoyages_list.append(voyage)
+        unmannedVoyagesValues_list = self.getVoyageValue(unmannedVoyages_list)
+        unmannedVoyagesHeaders_list = self.getVoyageHeader(unmannedVoyages_list)
+        return unmannedVoyagesValues_list, unmannedVoyagesHeaders_list
+

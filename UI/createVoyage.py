@@ -1,11 +1,13 @@
 from Model.voyage import Voyage
 from Model.Destination import Destination
 from Model.Plane import Plane
+from UI.gatherCrew import GatherCrew
 import datetime
 
 class CreateVoyage():
     def __init__(self, llAPI_in):
         self.llAPI_in = llAPI_in
+        self.gaterCrew = GatherCrew(llAPI_in)
         
     def get_input(self):
         self.departingFrom = "REY"
@@ -26,7 +28,7 @@ class CreateVoyage():
                 if self.select_destination() == "Back to home":
                     return None
             elif user_input == "2":
-                pass
+                self.gaterCrew.getListOfUnmannedVoyages()
             elif user_input == "3":
                 if self.get_destination_info() == None:
                     return None

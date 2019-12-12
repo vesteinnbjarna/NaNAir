@@ -4,7 +4,7 @@ from Model.Plane import Plane
 
 class Voyage(Destination): 
 
-    def __init__(self, destination, aircraft, departure):
+    def __init__(self, destination, aircraft, departure, voyageID = 0):
         self.destination = destination
         self.aircraft = aircraft
         self.flightNumber1 = 1
@@ -15,6 +15,7 @@ class Voyage(Destination):
         self.fsm = ''
         self.fa1 = ''
         self.fa2 = ''
+        self.voyageID = voyageID
 
     def assignCaptain(self, captain):
         self.captain = captain

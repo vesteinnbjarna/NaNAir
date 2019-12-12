@@ -163,3 +163,12 @@ class EmployeeLL ():
             return list_of_available_All
         elif listType == "Unavailable":
             return list_of_unavailable_All
+
+    def availablePilotsWithSpecificLicense(self,time,aircraftType):
+        all_avail_pilots = self.getAvailabiltyOfPilots(time, "Available")
+        perfectPilots_list = []
+        for pilot in all_avail_pilots:
+            if pilot['Licence'] == aircraftType:
+                perfectPilots_list.append(pilot)
+
+        return perfectPilots_list
