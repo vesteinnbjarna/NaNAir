@@ -1,4 +1,5 @@
 #from IO.IOAPI import IOAPI
+from Model.Destination import Destination
 
 class DestinationLL ():
     def __init__(self, ioAPI_in):
@@ -63,4 +64,16 @@ class DestinationLL ():
         
         return dest_list  
 
+    def createDestinationObject(self,destination_str):
+        dest_list = self.__ioAPI.loadDestinationFromFile()
+        dest_odict = {}
+        for dest in dest_list:
+            if dest['Destination'] == destination_str:
+                dest_odict = dest
+        destination_obj = Destination(dest_odict['Destination'],dest_odict['Country'],dest_odict['Airport'],\
+            dest_odict['Airtime'],dest_odict['Distance'],dest_odict['Contact name'],dest_odict['Contact phone'])
+        return destination_obj
+
+
+#destination, country, airport, airtime, distance, contactName, contactPhone):
     

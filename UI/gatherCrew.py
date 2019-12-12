@@ -1,6 +1,7 @@
 from Model.employee import Employee
 from Model.voyage import Voyage
 from Model.Plane import Plane
+import datetime
 
 # Get list of unmanned voyages
 # Choose voyage to man
@@ -66,14 +67,21 @@ class GatherCrew():
             self.planeType = self.llAPI_in.getPlaneType(voyage[6])
             plane_obj = Plane(voyage[6], self.planeType)
 
-            self.voyage_obj = Voyage(voyage[3],plane_obj,voyage[4],voyage[0])
+            destination_obj = self.createDestinationObject(voyage[3])
+            departure_datetime = datetime.datetime.strptime(voyage[4], '%Y-%m-%dT%H:%M:%S')
+
+
+            self.voyage_obj = Voyage(destination_obj,plane_obj,departure_datetime,voyage[0])
             self.listAvailablePilots()
             self.listAvailableCabincrew()
             if self.print_crew_review() == None:
                 return None
                 
-            # Mögulega henda edit möguleika hérna      
+            # Mögulega henda edit möguleika hérna  
 
+    def createDestinationObject(self,destination_str):
+        destination_obj = self.llAPI_in.createDestinationObject(destination_str)
+        return destination_obj
 
     def listAvailablePilots(self):
         '''Method that asks user to choose a captain and copilot for voyage.'''

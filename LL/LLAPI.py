@@ -110,4 +110,7 @@ class LLAPI():
     def storeCrewToFile(self, voyage):
         self.voyLL.storeCrewToFile(voyage)
 
+    def createDestinationObject(self,destination_str):
+        return self.destLL.createDestinationObject(destination_str)
+
     
