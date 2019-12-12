@@ -31,7 +31,7 @@ class VoyageIO (BaseClassIO):
         fa1 = voyage.get_FA1()
         fa2 = voyage.get_FA2()
 
-        voyage_str = '\n{},{},{},{},{},{},{},{},{},{},{},{}'.format(voyageID,flightNumber1,flightNumber2,destination_str,departure\
+        voyage_str = '{},{},{},{},{},{},{},{},{},{},{},{}'.format(voyageID,flightNumber1,flightNumber2,destination_str,departure\
             ,arrival,aircraft_str,captain,copilot,fsm,fa1,fa2)
 
         with open(self.filename,'a') as f:
