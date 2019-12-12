@@ -29,7 +29,8 @@ class CreateVoyage():
                 if self.select_destination() == "Back to home":
                     return None
             elif user_input == "2":
-                self.gaterCrew.getListOfUnmannedVoyages()
+                if self.gaterCrew.getListOfUnmannedVoyages() == None:
+                    return None 
             elif user_input == "3":
                 if self.get_destination_info() == None:
                     return None

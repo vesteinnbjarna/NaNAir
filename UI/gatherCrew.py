@@ -13,44 +13,70 @@ class GatherCrew():
     def __init__(self, llAPI_in):
         self.llAPI_in = llAPI_in
 
+
     def getListOfUnmannedVoyages(self):
         unmannedVoyages_list, voyageHeader_list = self.llAPI_in.getUnmannedVoyages()
-        self.print_voyage_list(unmannedVoyages_list,voyageHeader_list)
+        if self.print_voyage_list(unmannedVoyages_list,voyageHeader_list) == None:
+            return None
+
 
     def print_voyage_list(self,voyage_list,header_list):
-
-        print("{:<5}{:<10}{:<10}{:<15}{:<25}{:<25}{:<10}".format(
-                header_list[0],header_list[1],header_list[2],header_list[3],header_list[4],header_list[5],header_list[6]))
-        print(100 * "_")
-        print()
-        id_list = []
-        for voyage in voyage_list:
+        if header_list == None:
+            print(''' ___________________________________________''')
+            print('''|      All voyages are fully staffed!       |''')
+            print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ ''')
+            print()
+            input("Press enter to go back to home page!")
+            print()
+            
+        else:
             print("{:<5}{:<10}{:<10}{:<15}{:<25}{:<25}{:<10}".format(
-                voyage[0],voyage[1],voyage[2],voyage[3],voyage[4],voyage[5],voyage[6]))
-            id_list.append(int(voyage[0]))
-        print()
-        user_choice = input("Enter ID of voyage you want to staff: ")
-        print()
-        while int(user_choice) not in id_list:
-            print("Invalid input!")
-            print("Please enter an integer from {} to {}".format(min(id_list),max(id_list)))
-            user_choice = input("Input: ")
-        for voy in voyage_list:
-            if voy[0] == user_choice:
-                voyage = voy
+                    header_list[0],header_list[1],header_list[2],header_list[3],header_list[4],header_list[5],header_list[6]))
+            print(100 * "_")
+            print()
+            id_list = []
+            for voyage in voyage_list:
+                print("{:<5}{:<10}{:<10}{:<15}{:<25}{:<25}{:<10}".format(
+                    voyage[0],voyage[1],voyage[2],voyage[3],voyage[4],voyage[5],voyage[6]))
+                id_list.append(int(voyage[0]))
+            
+            while True:
+                print()
+                user_choice = input("Enter ID of voyage you want to staff: ")
+                print()
+                try:
+                    user_choice = int(user_choice)
+                except:
+                    print()
+                    print("Invalid input!")
+                    print("Please enter valid ID")
+                    continue
 
-        self.planeType = self.llAPI_in.getPlaneType(voyage[6])
-        plane_obj = Plane(voyage[6], self.planeType)
+                if int(user_choice) not in id_list:
+                    print("Invalid input!")
+                    print("Please enter valid ID")
+                    continue
 
-        self.voyage_obj = Voyage(voyage[3],plane_obj,voyage[4],voyage[0])
-        self.listAvailablePilots()
-        self.listAvailableCabincrew()
-        # Mögulega henda edit möguleika hérna
-        
+                for voy in voyage_list:
+                    if voy[0] == user_choice:
+                        voyage = voy
+                break      
+
+
+            self.planeType = self.llAPI_in.getPlaneType(voyage[6])
+            plane_obj = Plane(voyage[6], self.planeType)
+
+            self.voyage_obj = Voyage(voyage[3],plane_obj,voyage[4],voyage[0])
+            self.listAvailablePilots()
+            self.listAvailableCabincrew()
+            if self.print_crew_review() == None:
+                return None
+                
+            # Mögulega henda edit möguleika hérna      
 
 
     def listAvailablePilots(self):
-        '''Method that gets list of available pilots with the right permit for voyage.'''
+        '''Method that asks user to choose a captain and copilot for voyage.'''
         perfectPilots = self.llAPI_in.availablePilotsWithSpecificLicense(self.voyage_obj.departure,self.planeType)
         empID_list = []
         print()
@@ -124,6 +150,7 @@ class GatherCrew():
         input('Press enter to choose FAs for Voyage!')
 
     def listAvailableCabincrew(self):
+        ''' Method that asks user to choose FSM, FA1 and FA2 for voyage. '''
         perfectFAs = self.llAPI_in.getAvailabiltyOfFAs(self.voyage_obj.departure, 'Available')
         empID_list = []
         print()
@@ -134,7 +161,6 @@ class GatherCrew():
         for fa in perfectFAs:
             print('({}) {}'.format(fa['ID'], fa['Name']))
             empID_list.append(fa['ID'])
-        
         print()
         user_choice = input("Enter ID of flight service manager for voyage: ")
         valid_input = False
@@ -210,11 +236,11 @@ class GatherCrew():
                 self.fa2_name = fa['Name']
                 self.voyage_obj.assignFA2(self.fa2)
         
-        self.print_crew_review()
 
         
         
     def print_crew_review(self):
+        ''' Method that prints out a review of the new crew and asks user to confirm the crew or cancel.'''
         while True:    
             print()
             print(''' ___________________________________________''')
@@ -240,12 +266,11 @@ class GatherCrew():
             print()
             if user_input == "1":
                 self.storeCrewToFile(self.voyage_obj)
-                self.crewSuccessfullyAddedToVoyage()
+                if self.crewSuccessfullyAddedToVoyage() == None:
+                    return None
             elif user_input == "2":
                 return None
-                pass
-                #fa2 = self.fa2['SSN']
-                #self.voyage_obj.assignFA2(fa2)
+
         
     def storeCrewToFile(self,voyage):
         self.llAPI_in.storeCrewToFile(voyage)
@@ -257,7 +282,7 @@ class GatherCrew():
         print(''' ___________________________________________''')
         print('''|       Voyage successfully staffed!        |''')
         print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
-        print('''|   Press Enter go to back to homepage      |''')
+        print('''|   Press enter go to back to homepage      |''')
         print('''|                                           |''')  
         print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ ''')
         user_input = input()
