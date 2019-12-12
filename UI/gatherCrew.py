@@ -46,7 +46,7 @@ class GatherCrew():
         self.listAvailablePilots()
         self.listAvailableCabincrew()
         # Mögulega henda edit möguleika hérna
-        self.storeCrewToFile(self.voyage_obj)
+        
 
 
     def listAvailablePilots(self):
@@ -239,12 +239,26 @@ class GatherCrew():
             user_input = input("Input: ")
             print()
             if user_input == "1":
-                pass
+                self.storeCrewToFile(self.voyage_obj)
+                self.crewSuccessfullyAddedToVoyage()
             elif user_input == "2":
                 return None
-        
-                fa2 = fa['SSN']
-                self.voyage_obj.assignFA2(fa2)
+                pass
+                #fa2 = self.fa2['SSN']
+                #self.voyage_obj.assignFA2(fa2)
         
     def storeCrewToFile(self,voyage):
         self.llAPI_in.storeCrewToFile(voyage)
+
+
+    def crewSuccessfullyAddedToVoyage(self):
+        print()
+    
+        print(''' ___________________________________________''')
+        print('''|       Voyage successfully staffed!        |''')
+        print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
+        print('''|   Press Enter go to back to homepage      |''')
+        print('''|                                           |''')  
+        print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ ''')
+        user_input = input()
+        return None
