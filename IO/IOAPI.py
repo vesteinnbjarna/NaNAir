@@ -3,6 +3,7 @@ from IO.voyageIO import VoyageIO
 from IO.planeIO import PlaneIO
 from IO.employeeIO import EmployeeIO
 from IO.routeIO import RouteIO
+from IO.planeTypeIO import PlaneTypeIO
 
 
 class IOAPI ():
@@ -13,7 +14,7 @@ class IOAPI ():
         self.plaIO = PlaneIO('IO/Data/Planes.csv')
         self.empIO = EmployeeIO('IO/Data/Crew.csv')
         self.rouIO = RouteIO('IO/Data/Routes.csv')
-        #self.typIO = TypeIO('IO/Data/AircraftType.csv')
+        self.typIO = PlaneTypeIO('IO/Data/AircraftType.csv')
 
     def loadDestinationFromFile (self):
         return self.desIO.loadFile()
@@ -38,6 +39,12 @@ class IOAPI ():
 
     def storePlaneToFile(self,plane):
         return self.plaIO.storePlaneToFile(plane)
+
+    def storePlaneTypeToFile(self,planeType):
+        return self.typIO.storePlaneTypeToFile(planeType)
+    
+    def loadPlaneTypesFromFile(self):
+        return self.typIO.loadFile()
 
     def loadEmployeesFromFile(self):
         return self.empIO.loadFile()

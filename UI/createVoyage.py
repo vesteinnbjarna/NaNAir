@@ -29,7 +29,8 @@ class CreateVoyage():
                 if self.select_destination() == "Back to home":
                     return None
             elif user_input == "2":
-                self.gaterCrew.getListOfUnmannedVoyages()
+                if self.gaterCrew.getListOfUnmannedVoyages() == None:
+                    return None 
             elif user_input == "3":
                 if self.get_destination_info() == None:
                     return None
@@ -215,6 +216,7 @@ class CreateVoyage():
         self.destination = input(" Enter destination: ")
         self.country = input(" Enter country: ")
         self.airport = input(" Enter airport: ")
+<<<<<<< HEAD
         self.airtime = input(" Enter airtime: ")
         try:
             int(self.airtime)
@@ -222,6 +224,14 @@ class CreateVoyage():
             ValueError
             print("Invalid airtime, must be integer!")
             self.airtime = input(" Enter airtime: ")
+=======
+        self.airtime = input(" Enter airtime (hh:mm): ")
+        try:
+            int(self.airtime)
+        except ValueError:
+            print("Invalid airtime, must be integer!")
+            self.airtime = input(" Enter airtime (hh:mm): ")
+>>>>>>> a1dab497258b4bd279a0de7f825271fa6b140d80
         self.distance = input(" Enter distance: ")
         self.contact_name = input(" Enter contact name: ")  
         self.contact_phone = input(" Enter contact phone: ")
