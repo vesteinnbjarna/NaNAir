@@ -1,11 +1,7 @@
 from Model.voyage import Voyage
 from Model.Destination import Destination
-<<<<<<< HEAD
 from Model.plane import Plane
-=======
-from Model.Plane import Plane
 from UI.gatherCrew import GatherCrew
->>>>>>> 7b34e934b10d1615029a9be8622aa814fc3aee49
 import datetime
 
 class CreateVoyage():
@@ -28,6 +24,7 @@ class CreateVoyage():
             print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')       
             print()
             user_input = input("Input: ")
+            print()
             if user_input == "1":
                 if self.select_destination() == "Back to home":
                     return None
