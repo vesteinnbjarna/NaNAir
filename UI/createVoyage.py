@@ -1,6 +1,6 @@
 from Model.voyage import Voyage
 from Model.Destination import Destination
-from Model.Plane import Plane
+from Model.plane import Plane
 from UI.gatherCrew import GatherCrew
 import datetime
 
@@ -50,7 +50,7 @@ class CreateVoyage():
             counter = 1
             for line in destination_list:
                 for key, val in line.items():
-                    if key == "destination":
+                    if key == "Destination":
                         print("({}) {}".format(counter,val))
                         counter += 1
                         dest_list.append(val)
@@ -75,9 +75,9 @@ class CreateVoyage():
                     user_input = input("Input: ")
 
             for destination in destination_list:
-                if destination['destination'] == dest_list[int(user_input) - 1]:
+                if destination['Destination'] == dest_list[int(user_input) - 1]:
                     destination_line = destination
-            self.chosen_destinaiton = Destination(destination_line['destination'],destination_line['country'],\
+            self.chosen_destinaiton = Destination(destination_line['Destination'],destination_line['country'],\
                 destination_line['airport'],destination_line['airtime'],destination_line['distance'],\
                     destination_line['contact name'],destination_line['contact phone'])
             if self.enter_voyage_details() == "Back to home":
@@ -150,15 +150,16 @@ class CreateVoyage():
             print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
             user_input = input("Input: ")
 
-            valid_input = False
-            while not valid_input:
-                try:
-                    int(user_input)
-                    if user_input == "1" or user_input == "2":
-                        valid_input = True
-                except:
-                    print("Invalid input! Enter either 1 or 2.")
-                    user_input = input("Input: ")
+
+            #valid_input = False
+            #while not valid_input:
+            #    try:
+            #        int(user_input)
+            #        if user_input == "1" or user_input == "2":
+            #            valid_input = True
+            #    except:
+            #        print("Invalid input! Enter either 1 or 2.")
+            #        user_input = input("Input: ")
             
             if user_input == "1":
                 self.llAPI_in.createVoyage(self.voyage)
@@ -167,6 +168,9 @@ class CreateVoyage():
                 return None
             elif user_input == "2":
                 return None
+            else:
+                print("Invalid input! Enter either 1 or 2.")
+                continue
 
     def createVoyageObject(self):
         self.voyage = Voyage(self.chosen_destinaiton, self.chosen_aircraft,self.dateTime)

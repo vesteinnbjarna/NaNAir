@@ -1,6 +1,6 @@
 from Model.employee import Employee
 from Model.voyage import Voyage
-from Model.Plane import Plane
+from Model.plane import Plane
 
 # Get list of unmanned voyages
 # Choose voyage to man

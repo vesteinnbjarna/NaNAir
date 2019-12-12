@@ -44,19 +44,6 @@ class UpdateEmployee():
 
 
     def show_list(self, listOfEmployees):
-<<<<<<< HEAD
-        header_list = self.llAPI_in.getEmployeeHeader(listOfEmployees)
-        value_list = self.llAPI_in.getEmployeeValue(listOfEmployees)
-        print("{:<11}{:<20}{:<30}{:<20}".format(header_list[0],header_list[1],header_list[2],header_list[4]))
-        print("__"*41)
-        for line in value_list:
-            print("|{:<10}{:<20}{:<30}{:<20}|".format(line[0],line[1],line[2],line[4]))
-        print("|","__"*39,"|")
-        print()
-        self.id = input("Enter ID of employee: ") # can also be used to index line in the csv file
-        if self.update_employee() == None:
-            return None
-=======
         ''' Method that prints out list of chosen employees, and gets ID of employee
             that user wants to update. '''
         while True:
@@ -73,19 +60,14 @@ class UpdateEmployee():
             self.id = input("Enter ID of employee: ") # can also be used to index line in the csv file
             self.specific_emp = self.llAPI_in.getChosenEmployee(self.ID_list, self.id)
             self.line_index = self.id
->>>>>>> 7b34e934b10d1615029a9be8622aa814fc3aee49
 
             print()
             
             if self.update_employee() == None:
 
-<<<<<<< HEAD
-    
-=======
                 if self.specific_emp == None:
                     input("Press enter to try again!")
                     continue
->>>>>>> 7b34e934b10d1615029a9be8622aa814fc3aee49
 
                 else:
                     if self.update_employee() == None:
@@ -112,11 +94,7 @@ class UpdateEmployee():
             print()
 
             if user_input == "1":
-<<<<<<< HEAD
-                print("Can't change ID!") ###ATH
-=======
                 print("Can't change ID!")
->>>>>>> 7b34e934b10d1615029a9be8622aa814fc3aee49
                 continue
 
             elif user_input == "2":

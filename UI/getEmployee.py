@@ -196,15 +196,23 @@ class GetEmployee():
         planeTypeId = {}
         emp_name = ""
         for line in listOfEmployees:
-            for key,val in line.items():
-                if key == "Name":
-                    emp_name = val
-                elif key == "Licence":
-                    if val not in planeTypeId:
-                        planeTypeId[val] = emp_name
-                    else:
-                        planeTypeId[val] += "," + emp_name
+            if len(line) == 1:
+                pass
+            else:
+                for key,val in line.items():
+                    if key == "Name":
+                        emp_name = val
+                    elif key == "Licence":
+                        if val not in planeTypeId:
+                            planeTypeId[val] = emp_name
+                        else:
+                            planeTypeId[val] += "," + emp_name
             emp_name = ""
+        if self.list_type == "Available" or self.list_type == "Unavailable":
+            print()
+            print(''' ___________________________________________''')
+            print('''|   {:>11} employees on {:15}|'''.format(self.list_type,str(self.date)))
+            print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
         for permit, names in planeTypeId.items(): 
             print()
             print(''' _________________''')
@@ -276,19 +284,34 @@ class GetEmployee():
         emp_name = ""
         list_of_employees = []
         for line in listOfEmployees:
-            for key,val in line.items():
-                if key == "Name":
-                    emp_name = val
-                elif key == "Licence":
-                    if val == chosen_permit:
-                        list_of_employees.append(emp_name)
+            if len(line) == 1:
+                pass
+            else:
+                for key,val in line.items():
+                    if key == "Name":
+                        emp_name = val
+                    elif key == "Licence":
+                        if val == chosen_permit:
+                            list_of_employees.append(emp_name)
             emp_name = ""
+
+        if self.list_type == "Available" or self.list_type == "Unavailable":
+            print()
+            print(''' ___________________________________________''')
+            print('''|   {:>11} employees on {:15}|'''.format(self.list_type,str(self.date)))
+            print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
         print()
         print(''' _________________''')
         print('''|   {:14}|'''.format(chosen_permit))
         print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
-        for name in sorted(list_of_employees):
-            print(name)
+        if len(list_of_employees) == 0:
+            print("!!! LAZY EMPLOYEE ALERT !!!")
+            print()
+            print("No employee with specific permit working.")
+            print()
+        else:
+            for name in sorted(list_of_employees):
+                print(name)
         print("\n\n")
         print(input("Press enter to continue!"))
         
@@ -317,8 +340,11 @@ class GetEmployee():
                                 print("{:15}".format(key), end=" ")
                         if self.list_type == "Unavailable":
                             print("{:15}".format("Destination"))
+                            print("__"*40)
+                        else:
+                            print("\n____________________________________________________________")
                         counter += 1
-                print("__"*40)
+                #print("__"*40)
                 print()
                 #If unavailable we want to print out destination
                 if self.list_type == "Unavailable":
@@ -329,13 +355,14 @@ class GetEmployee():
                         else:
                             for key,val in line.items():
                                 if key == "ID":
-                                    print("{:5}".format(val), end=" ")
+                                    print("\n{:5}".format(val), end=" ")
                                 elif key == "SSN":
                                     print("{:15}".format(val), end=" ")
                                 elif key == "Name":
                                     print("{:25}".format(val), end=" ")
                                 elif key == "Role":
                                     print("{:15}".format(val), end=" ")
+                            
                 else:
                     for line in listOfEmployees:
                         for key,val in line.items():

@@ -1,6 +1,6 @@
 class PlaneType():
-    def __init__(self, plane_type, manufacturer, seats):
-        self.plane_type = plane_type
+    def __init__(self, planeType, manufacturer, seats):
+        self.plane_type = planeType
         self.manufacturer = manufacturer
         self.seats = seats
 
