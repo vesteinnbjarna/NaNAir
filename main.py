@@ -1,4 +1,4 @@
-from UI.mainPageUI import MainPageUI
+from UI.mainPageUI import MainPageUI 
 
 def main(): 
     a = MainPageUI()
