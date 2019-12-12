@@ -21,7 +21,6 @@ class EmployeeIO (BaseClassIO):
         emp_license = Employee.get_license(employee)
 
         employee_info = '\n{},{},{},{},{},{},{},{},{}'.format(emp_id,ssn,name,role,rank,emp_license,address,phone_no,email)
-        print(employee_info)
         
         with open(self.filename,'a') as f:
             f.write(employee_info)
