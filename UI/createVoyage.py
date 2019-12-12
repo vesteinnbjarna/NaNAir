@@ -51,7 +51,7 @@ class CreateVoyage():
             counter = 1
             for line in destination_list:
                 for key, val in line.items():
-                    if key == "destination":
+                    if key == "Destination":
                         print("({}) {}".format(counter,val))
                         counter += 1
                         dest_list.append(val)
