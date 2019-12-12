@@ -117,6 +117,32 @@ class GetVoyage():
         else:
             print('No voyages on {}'.format(self.date))
         
+<<<<<<< HEAD
+=======
+        input("Press enter to continue")
+        
+        #line_index = 0
+        # if list_of_voyages:
+        #     counter = 0
+        #     for line in list_of_voyages:
+        #         if counter < 1:
+        #             for key in line.keys():
+        #                 print(key, end="\t")
+        #             counter += 1
+        #         else:
+        #             print()
+        #             break
+        #     for line in list_of_voyages:
+        #         for key,val in line.items():
+        #             print(val, end="\t")
+        #             #line_index += 1
+        #         print()
+        #     print()
+        #else:
+        #     print("No voyages on selected date!")
+        # user_input = input("Press enter to go back")
+
+>>>>>>> 69c482c15efd8f0b948c5bcaf0b068d54a6388eb
 
     def get_date_input(self):
         ''' Method that gets date input and check if valid,

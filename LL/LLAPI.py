@@ -32,8 +32,8 @@ class LLAPI():
     def updateContactInfo(self,line_index,row_index,updated_info):
         return self.destLL.updateContactInfo(line_index,row_index, updated_info)
 
-    def createVoyage(self):
-        return self.voyLL.createVoyage()
+    def createVoyage(self,voyage):
+        return self.voyLL.createVoyage(voyage)
     
     def getVoyages(self):
         return self.voyLL.getVoyages()
