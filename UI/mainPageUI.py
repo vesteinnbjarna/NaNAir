@@ -30,7 +30,13 @@ class MainPageUI():
                 self.__voyageManagement.renderMenu()
             elif user_input == "3":
                 self.__planeManagement.renderMenu()
+            elif user_input == 'q':
+                return None
             else:
+                print()
+                print("Invalid input!")
+                print()
+                input("Press enter to try again :-)")                    
                 continue
 
 

@@ -27,6 +27,10 @@ class GetVoyage():
             elif user_input == "b":
                 return "Back to voy_m"
             else:
+                print()
+                print("Invalid input!")
+                print()
+                input("Press enter to try again :-)")                    
                 continue
     
     def get_list_of_destinations(self):
@@ -53,11 +57,7 @@ class GetVoyage():
                 line[5],line[6],line[7]))
             print()
         print()
-<<<<<<< HEAD
         user_input = input("Press enter to continue!")
-=======
-        input("Press enter to go back")
->>>>>>> a1dab497258b4bd279a0de7f825271fa6b140d80
     
     def get_list_of_voyages(self):
         while True:
@@ -97,6 +97,10 @@ class GetVoyage():
             elif user_input == "b":
                 return None
             else:
+                print()
+                print("Invalid input!")
+                print()
+                input("Press enter to try again :-)")                    
                 continue
 
 

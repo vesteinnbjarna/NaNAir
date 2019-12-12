@@ -1,5 +1,5 @@
 from IO.BaseClassIO import BaseClassIO
-from Model.Plane import Plane
+from Model.plane import Plane
 from Model.PlaneType import PlaneType
 
 class PlaneIO(BaseClassIO):

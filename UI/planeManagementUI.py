@@ -34,5 +34,9 @@ class PlaneManagementUI():
             elif user_input == "b":
                 return None
             else:
+                print()
+                print("Invalid input!")
+                print()
+                input("Press enter to try again :-)")                    
                 continue
 

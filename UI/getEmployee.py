@@ -47,6 +47,10 @@ class GetEmployee():
             elif user_input == "b":
                 return "Back to emp_m"
             else:
+                print()
+                print("Invalid input!")
+                print()
+                input("Press enter to try again :-)")                    
                 continue        #if invalid input, continue.
 
     def get_list(self):
@@ -128,6 +132,10 @@ class GetEmployee():
             elif user_input == "b":
                 return None
             else:
+                print()
+                print("Invalid input!")
+                print()
+                input("Press enter to try again :-)")                    
                 continue        #if invalid input, continue.
 
 
@@ -186,6 +194,10 @@ class GetEmployee():
             elif user_input == "b":
                 return None 
             else:
+                print()
+                print("Invalid input!")
+                print()
+                input("Press enter to try again :-)")                    
                 continue
 
 
@@ -344,7 +356,7 @@ class GetEmployee():
                         else:
                             print("\n____________________________________________________________")
                         counter += 1
-                #print("__"*40)
+        
                 print()
                 #If unavailable we want to print out destination
                 if self.list_type == "Unavailable":
@@ -441,6 +453,10 @@ class GetEmployee():
             elif user_input == "3":
                 return None
             else:
+                print()
+                print("Invalid input!")
+                print()
+                input("Press enter to try again :-)")                    
                 continue
     
     def get_working_schedule(self):

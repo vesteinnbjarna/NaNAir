@@ -40,6 +40,10 @@ class UpdateEmployee():
                 return "Back to emp_m"
 
             else:
+                print()
+                print("Invalid input!")
+                print()
+                input("Press enter to try again :-)")                    
                 continue
 
 
@@ -138,6 +142,10 @@ class UpdateEmployee():
                 self.row_index = 8
  
             else:
+                print()
+                print("Invalid input!")
+                print()
+                input("Press enter to try again :-)")                    
                 continue
 
             if self.update_csv() == None:
@@ -166,6 +174,10 @@ class UpdateEmployee():
                 if self.update_confirmation() == None:
                     return None
             else:
+                print()
+                print("Invalid input!")
+                print()
+                input("Press enter to try again :-)")                    
                 continue
 
 
@@ -177,6 +189,11 @@ class UpdateEmployee():
             print('''|                  NaN Air                  |''')
             print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
             print('''|          Successfullly updated!           |''')
+            print('''|                                           |''')
+            print('''|                                           |''')
+            print('''|                  __|__                    |''')
+            print('''|              ---@-(")-@---                |''')
+            print('''|                                           |''')
             print('''|                                           |''')
             print('''| (1) Update more information               |''')
             print('''| (2) Update another employee               |''')
@@ -198,6 +215,10 @@ class UpdateEmployee():
                 return None
 
             else:
+                print()
+                print("Invalid input!")
+                print()
+                input("Press enter to try again :-)")                    
                 continue
 
 
