@@ -32,6 +32,12 @@ class Voyage(Destination):
     def assignFA2(self, fa2):
         self.fa2 = fa2
 
+    def assingFlightNumber1(self,flightnumber):
+        self.flightNumber1 = flightnumber
+
+    def assingFlightNumber2(self,flightnumber):
+        self.flightNumber2 = flightnumber
+
     def get_dest(self):
         #return Destination.get_destination(self.destination)
         return self.destination

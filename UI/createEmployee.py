@@ -27,7 +27,11 @@ class CreateEmployee():
                 return self.role
             elif user_input == "b":
                 return "Back to emp_m"      #goes back to employee management class
-            else:                     
+            else:
+                print()
+                print("Invalid input!")
+                print()
+                input("Press enter to try again :-)")                    
                 continue
 
     def get_employee_info(self):
@@ -125,6 +129,10 @@ class CreateEmployee():
                 if self.display_info_to_edit() == None:
                     return None
             else:
+                print()
+                print("Invalid input!")
+                print()
+                input("Press enter to try again :-)")                     
                 continue
 
     def display_info_to_edit(self):  
@@ -210,6 +218,10 @@ class CreateEmployee():
                 else:
                     return None
             else:
+                print()
+                print("Invalid input!")
+                print()
+                input("Press enter to try again :-)")                    
                 continue
 
 
@@ -222,6 +234,10 @@ class CreateEmployee():
             print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
             print('''| Employee successfullly created!           |''')
             print('''|                                           |''')
+            print('''|                  __|__                    |''')
+            print('''|              ---@-(")-@---                |''')
+            print('''|                                           |''')
+            print('''|                                           |''')
             print('''| (1) Create another employee               |''')
             print('''| (2) Go back to home page                  |''')
             print('''|                                           |''')
@@ -233,6 +249,10 @@ class CreateEmployee():
             elif user_input == "2":
                 return None
             else:
+                print()
+                print("Invalid input!")
+                print()
+                input("Press enter to try again :-)")                    
                 continue
 
     def create_employee(self):

@@ -60,3 +60,15 @@ class DestinationIO (BaseClassIO):
     def get_destination_id(self):
         dest_id = self.dest[:3].upper()
         return dest_id
+
+    def getDestID (self):
+        maxList = []
+        with open (self.filename, 'r') as f:
+            for line in f:
+                maxList.append(line.split(','))
+        
+        self.destID = int(maxList[-1][-1]) + 1
+        self.destID = str(self.destID)
+        if len(self.destID) == 1:
+            self.destID = "0"+self.destID
+        return self.destID 

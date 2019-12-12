@@ -16,7 +16,7 @@ class PlaneManagementUI():
             print(''' ___________________________________________''')
             print('''|                  NaN Air                  |''')
             print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')  
-            print('''| (1) Create plane                          |''')
+            print('''| (1) Create new plane                      |''')
             print('''| (2) Get list of planes                    |''')
             print('''|                                           |''')
             print('''| (press "b" to go back)                    |''')
@@ -34,5 +34,9 @@ class PlaneManagementUI():
             elif user_input == "b":
                 return None
             else:
+                print()
+                print("Invalid input!")
+                print()
+                input("Press enter to try again :-)")                    
                 continue
 

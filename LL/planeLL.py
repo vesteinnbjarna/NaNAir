@@ -12,6 +12,9 @@ class PlaneLL ():
     def getPlanes(self):
         return self.__ioAPI_in.loadPlanesFromFile()
 
+    def getPlaneType_list(self):
+        return self.__ioAPI_in.loadPlaneTypesFromFile()
+
     def getPlaneType(self,registration):
         plane_list = self.__ioAPI_in.loadPlanesFromFile()
         for plane in plane_list:

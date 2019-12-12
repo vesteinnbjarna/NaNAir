@@ -1,4 +1,4 @@
-id,planeTypeId,manufacturer,model,capacity,
+id,planeTypeId,manufacturer,model,capacity
 1,NABAE146,BAE,146,82
 2,NAFokkerF28,Fokker,F28,65
 3,NAFokkerF100,Fokker,F100,100

@@ -27,6 +27,10 @@ class GetVoyage():
             elif user_input == "b":
                 return "Back to voy_m"
             else:
+                print()
+                print("Invalid input!")
+                print()
+                input("Press enter to try again :-)")                    
                 continue
     
     def get_list_of_destinations(self):
@@ -53,7 +57,7 @@ class GetVoyage():
                 line[5],line[6],line[7]))
             print()
         print()
-        user_input = input("Press enter to go back")
+        user_input = input("Press enter to continue!")
     
     def get_list_of_voyages(self):
         while True:
@@ -93,6 +97,10 @@ class GetVoyage():
             elif user_input == "b":
                 return None
             else:
+                print()
+                print("Invalid input!")
+                print()
+                input("Press enter to try again :-)")                    
                 continue
 
 
@@ -117,29 +125,6 @@ class GetVoyage():
         else:
             print('No voyages on {}'.format(self.date))
         
-        input("Press enter to continue")
-        
-        #line_index = 0
-        # if list_of_voyages:
-        #     counter = 0
-        #     for line in list_of_voyages:
-        #         if counter < 1:
-        #             for key in line.keys():
-        #                 print(key, end="\t")
-        #             counter += 1
-        #         else:
-        #             print()
-        #             break
-        #     for line in list_of_voyages:
-        #         for key,val in line.items():
-        #             print(val, end="\t")
-        #             #line_index += 1
-        #         print()
-        #     print()
-        #else:
-        #     print("No voyages on selected date!")
-        # user_input = input("Press enter to go back")
-
 
     def get_date_input(self):
         ''' Method that gets date input and check if valid,
