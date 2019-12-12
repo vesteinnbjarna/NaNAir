@@ -1,6 +1,6 @@
 from Model.Destination import Destination
 from Model.employee import Employee
-from Model.Plane import Plane
+from Model.plane import Plane
 from Model.route import Route
 import datetime
 

@@ -1,6 +1,6 @@
 from Model.employee import Employee
 from Model.voyage import Voyage
-from Model.Plane import Plane
+from Model.plane import Plane
 import datetime
 
 # Get list of unmanned voyages
@@ -93,7 +93,7 @@ class GatherCrew():
         print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ ''')
         print()
         for pilot in perfectPilots:
-            print("({}) {}".format(pilot['ID'],pilot['Name']))
+            print(" ({}) {}".format(pilot['ID'],pilot['Name']))
             empID_list.append(pilot['ID'])
 
         # User chooses captain with the employee ID.
@@ -167,7 +167,7 @@ class GatherCrew():
         print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ ''')
         print()
         for fa in perfectFAs:
-            print('({}) {}'.format(fa['ID'], fa['Name']))
+            print(' ({}) {}'.format(fa['ID'], fa['Name']))
             empID_list.append(fa['ID'])
         print()
         user_choice = input("Enter ID of flight service manager for voyage: ")
@@ -278,6 +278,12 @@ class GatherCrew():
                     return None
             elif user_input == "2":
                 return None
+            else:
+                print()
+                print("Invalid input!")
+                print()
+                input("Press enter to try again :-)")                    
+
 
         
     def storeCrewToFile(self,voyage):
@@ -290,7 +296,11 @@ class GatherCrew():
         print(''' ___________________________________________''')
         print('''|       Voyage successfully staffed!        |''')
         print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
-        print('''|   Press enter go to back to homepage      |''')
+        print('''|                                           |''')
+        print('''|                  __|__                    |''')
+        print('''|              ---@-(")-@---                |''')
+        print('''|                                           |''')
+        print('''|    Press enter go to back to homepage!    |''')
         print('''|                                           |''')  
         print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ ''')
         user_input = input()

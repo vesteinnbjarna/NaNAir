@@ -1,4 +1,4 @@
-from Model.Plane import Plane
+from Model.plane import Plane
 from Model.PlaneType import PlaneType
 
 class CreatePlane():
@@ -19,7 +19,7 @@ class CreatePlane():
         planeType_list = self.llAPI_in.getPlaneType_list()
         while True:
             print()
-            print('{}    {:>15} {:>10}'.format('ID','Plane Type', 'Manufacturer'))
+            print(' {}    {:>15} {:>10}'.format('ID','Plane Type', 'Manufacturer'))
             print(35 * '_')
             print()
             counter = 1
@@ -27,7 +27,7 @@ class CreatePlane():
                 print('({})  {:>15} {:>10}'.format(counter,planeType['planeTypeId'],planeType['manufacturer']))
                 counter += 1
             print()
-            print('({})  {:>15}'.format(counter, 'Other'))
+            print(' ({})  {:>15}'.format(counter, 'Other'))
             print()
             print("Choose aircraft type")
             user_choice = input("Enter ID: ")
@@ -48,8 +48,10 @@ class CreatePlane():
             elif user_choice == counter:
                 pass
             else:
-                print("Not a valid ID! Press enter to try again.")
-                input()
+                print()
+                print("Not a valid ID!")
+                print()
+                input("Press enter to try again :-)")                    
                 continue
 
     def display_info(self):
@@ -74,6 +76,10 @@ class CreatePlane():
             elif user_input == "2":
                 return None
             else:
+                print()
+                print("Invalid input!")
+                print()
+                input("Press enter to try again :-)")                    
                 continue
 
     def create_plane(self):
@@ -81,18 +87,27 @@ class CreatePlane():
         return None
 
     def print_confirmation(self):
-        print(''' ___________________________________________''')
-        print('''|                  NaN Air                  |''')
-        print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
-        print('''| Plane successfullly created!              |''')
-        print('''|                                           |''')
-        print('''| (1) Create another plane                  |''')
-        print('''| (2) Go back to home page                  |''')
-        print('''|                                           |''')
-        print('''|___________________________________________|''')
-        print()
-        user_input = input("Input: ")
-        if user_input == "1":
-            self.get_plane_info()
-        elif user_input == "2":
-            return None     # Skil None þá vill hann fara í main page
+        while True:
+            print(''' ___________________________________________''')
+            print('''|                  NaN Air                  |''')
+            print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
+            print('''| Plane successfullly created!              |''')
+            print('''|                                           |''')
+            print('''|                  __|__                    |''')
+            print('''|              ---@-(")-@---                |''')
+            print('''|                                           |''')
+            print('''| (1) Create another plane                  |''')
+            print('''| (2) Go back to home page                  |''')
+            print('''|                                           |''')
+            print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ ''')
+            print()
+            user_input = input("Input: ")
+            if user_input == "1":
+                self.get_plane_info()
+            elif user_input == "2":
+                return None     # Skil None þá vill hann fara í main page
+            else:
+                print()
+                print("Invalid input!")
+                print()
+                input("Press enter to try again :-)")                    
