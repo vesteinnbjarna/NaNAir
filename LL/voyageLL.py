@@ -7,7 +7,7 @@ class VoyageLL ():
         self.__ioAPI_in = ioAPI_in
 
     def createVoyage(self):
-        pass
+        pass 
 
     def getVoyages(self):
         return self.__ioAPI_in.loadVoyagesFromFile()
@@ -35,7 +35,7 @@ class VoyageLL ():
             departure_date = line['Departure'][:10]
             if departure_date == str(date):
                 day_list.append(line)
-        return day_list
+        return day_list 
 
     def updateVoyage(self):
         pass

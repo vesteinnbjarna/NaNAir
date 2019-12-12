@@ -68,13 +68,16 @@ class EmployeeLL ():
         ID_list = []
         for line in list_of_employees:
             ID_list.append(line["ID"])
-        if int(emp_id) not in range(1, len(ID_list)+1):
+        #Check if input is valid
+        #Villutékk - mögulega setjum við í sér validation skrá
+        try:
+            if int(emp_id) in range(1, len(ID_list)+1):
+                for line in list_of_employees:
+                    if line["ID"] == emp_id:
+                        return line
+        except ValueError:
             print("ID not found!")
             return None
-        else:
-            for line in list_of_employees:
-                if line['ID'] == emp_id:
-                    return line
 
     def getChosenEmployee(self, id_list, emp_id):
         list_of_employees = self.__ioAPI.loadEmployeesFromFile()
@@ -106,6 +109,7 @@ class EmployeeLL ():
                 else:
                     if pilot not in list_of_unavailable_pilots:
                         list_of_unavailable_pilots.append(pilot)
+                        list_of_unavailable_pilots.append([voyage['Destination']])
         if not list_of_voyages_on_date: # If no voyage on date -> all employees are available
             return list_of_pilots
         elif listType == "Available":
@@ -130,6 +134,7 @@ class EmployeeLL ():
                 else:
                     if fa not in list_of_unavailable_FAs:
                         list_of_unavailable_FAs.append(fa)
+                        list_of_unavailable_FAs.append([voyage['Destination']])
         if not list_of_voyages_on_date: # If no voyage on date -> all employees are available
             return list_of_FAs
         elif listType == "Available":
