@@ -5,6 +5,7 @@ from Model.plane import Plane
 class Voyage(Destination): 
 
     def __init__(self, destination, aircraft, departure, voyageID = 0):
+        
         self.destination = destination
         self.aircraft = aircraft
         self.flightNumber1 = 1
