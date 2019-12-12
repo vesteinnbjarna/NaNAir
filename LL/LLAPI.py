@@ -59,6 +59,9 @@ class LLAPI():
     def getPlanes(self):
         return self.plaLL.getPlanes()
 
+    def getPlaneType(self,registration):
+        return self.plaLL.getPlaneType(registration)
+
     def getAvailablePlanes(self, date, totalTime):
         return self.plaLL.getAvailablePlanes(date,totalTime)
 
@@ -95,3 +98,8 @@ class LLAPI():
     def getChosenEmployee(self, id_list, emp_id):
         return self.empLL.getChosenEmployee(id_list, emp_id)
 
+    def getUnmannedVoyages(self):
+        return self.voyLL.getUnmannedVoyages()
+
+    def availablePilotsWithSpecificLicense(self,time,aircraftType):
+        return self.empLL.availablePilotsWithSpecificLicense(time,aircraftType)

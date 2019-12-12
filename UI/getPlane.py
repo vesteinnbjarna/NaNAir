@@ -50,7 +50,6 @@ class GetPlane():
         user_input = input("Press enter to go back")
 
 
-
     def get_list(self):
         print()
         self.date = input("Enter date (mm/dd/yy): ")
