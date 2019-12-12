@@ -50,7 +50,7 @@ class CreateVoyage():
             counter = 1
             for line in destination_list:
                 for key, val in line.items():
-                    if key == "destination":
+                    if key == "Destination":
                         print("({}) {}".format(counter,val))
                         counter += 1
                         dest_list.append(val)
@@ -75,11 +75,11 @@ class CreateVoyage():
                     user_input = input("Input: ")
 
             for destination in destination_list:
-                if destination['destination'] == dest_list[int(user_input) - 1]:
+                if destination['Destination'] == dest_list[int(user_input) - 1]:
                     destination_line = destination
-            self.chosen_destinaiton = Destination(destination_line['destination'],destination_line['country'],\
-                destination_line['airport'],destination_line['airtime'],destination_line['distance'],\
-                    destination_line['contact name'],destination_line['contact phone'])
+            self.chosen_destinaiton = Destination(destination_line['Destination'],destination_line['Country'],\
+                destination_line['Airport'],destination_line['Airtime'],destination_line['Distance'],\
+                    destination_line['Contact name'],destination_line['Contact phone'])
             if self.enter_voyage_details() == "Back to home":
                 return "Back to home"
 
@@ -210,7 +210,12 @@ class CreateVoyage():
         self.destination = input(" Enter destination: ")
         self.country = input(" Enter country: ")
         self.airport = input(" Enter airport: ")
-        self.airtime = input(" Enter airtime: ")
+        self.airtime = input(" Enter airtime (hh:mm): ")
+        try:
+            int(self.airtime)
+        except ValueError:
+            print("Invalid airtime, must be integer!")
+            self.airtime = input(" Enter airtime (hh:mm): ")
         self.distance = input(" Enter distance: ")
         self.contact_name = input(" Enter contact name: ")  
         self.contact_phone = input(" Enter contact phone: ")

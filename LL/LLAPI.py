@@ -62,6 +62,9 @@ class LLAPI():
     def getPlaneType(self,registration):
         return self.plaLL.getPlaneType(registration)
 
+    def getPlaneType_list(self):
+        return self.plaLL.getPlaneType_list()
+
     def getAvailablePlanes(self, date, totalTime):
         return self.plaLL.getAvailablePlanes(date,totalTime)
 

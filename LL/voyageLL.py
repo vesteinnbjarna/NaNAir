@@ -6,13 +6,11 @@ class VoyageLL ():
     def __init__(self, ioAPI_in):
         self.__ioAPI_in = ioAPI_in
 
-<<<<<<< HEAD
-    def createVoyage(self):
-        pass 
-=======
     def createVoyage(self,voyage):
+        flightNumber1, flightNumber2 = self.getFlightNumbers(voyage)
+        voyage.assingFlightNumber1(flightNumber1)
+        voyage.assingFlightNumber2(flightNumber2)
         return self.__ioAPI_in.storeVoyageToFile(voyage)
->>>>>>> 69c482c15efd8f0b948c5bcaf0b068d54a6388eb
 
     def getVoyages(self):
         return self.__ioAPI_in.loadVoyagesFromFile()
@@ -87,3 +85,30 @@ class VoyageLL ():
         unmannedVoyagesHeaders_list = self.getVoyageHeader(unmannedVoyages_list)
         return unmannedVoyagesValues_list, unmannedVoyagesHeaders_list
 
+    def getFlightNumbers(self,voyage):
+        destNumber_str = self.getDestinationNumber(voyage)
+        voyages_sameDestSameDay_int = self.getVoy_SameDaySameDest(voyage)
+        flightNumber1 = 'NA' + destNumber_str + str(voyages_sameDestSameDay_int * 2)
+        flightNumber2 = 'NA' + flightNumber1[2:4] + str(int(flightNumber1[4]) + 1)
+        return flightNumber1, flightNumber2
+
+    def getVoy_SameDaySameDest(self,voyage):
+        voyages_list = self.__ioAPI_in.loadVoyagesFromFile()
+        voyagesOnSameDay_int = 0
+        for a_voyage in voyages_list:
+            a_voyageDepartureDate = a_voyage['Departure'][:10]
+            voyageDepartureDate = str(voyage.get_Departure())[:10]
+            voyage_dest_obj = voyage.get_dest()
+            voyage_dest_str = voyage_dest_obj.destination
+            if a_voyageDepartureDate == voyageDepartureDate and a_voyage['Destination'] == voyage_dest_str:
+                voyagesOnSameDay_int += 1
+        return voyagesOnSameDay_int
+
+    def getDestinationNumber(self,voyage):
+        destination_list = self.__ioAPI_in.loadDestinationFromFile()
+        voyageDestination_obj = voyage.get_dest()
+        destination_str = voyageDestination_obj.destination
+        destinationNumber_str = ''
+        for destination in destination_list:
+            if destination['Destination'] == destination_str:
+                return destination['Destination number']
