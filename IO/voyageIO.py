@@ -3,8 +3,8 @@ from Model.voyage import Voyage
 from Model.Destination import Destination
 
 class VoyageIO (BaseClassIO):
-   # def __init__(self,filename):
-   #      self.voyageFileName = filename
+    #def __init__(self):
+          #self.temp_filename = 
 
     def loadVoyagesFromFile(self):
         pass
@@ -31,13 +31,58 @@ class VoyageIO (BaseClassIO):
         fa1 = voyage.get_FA1()
         fa2 = voyage.get_FA2()
 
-        voyage_str = '\n{},{},{},{},{},{},{},{},{},{},{},{}'.format(voyageID,flightNumber1,flightNumber2,destination_str,departure\
+        voyage_str = '{},{},{},{},{},{},{},{},{},{},{},{}'.format(voyageID,flightNumber1,flightNumber2,destination_str,departure\
             ,arrival,aircraft_str,captain,copilot,fsm,fa1,fa2)
 
         with open(self.filename,'a') as f:
             f.write(voyage_str)
 
 #id,fn1,fn2,destination,departure,arrival,aircraft,captain,copilot,fsm,fa1,fa2
-
-    def updateVoyageInFile(self):
+#7,8,9,10,11
+    def updateVoyageInFile(self,voyage):
         pass
+
+
+
+
+
+
+    def storeCrewToFile(self,voyage):
+        
+        line_index = int(Voyage.get_ID(voyage))
+        capt = Voyage.get_Captain(voyage)
+        cop = Voyage.get_Copilot(voyage)
+        fsm = Voyage.get_FSM(voyage)
+        fa1 = Voyage.get_FA1(voyage)
+        fa2 = Voyage.get_FA2(voyage)
+
+        with open(self.filename,'r') as f:
+            temp_list = []
+            for line in f:
+                line = line.split(',')
+                temp_list.append(line)
+
+        temp_list[line_index][7] = capt
+        temp_list[line_index][8] = cop
+        temp_list[line_index][9] = fsm
+        temp_list[line_index][10] = fa1
+        temp_list[line_index][11] = fa2 + "\n"
+
+        with open("IO/Data/temp_voyage.csv",'w+') as f:
+            for line in temp_list:
+                voy_to_write = "{},{},{},{},{},{},{},{},{},{},{},{}".format(line[0],line[1],line[2],line[3],
+                line[4],line[5],line[6],line[7],line[8],line[9],line[10],line[11])
+                
+                f.write(voy_to_write)
+
+        with open(self.filename,'w') as f:
+            for line in temp_list:
+                voy_to_write = "{},{},{},{},{},{},{},{},{},{},{},{}".format(line[0],line[1],line[2],line[3],
+                line[4],line[5],line[6],line[7],line[8],line[9],line[10],line[11])
+                
+                f.write(voy_to_write)
+
+
+        
+        
+

@@ -82,3 +82,6 @@ class VoyageLL ():
         unmannedVoyagesHeaders_list = self.getVoyageHeader(unmannedVoyages_list)
         return unmannedVoyagesValues_list, unmannedVoyagesHeaders_list
 
+
+    def storeCrewToFile(self,voyage):
+        self.__ioAPI_in.storeCrewToFile(voyage)

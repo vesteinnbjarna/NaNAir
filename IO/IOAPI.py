@@ -53,3 +53,6 @@ class IOAPI ():
 
     def storeRouteToFile(self):
         return self.rouIO.storeRouteToFile()
+
+    def storeCrewToFile(self,voyage):
+        self.voyIO.storeCrewToFile(voyage)

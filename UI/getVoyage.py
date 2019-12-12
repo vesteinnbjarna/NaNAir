@@ -113,11 +113,11 @@ class GetVoyage():
                 line[0],line[1],line[2],line[3],line[4],
                 line[5],line[6],line[7],line[8],line[9],line[10],line[11]))
             print("\n\n")
-            #input("Press enter to continue!")
+
         else:
             print('No voyages on {}'.format(self.date))
         
-        input("Press enter to continue!")
+        input("Press enter to continue")
         
         #line_index = 0
         # if list_of_voyages:

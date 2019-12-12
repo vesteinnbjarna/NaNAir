@@ -24,6 +24,7 @@ class CreateVoyage():
             print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')       
             print()
             user_input = input("Input: ")
+            print()
             if user_input == "1":
                 if self.select_destination() == "Back to home":
                     return None
@@ -77,9 +78,9 @@ class CreateVoyage():
             for destination in destination_list:
                 if destination['Destination'] == dest_list[int(user_input) - 1]:
                     destination_line = destination
-            self.chosen_destinaiton = Destination(destination_line['Destination'],destination_line['country'],\
-                destination_line['airport'],destination_line['airtime'],destination_line['distance'],\
-                    destination_line['contact name'],destination_line['contact phone'])
+            self.chosen_destinaiton = Destination(destination_line['Destination'],destination_line['Country'],\
+                destination_line['Airport'],destination_line['Airtime'],destination_line['Distance'],\
+                    destination_line['Contact name'],destination_line['Contact phone'])
             if self.enter_voyage_details() == "Back to home":
                 return "Back to home"
 
@@ -215,6 +216,12 @@ class CreateVoyage():
         self.country = input(" Enter country: ")
         self.airport = input(" Enter airport: ")
         self.airtime = input(" Enter airtime: ")
+        try:
+            int(self.airtime)
+        except:
+            ValueError
+            print("Invalid airtime, must be integer!")
+            self.airtime = input(" Enter airtime: ")
         self.distance = input(" Enter distance: ")
         self.contact_name = input(" Enter contact name: ")  
         self.contact_phone = input(" Enter contact phone: ")

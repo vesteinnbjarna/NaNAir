@@ -65,3 +65,6 @@ class Voyage(Destination):
 
     def calculateFlightNumber(self):
         pass
+
+    def get_ID(self):
+        return self.voyageID
