@@ -1,5 +1,5 @@
 from IO.BaseClassIO import BaseClassIO
-from Model.Destination import Destination
+from Model.destination import Destination
 class DestinationIO (BaseClassIO):
 
     def __init__(self,filename):

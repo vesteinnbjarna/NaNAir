@@ -45,6 +45,8 @@ class GatherCrew():
         self.voyage_obj = Voyage(voyage[3],plane_obj,voyage[4],voyage[0])
         self.listAvailablePilots()
         self.listAvailableCabincrew()
+        # Mögulega henda edit möguleika hérna
+        self.storeCrewToFile(self.voyage_obj)
 
 
     def listAvailablePilots(self):
@@ -204,6 +206,7 @@ class GatherCrew():
 
         for fa in perfectFAs:
             if fa['ID'] == user_choice:
+<<<<<<< HEAD
                 self.fa2 = fa['SSN']
                 self.fa2_name = fa['Name']
                 self.voyage_obj.assignFA2(self.fa2)
@@ -241,3 +244,10 @@ class GatherCrew():
             elif user_input == "2":
                 return None
         
+=======
+                fa2 = fa['SSN']
+                self.voyage_obj.assignFA2(fa2)
+        
+    def storeCrewToFile(self,voyage):
+        self.llAPI_in.storeCrewToFile(voyage)
+>>>>>>> 237ffc2b96528ae6523c62502c8dba0ed45cc7cf
