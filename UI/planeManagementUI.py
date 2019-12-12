@@ -16,7 +16,7 @@ class PlaneManagementUI():
             print(''' ___________________________________________''')
             print('''|                  NaN Air                  |''')
             print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')  
-            print('''| (1) Create plane                          |''')
+            print('''| (1) Create new plane                      |''')
             print('''| (2) Get list of planes                    |''')
             print('''|                                           |''')
             print('''| (press "b" to go back)                    |''')
