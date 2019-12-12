@@ -1,9 +1,5 @@
 from Model.voyage import Voyage
-<<<<<<< HEAD
 from Model.Destination import Destination
-=======
-from Model.destination import Destination
->>>>>>> 237ffc2b96528ae6523c62502c8dba0ed45cc7cf
 from Model.plane import Plane
 from UI.gatherCrew import GatherCrew
 import datetime

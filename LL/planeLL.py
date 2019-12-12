@@ -1,6 +1,6 @@
 #from IO.IOAPI import IOAPI
 import datetime
-from Model.destination import Destination
+from Model.Destination import Destination
 
 class PlaneLL ():
     def __init__(self, ioAPI_in):

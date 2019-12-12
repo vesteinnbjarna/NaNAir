@@ -1,6 +1,6 @@
 from IO.BaseClassIO import BaseClassIO
 from Model.voyage import Voyage
-from Model.destination import Destination
+from Model.Destination import Destination
 
 class VoyageIO (BaseClassIO):
     #def __init__(self):

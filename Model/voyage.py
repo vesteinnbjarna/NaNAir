@@ -1,4 +1,4 @@
-from Model.destination import Destination
+from Model.Destination import Destination
 from Model.employee import Employee
 from Model.plane import Plane
 
