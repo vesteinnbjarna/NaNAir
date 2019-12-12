@@ -1,10 +1,6 @@
 from IO.BaseClassIO import BaseClassIO
-<<<<<<< HEAD
 from Model.plane import Plane
-=======
-from Model.Plane import Plane
 from Model.PlaneType import PlaneType
->>>>>>> 7b34e934b10d1615029a9be8622aa814fc3aee49
 
 class PlaneIO (BaseClassIO):
     #def __init__(self,filename):
