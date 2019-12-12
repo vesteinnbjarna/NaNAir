@@ -95,13 +95,6 @@ class LLAPI():
     def getAvailabilityOfAll(self, date, listType):
         return self.empLL.getAvailabilityOfAll(date, listType)
     
-<<<<<<< HEAD
-    def getVoyageHeader(self, voyage_list):
-        return self.voyLL.getVoyageHeader(voyage_list)
-
-    def getVoyageValue(self,voyage_list):
-        return self.voyLL.getVoyageValue(voyage_list)
-=======
     def getChosenEmployee(self, id_list, emp_id):
         return self.empLL.getChosenEmployee(id_list, emp_id)
 
@@ -110,4 +103,3 @@ class LLAPI():
 
     def availablePilotsWithSpecificLicense(self,time,aircraftType):
         return self.empLL.availablePilotsWithSpecificLicense(time,aircraftType)
->>>>>>> 7b34e934b10d1615029a9be8622aa814fc3aee49
