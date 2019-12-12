@@ -1,6 +1,6 @@
 from Model.employee import Employee
 from Model.voyage import Voyage
-from Model.Plane import Plane
+from Model.plane import Plane
 
 # Get list of unmanned voyages
 # Choose voyage to man
@@ -44,6 +44,8 @@ class GatherCrew():
         self.voyage_obj = Voyage(voyage[3],plane_obj,voyage[4],voyage[0])
         self.listAvailablePilots()
         self.listAvailableCabincrew()
+        # Mögulega henda edit möguleika hérna
+        self.storeCrewToFile(self.voyage_obj)
 
     def listAvailablePilots(self):
         perfectPilots = self.llAPI_in.availablePilotsWithSpecificLicense(self.voyage_obj.departure,self.planeType)
@@ -152,3 +154,6 @@ class GatherCrew():
             if fa['ID'] == user_choice:
                 fa2 = fa['SSN']
                 self.voyage_obj.assignFA2(fa2)
+        
+    def storeCrewToFile(self,voyage):
+        self.llAPI_in.storeCrewToFile(voyage)

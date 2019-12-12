@@ -1,6 +1,6 @@
 from Model.voyage import Voyage
-from Model.Destination import Destination
-from Model.Plane import Plane
+from Model.destination import Destination
+from Model.plane import Plane
 from UI.gatherCrew import GatherCrew
 import datetime
 

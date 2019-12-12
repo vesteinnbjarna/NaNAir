@@ -6,13 +6,8 @@ class VoyageLL ():
     def __init__(self, ioAPI_in):
         self.__ioAPI_in = ioAPI_in
 
-<<<<<<< HEAD
-    def createVoyage(self):
-        pass 
-=======
     def createVoyage(self,voyage):
         return self.__ioAPI_in.storeVoyageToFile(voyage)
->>>>>>> 69c482c15efd8f0b948c5bcaf0b068d54a6388eb
 
     def getVoyages(self):
         return self.__ioAPI_in.loadVoyagesFromFile()
@@ -87,3 +82,6 @@ class VoyageLL ():
         unmannedVoyagesHeaders_list = self.getVoyageHeader(unmannedVoyages_list)
         return unmannedVoyagesValues_list, unmannedVoyagesHeaders_list
 
+
+    def storeCrewToFile(self,voyage):
+        self.__ioAPI_in.storeCrewToFile(voyage)
