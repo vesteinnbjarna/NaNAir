@@ -27,6 +27,10 @@ class GetPlane():
             elif user_input == "b":
                 return None
             else:
+                print()
+                print("Invalid input!")
+                print()
+                input("Press enter to try again :-)")                    
                 continue
 
     def print_list(self):

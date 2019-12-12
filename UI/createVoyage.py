@@ -37,6 +37,10 @@ class CreateVoyage():
             elif user_input == "b":
                 return "Back to voy_m"
             else:
+                print()
+                print("Invalid input!")
+                print()
+                input("Press enter to try again :-)")    
                 continue
 
 ########### create new voyage #######################################
@@ -95,7 +99,7 @@ class CreateVoyage():
         line_list = []
         working_list = []
         for aircraft in available_aircrafts_list:
-            print('({})'.format(counter), end=" ")
+            print(' ({})'.format(counter), end=" ")
             for val in aircraft.values():
                 print(val, end="  ")
                 line_list.append(val)
@@ -114,24 +118,42 @@ class CreateVoyage():
         print()
         #self.date = input("Enter date of departure (yyyy-mm-dd): ")
         #self.time_depart = input("Enter time of departure (hh:mm): ")
-        year = int(input("Enter year: "))
-        month = int(input("Enter month: "))
-        day = int(input("Enter day: "))
-        time = input("Enter time (hh:mm): ")
-        hours = time[:2]
-        minutes = time[3:]
-        if hours[0] == '0':
-            hours = int(hours[1:])
-        else:
-            hours = int(hours)
-        if minutes[0] == '0':
-            minutes = int(minutes[1:])
-        else:
-            minutes = int(minutes)
-        self.dateTime = datetime.datetime(year,month,day,hours,minutes)
+
+        year_str = input("Enter year: ")
+        month_str = input("Enter month: ")
+        day_str = input("Enter day: ")
+        year_int = self.check_input(year_str)
+        month_int = self.check_input(month_str)
+        day_int = self.check_input(day_str)
+        invalid_input = True
+        while invalid_input == True:
+            self.time = input("Enter airtime (hh:mm): ")
+            try:
+                hours_int = int(self.time[:2])
+                minutes_int = int(self.time[3:])
+                invalid_input = False
+            except ValueError:
+                print()
+                print(" Invalid airtime, must be integer!")
+                print()
+                continue 
+        self.dateTime = datetime.datetime(year_int,month_int,day_int,hours_int,minutes_int)
         self.get_availalbe_aircraft_list()
         if self.createVoyageObject() == "Back to home":
             return "Back to home"
+
+    def check_input(self, a_str):
+        invalid_input = True
+        while invalid_input == True:
+            try:
+                a_int = int(a_str)
+                return a_int
+            except ValueError:
+                print()
+                print("Invalid input! Must be integer. ")
+                print()
+                continue
+
 
     def review_voyage_info(self):
         while True:
@@ -151,17 +173,7 @@ class CreateVoyage():
             print('''|                                           |''')
             print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
             user_input = input("Input: ")
-
-            valid_input = False
-            while not valid_input:
-                try:
-                    int(user_input)
-                    if user_input == "1" or user_input == "2":
-                        valid_input = True
-                except:
-                    print("Invalid input! Enter either 1 or 2.")
-                    user_input = input("Input: ")
-            
+            print()
             if user_input == "1":
                 self.llAPI_in.createVoyage(self.voyage)
                 if self.print_confirmation_voyage() == "Back to home":
@@ -169,6 +181,12 @@ class CreateVoyage():
                 return None
             elif user_input == "2":
                 return None
+            else:
+                print()
+                print("Invalid input!")
+                print()
+                input("Press enter to try again :-)")                    
+                continue
 
     def createVoyageObject(self):
         self.voyage = Voyage(self.chosen_destinaiton, self.chosen_aircraft,self.dateTime)
@@ -176,31 +194,24 @@ class CreateVoyage():
             return "Back to home"
 
     def print_confirmation_voyage(self):
-        print(''' ___________________________________________''')
-        print('''|                  NaN Air                  |''')
-        print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
-        print('''| Voyage successfully created!              |''')
-        print('''|                                           |''')
-        print('''| (1) Create another voyage                 |''')
-        print('''| (2) Go back to home page                  |''')
-        print('''|                                           |''')
-        print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
-        user_input = input("Input: ")
-
-        valid_input = False
-        while not valid_input:
-            try:
-                int(user_input)
-                if user_input == "1" or user_input == "2":
-                    valid_input = True
-            except:
-                print("Invalid input! Enter either 1 or 2.")
-                user_input = input("Input: ")
-        
-        if user_input == "1":
-            return None
-        elif user_input == "2":
-            return "Back to home"
+        while True:
+            print(''' ___________________________________________''')
+            print('''|                  NaN Air                  |''')
+            print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
+            print('''| Voyage successfully created!              |''')
+            print('''|                                           |''')
+            print('''| (1) Create another voyage                 |''')
+            print('''| (2) Go back to home page                  |''')
+            print('''|                                           |''')
+            print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
+            user_input = input("Input: ") 
+            if user_input == "1":
+                return None
+            elif user_input == "2":
+                return "Back to home"
+            else:
+                continue
+            
 
 ########### create new destination #######################################
 
@@ -212,7 +223,18 @@ class CreateVoyage():
         self.destination = input(" Enter destination: ")
         self.country = input(" Enter country: ")
         self.airport = input(" Enter airport: ")
-        self.airtime = input(" Enter airtime: ")
+        invalid_input = True
+        while invalid_input == True:
+            self.airtime = input(" Enter airtime (hh:mm): ")
+            try:
+                int(self.airtime[:2])
+                int(self.airtime[3:])
+                invalid_input = False
+            except ValueError:
+                print()
+                print(" Invalid airtime, must be integer!")
+                print()
+                continue
         self.distance = input(" Enter distance: ")
         self.contact_name = input(" Enter contact name: ")  
         self.contact_phone = input(" Enter contact phone: ")
@@ -246,6 +268,10 @@ class CreateVoyage():
                 if self.edit_info() == None:
                     return None
             else:
+                print()
+                print("Invalid input!")
+                print()
+                input("Press enter to try again :-)")                    
                 continue
 
     def edit_info(self):
@@ -292,6 +318,10 @@ class CreateVoyage():
                 if self.display_destination_info() == None:
                     return None
             else:
+                print()
+                print("Invalid input!")
+                print()
+                input("Press enter to try again :-)")                    
                 continue
             
 
@@ -301,6 +331,9 @@ class CreateVoyage():
             print('''|                  NaN Air                  |''')
             print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
             print('''| Destination successfully created!         |''')
+            print('''|                                           |''')
+            print('''|                  __|__                    |''')
+            print('''|              ---@-(")-@---                |''')
             print('''|                                           |''')
             print('''| (1) Create another destination            |''')
             print('''| (2) Go back to home page                  |''')
@@ -313,6 +346,10 @@ class CreateVoyage():
             elif user_input == "2":
                 return None
             else:
+                print()
+                print("Invalid input!")
+                print()
+                input("Press enter to try again :-)")                    
                 continue
 
 

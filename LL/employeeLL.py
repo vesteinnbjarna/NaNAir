@@ -75,6 +75,8 @@ class EmployeeLL ():
                 for line in list_of_employees:
                     if line["ID"] == emp_id:
                         return line
+            else:
+                print("ID not found!")
         except ValueError:
             print("ID not found!")
             return None

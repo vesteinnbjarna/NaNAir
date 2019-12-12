@@ -48,4 +48,8 @@ class EmployeeManagementUI():
             elif user_input == "b":
                 break
             else:
+                print()
+                print("Invalid input!")
+                print()
+                input("Press enter to try again :-)")                    
                 continue
