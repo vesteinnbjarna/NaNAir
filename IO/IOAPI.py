@@ -61,5 +61,5 @@ class IOAPI ():
     def storeRouteToFile(self):
         return self.rouIO.storeRouteToFile()
 
-    def getDestID(self):
-        return self.desIO.getDestID()
+    def storeCrewToFile(self,voyage):
+        self.voyIO.storeCrewToFile(voyage)

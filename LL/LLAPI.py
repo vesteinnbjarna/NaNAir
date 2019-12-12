@@ -106,3 +106,8 @@ class LLAPI():
 
     def availablePilotsWithSpecificLicense(self,time,aircraftType):
         return self.empLL.availablePilotsWithSpecificLicense(time,aircraftType)
+
+    def storeCrewToFile(self, voyage):
+        self.voyLL.storeCrewToFile(voyage)
+
+    

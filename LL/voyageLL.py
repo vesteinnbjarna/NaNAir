@@ -108,7 +108,9 @@ class VoyageLL ():
         destination_list = self.__ioAPI_in.loadDestinationFromFile()
         voyageDestination_obj = voyage.get_dest()
         destination_str = voyageDestination_obj.destination
-        destinationNumber_str = ''
         for destination in destination_list:
             if destination['Destination'] == destination_str:
                 return destination['Destination number']
+
+    def storeCrewToFile(self,voyage):
+        self.__ioAPI_in.storeCrewToFile(voyage)

@@ -1,6 +1,6 @@
 from Model.Destination import Destination
 from Model.employee import Employee
-from Model.Plane import Plane
+from Model.plane import Plane
 
 class Voyage(Destination): 
 
@@ -71,3 +71,6 @@ class Voyage(Destination):
 
     def calculateFlightNumber(self):
         pass
+
+    def get_ID(self):
+        return self.voyageID
