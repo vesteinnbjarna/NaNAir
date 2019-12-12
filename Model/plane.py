@@ -1,18 +1,10 @@
 class Plane():
-    def __init__(self, registration, plane_type, manufacturer, seats):
+    def __init__(self,registration,planeType):
         self.registration = registration
-        self.plane_type = plane_type
-        self.manufacturer = manufacturer
-        self.seats = seats
+        self.planeType = planeType
 
-    def get_registration (self):
+    def get_registration(self):
         return self.registration
 
-    def get_plane_type(self):
-        return self.plane_type
-    
-    def get_manufacturer (self):
-        return self.manufacturer
-
-    def get_seats (self):
-        return self.seats
+    def get_planeType(self):
+        return self.planeType

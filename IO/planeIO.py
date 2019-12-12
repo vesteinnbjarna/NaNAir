@@ -1,5 +1,6 @@
 from IO.BaseClassIO import BaseClassIO
-from Model.plane import Plane
+from Model.Plane import Plane
+from Model.PlaneType import PlaneType
 
 class PlaneIO (BaseClassIO):
     #def __init__(self,filename):
@@ -11,8 +12,8 @@ class PlaneIO (BaseClassIO):
 
     def storePlaneToFile(self,plane_in):
         registration = Plane.get_registration(plane_in)
-        seats = Plane.get_seats(plane_in)
-        manufacturer = Plane.get_manufacturer(plane_in)
+        seats = PlaneType.get_seats(plane_in)
+        manufacturer = PlaneType.get_manufacturer(plane_in)
         plane_type = Plane.get_plane_type(plane_in)
         
         plane_info = '\n{},{}'.format(registration,plane_type)

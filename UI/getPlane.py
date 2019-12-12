@@ -1,4 +1,4 @@
-from Model.plane import Plane
+from Model.Plane import Plane
 
 class GetPlane():
     def __init__(self, llAPI_in):
@@ -48,7 +48,6 @@ class GetPlane():
             print()
         print()
         user_input = input("Press enter to go back")
-
 
 
     def get_list(self):

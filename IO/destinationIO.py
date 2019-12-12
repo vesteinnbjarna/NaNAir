@@ -11,6 +11,7 @@ class DestinationIO (BaseClassIO):
 
     def storeDestinationToFile(self,dest):
         #country = Destination.
+        dest_num = self.getDestID()
         country = Destination.get_country(dest)
         self.dest = Destination.get_destination(dest)
         airport = Destination.get_airport(dest)
@@ -22,7 +23,7 @@ class DestinationIO (BaseClassIO):
         
         
         
-        dest_info = '\n{},{},{},{},{},{},{},{}'.format(dest_id,self.dest,country,airport,airtime,dist,con_name,con_phone)
+        dest_info = '\n{},{},{},{},{},{},{},{},{}'.format(dest_id,self.dest,country,airport,airtime,dist,con_name,con_phone,dest_num)
 
         with open(self.filename,'a') as f:
             f.write(dest_info)
@@ -46,12 +47,12 @@ class DestinationIO (BaseClassIO):
 
         with open(self.temp_filename,'w+') as f:
             for line in temp_list:
-                str_to_write = "{},{},{},{},{},{},{},{}".format(line[0],line[1],line[2],line[3],line[4],line[5],line[6],line[7])
+                str_to_write = "{},{},{},{},{},{},{},{},{}".format(line[0],line[1],line[2],line[3],line[4],line[5],line[6],line[7],line[8])
                 f.write(str_to_write)
         
         with open(self.filename,'w') as f:
             for line in temp_list:
-                str_to_write = "{},{},{},{},{},{},{},{}".format(line[0],line[1],line[2],line[3],line[4],line[5],line[6],line[7])
+                str_to_write = "{},{},{},{},{},{},{},{},{}".format(line[0],line[1],line[2],line[3],line[4],line[5],line[6],line[7],line[8])
                 f.write(str_to_write)
 
                 

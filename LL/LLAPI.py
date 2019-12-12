@@ -32,8 +32,8 @@ class LLAPI():
     def updateContactInfo(self,line_index,row_index,updated_info):
         return self.destLL.updateContactInfo(line_index,row_index, updated_info)
 
-    def createVoyage(self):
-        return self.voyLL.createVoyage()
+    def createVoyage(self,voyage):
+        return self.voyLL.createVoyage(voyage)
     
     def getVoyages(self):
         return self.voyLL.getVoyages()
@@ -46,12 +46,21 @@ class LLAPI():
 
     def updateVoyage(self):
         return self.voyLL.updateVoyage()
+
+    def getVoyageHeader(self, voyage_list):
+        return self.voyLL.getVoyageHeader(voyage_list)
+
+    def getVoyageValue(self,voyage_list):
+        return self.voyLL.getVoyageValue(voyage_list)
     
     def createPlane(self,plane):
         return self.plaLL.createPlane(plane)
 
     def getPlanes(self):
         return self.plaLL.getPlanes()
+
+    def getPlaneType(self,registration):
+        return self.plaLL.getPlaneType(registration)
 
     def getAvailablePlanes(self, date, totalTime):
         return self.plaLL.getAvailablePlanes(date,totalTime)
@@ -86,8 +95,19 @@ class LLAPI():
     def getAvailabilityOfAll(self, date, listType):
         return self.empLL.getAvailabilityOfAll(date, listType)
     
+<<<<<<< HEAD
     def getVoyageHeader(self, voyage_list):
         return self.voyLL.getVoyageHeader(voyage_list)
 
     def getVoyageValue(self,voyage_list):
         return self.voyLL.getVoyageValue(voyage_list)
+=======
+    def getChosenEmployee(self, id_list, emp_id):
+        return self.empLL.getChosenEmployee(id_list, emp_id)
+
+    def getUnmannedVoyages(self):
+        return self.voyLL.getUnmannedVoyages()
+
+    def availablePilotsWithSpecificLicense(self,time,aircraftType):
+        return self.empLL.availablePilotsWithSpecificLicense(time,aircraftType)
+>>>>>>> 7b34e934b10d1615029a9be8622aa814fc3aee49

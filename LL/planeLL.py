@@ -12,6 +12,12 @@ class PlaneLL ():
     def getPlanes(self):
         return self.__ioAPI_in.loadPlanesFromFile()
 
+    def getPlaneType(self,registration):
+        plane_list = self.__ioAPI_in.loadPlanesFromFile()
+        for plane in plane_list:
+            if plane['planeInsignia'] == registration:
+                return plane['planeTypeId']
+
     def getAvailablePlanes(self,departureDateTime,totalTime):
         arrivalDateTime = departureDateTime + totalTime
         plane_list = self.getPlanes() # Starting with all planes available -> unavailable will be removed

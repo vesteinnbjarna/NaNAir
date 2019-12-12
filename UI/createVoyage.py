@@ -1,10 +1,13 @@
 from Model.voyage import Voyage
 from Model.Destination import Destination
+from Model.Plane import Plane
+from UI.gatherCrew import GatherCrew
 import datetime
 
 class CreateVoyage():
     def __init__(self, llAPI_in):
         self.llAPI_in = llAPI_in
+        self.gaterCrew = GatherCrew(llAPI_in)
         
     def get_input(self):
         self.departingFrom = "REY"
@@ -22,9 +25,10 @@ class CreateVoyage():
             print()
             user_input = input("Input: ")
             if user_input == "1":
-                self.select_destination()
+                if self.select_destination() == "Back to home":
+                    return None
             elif user_input == "2":
-                pass
+                self.gaterCrew.getListOfUnmannedVoyages()
             elif user_input == "3":
                 if self.get_destination_info() == None:
                     return None
@@ -51,21 +55,33 @@ class CreateVoyage():
                         counter += 1
                         dest_list.append(val)
             print('''                                             ''')
+            print('''   press "b" to go back                      ''')
+            print('''                                             ''')
             print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
             user_input = input("Input: ")
             print()
+
+            if user_input == "b":
+                return None
+
+            valid_input = False
+            while valid_input == False:
+                try:
+                    int(user_input)
+                    dest_list[int(user_input) - 1]
+                    valid_input = True
+                except:
+                    print('Invalid input! Please enter an integer from 1 to {}'.format(len(dest_list)))
+                    user_input = input("Input: ")
+
             for destination in destination_list:
                 if destination['destination'] == dest_list[int(user_input) - 1]:
                     destination_line = destination
-            try:
-                if int(user_input) in range(len(dest_list) + 1):
-                    self.chosen_destinaiton = Destination(destination_line['destination'],destination_line['country'],\
-                        destination_line['airport'],destination_line['airtime'],destination_line['distance'],\
-                            destination_line['contact name'],destination_line['contact phone'])
-                    self.enter_voyage_details()
-            except:
-                ValueError
-                continue
+            self.chosen_destinaiton = Destination(destination_line['destination'],destination_line['country'],\
+                destination_line['airport'],destination_line['airtime'],destination_line['distance'],\
+                    destination_line['contact name'],destination_line['contact phone'])
+            if self.enter_voyage_details() == "Back to home":
+                return "Back to home"
 
     def get_availalbe_aircraft_list(self):
         totalTime = self.chosen_destinaiton.totalTime
@@ -74,13 +90,23 @@ class CreateVoyage():
         print('''|         NaN Air - Choose aircraft         |''')
         print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
         counter = 1
+        line_list = []
+        working_list = []
         for aircraft in available_aircrafts_list:
             print('({})'.format(counter), end=" ")
             for val in aircraft.values():
                 print(val, end="  ")
+                line_list.append(val)
+            working_list.append(line_list)
+            line_list = []
             print()
             counter += 1
+        print()
         user_choice = input("Input: ")
+        chosen_aircraft_registration = working_list[int(user_choice) - 1][0]
+        chosen_aircraft_type = working_list[int(user_choice) - 1][1]
+        self.chosen_aircraft = Plane(chosen_aircraft_registration, chosen_aircraft_type)
+        return None
 
     def enter_voyage_details(self): 
         print()
@@ -102,68 +128,77 @@ class CreateVoyage():
             minutes = int(minutes)
         self.dateTime = datetime.datetime(year,month,day,hours,minutes)
         self.get_availalbe_aircraft_list()
-        #self.time_back = input("Enter time of trip back (hh:mm): ")
-        #self.flight_number = input("Enter flight number: ")
-        self.review_voyage_info()
+        if self.createVoyageObject() == "Back to home":
+            return "Back to home"
 
     def review_voyage_info(self):
         while True:
             print(''' ___________________________________________''')
             print('''|       NaN Air - Review information        |''')
             print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
-            print('''| Chosen destination: {:22}|'''.format(self.chosen_destinaiton))
-          #  print('''| Flight number: {:27}|'''.format(self.flight_number))
-            print('''| Date of departure: {:23}|'''.format(self.dateTime.date()))
-            print('''| Time of departure: {:23}|'''.format(self.dateTime.time()))
-            print('''| Date of trip back: {:23}|'''.format(self.date))
-          #  print('''| Time of trip back: {:23}|'''.format(self.time_back +":00"))
+            print('''| Chosen destination: {:22}|'''.format(self.chosen_destinaiton.destination))
+            print('''| Date of departure: {:23}|'''.format(str(self.dateTime.date())))
+            print('''| Time of departure: {:23}|'''.format(str(self.dateTime.time())))
+            print('''| Date of arrival: {:25}|'''.format(str((self.voyage.get_Departure() + self.chosen_destinaiton.totalTime).date())))
+            print('''| Time of arrival: {:25}|'''.format(str((self.voyage.get_Departure() + self.chosen_destinaiton.totalTime).time())))
+            print('''| Aircraft registration: {:19}|'''.format(self.chosen_aircraft.registration))
             print('''|                                           |''')
             print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
             print('''| (1) Confirm                               |''')
-            print('''| (2) Edit                                  |''')
+            print('''| (2) Cancel                                |''')
             print('''|                                           |''')
             print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
-            user_input = input("Input: ")  
+            user_input = input("Input: ")
+
+            valid_input = False
+            while not valid_input:
+                try:
+                    int(user_input)
+                    if user_input == "1" or user_input == "2":
+                        valid_input = True
+                except:
+                    print("Invalid input! Enter either 1 or 2.")
+                    user_input = input("Input: ")
+            
             if user_input == "1":
-                pass
+                self.llAPI_in.createVoyage(self.voyage)
+                if self.print_confirmation_voyage() == "Back to home":
+                    return "Back to home"
+                return None
+            elif user_input == "2":
+                return None
 
+    def createVoyageObject(self):
+        self.voyage = Voyage(self.chosen_destinaiton, self.chosen_aircraft,self.dateTime)
+        if self.review_voyage_info() == "Back to home":
+            return "Back to home"
 
+    def print_confirmation_voyage(self):
+        print(''' ___________________________________________''')
+        print('''|                  NaN Air                  |''')
+        print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
+        print('''| Voyage successfully created!              |''')
+        print('''|                                           |''')
+        print('''| (1) Create another voyage                 |''')
+        print('''| (2) Go back to home page                  |''')
+        print('''|                                           |''')
+        print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
+        user_input = input("Input: ")
 
-
-    # def edit_voyage_info(self):
-    #     while True:
-    #         print(''' ___________________________________________''')
-    #         print('''|       NaN Air - Edit information          |''')
-    #         print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
-    #         print('''| (1) Flight number: {:23}|'''.format(self.flight_number))
-    #         print('''| (2) Date of departure: {:19}|'''.format(self.date))
-    #         print('''| (3) Time of departure: {:19}|'''.format("test"))
-    #         print('''| (4) Date of trip back: {:19}|'''.format("test"))
-    #         print('''| (5) Time of trip back: {:19}|'''.format("test"))
-    #         print('''|                                           |''')
-    #         print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
-    #         user_input = input("Input: ") 
-    #         if user_input == "1":
-    #             self.flight_number = input("Enter flight number: ")
-    #             if self.review_voyage_info() == None:
-    #                 return None
-    #         elif user_input == "2":
-    #             self.name = input("Enter date of departure: ")
-    #             if self.review_voyage_info() == None:
-    #                 return None
-    #         elif user_input == "3":
-    #             self.role = self.get_role()
-    #             if self.display_info() == None:
-    #                 return None
-    #         elif user_input == "4":
-    #             self.rank = input("Enter rank: ")
-    #             if self.display_info() == None:
-    #                 return None
-    #         elif user_input == "5":
-    #             self.address = input("Enter address: ")
-    #             if self.display_info() == None:
-    #                 return None
-
+        valid_input = False
+        while not valid_input:
+            try:
+                int(user_input)
+                if user_input == "1" or user_input == "2":
+                    valid_input = True
+            except:
+                print("Invalid input! Enter either 1 or 2.")
+                user_input = input("Input: ")
+        
+        if user_input == "1":
+            return None
+        elif user_input == "2":
+            return "Back to home"
 
 ########### create new destination #######################################
 

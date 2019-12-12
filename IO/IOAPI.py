@@ -27,8 +27,8 @@ class IOAPI ():
     def loadVoyagesFromFile (self):
         return self.voyIO.loadFile()
     
-    def storeVoyageToFile(self):
-        return self.voyIO.storeVoyageToFile()
+    def storeVoyageToFile(self,voyage):
+        return self.voyIO.storeVoyageToFile(voyage)
 
     def updateVoyageInFile(self):
         return self.voyIO.updateVoyageInFile()

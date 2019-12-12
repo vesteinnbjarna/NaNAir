@@ -6,8 +6,13 @@ class VoyageLL ():
     def __init__(self, ioAPI_in):
         self.__ioAPI_in = ioAPI_in
 
+<<<<<<< HEAD
     def createVoyage(self):
-        pass
+        pass 
+=======
+    def createVoyage(self,voyage):
+        return self.__ioAPI_in.storeVoyageToFile(voyage)
+>>>>>>> 69c482c15efd8f0b948c5bcaf0b068d54a6388eb
 
     def getVoyages(self):
         return self.__ioAPI_in.loadVoyagesFromFile()
@@ -35,7 +40,7 @@ class VoyageLL ():
             departure_date = line['Departure'][:10]
             if departure_date == str(date):
                 day_list.append(line)
-        return day_list
+        return day_list 
 
     def updateVoyage(self):
         pass
@@ -71,4 +76,14 @@ class VoyageLL ():
             return value_list
         except TypeError:
             return None
-        
+
+    def getUnmannedVoyages(self):
+        voyages_list = self.__ioAPI_in.loadVoyagesFromFile()
+        unmannedVoyages_list = []
+        for voyage in voyages_list:
+            if not voyage['Captain']:
+                unmannedVoyages_list.append(voyage)
+        unmannedVoyagesValues_list = self.getVoyageValue(unmannedVoyages_list)
+        unmannedVoyagesHeaders_list = self.getVoyageHeader(unmannedVoyages_list)
+        return unmannedVoyagesValues_list, unmannedVoyagesHeaders_list
+
