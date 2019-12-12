@@ -106,7 +106,7 @@ class GetEmployee():
                     elif self.employee_type == "Employees":
                         allEmp_list = self.llAPI_in.getAvailabilityOfAll(self.date, self.list_type)
                         if self.print_list(allEmp_list) == None:
-                            continue
+                            continue 
 
             elif user_input == "3":
                 if self.employee_type == "Pilot":
@@ -247,25 +247,25 @@ class GetEmployee():
                 print("({}) {}".format(counter,permit))
                 counter += 1
             print()
-            #valid_input = False
-            #while valid_input == False:
+
+            user_input = input("Input: ")
+
             try:
-                user_input = int(input("Input: "))
-                valid_input = True
+                user_input = int(user_input)
+
+                if user_input in range(1, len(permit_list)+1):
+                    valid_input = True
+                else:
+                    print()
+                    print(''' _________________________''')
+                    print('''|Invalid input! try again.|''')
+                    print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
             except ValueError:
                 print()
                 print(''' _________________________''')
                 print('''|Invalid input! try again.|''')
                 print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
 
-
-            if user_input not in range(0, len(permit_list)+1):
-                print()
-                print(''' _________________________''')
-                print('''|Invalid input! try again.|''')
-                print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')                
-                valid_input = False
-                continue
 
         # Find what permit user chose
         for index in range(len(permit_list) + 1):
@@ -293,8 +293,6 @@ class GetEmployee():
         print(input("Press enter to continue!"))
         
 
-
-
     def print_list(self, listOfEmployees):
         while True:
         #Sorted by ID
@@ -309,29 +307,46 @@ class GetEmployee():
                 for line in listOfEmployees:
                     if counter < 1:
                         for key in line.keys():
-                            if key == "ID" or key == "SSN" or key == "Name" or key == "Role":
-                                print(key, end="\t  ")
+                            if key == "ID":
+                                print("{:5}".format(key), end=" ")
+                            elif key == "SSN":
+                                print("{:15}".format(key), end=" ")
+                            elif key == "Name":
+                                print("{:25}".format(key), end=" ")
+                            elif key == "Role":
+                                print("{:15}".format(key), end=" ")
                         if self.list_type == "Unavailable":
-                            print("Destination")
+                            print("{:15}".format("Destination"))
                         counter += 1
-                print()
-                print("___________________________________________")
+                print("__"*40)
                 print()
                 #If unavailable we want to print out destination
                 if self.list_type == "Unavailable":
                     for line in listOfEmployees:
                         if len(line) == 1:
-                            print("\t"," ".join(line))
-                            print()
+                            for dest in line:
+                                print("{:15}".format(dest))
                         else:
                             for key,val in line.items():
-                                if key == "ID" or key == "SSN" or key == "Name" or key == "Role":
-                                    print(val, end="\t")
+                                if key == "ID":
+                                    print("{:5}".format(val), end=" ")
+                                elif key == "SSN":
+                                    print("{:15}".format(val), end=" ")
+                                elif key == "Name":
+                                    print("{:25}".format(val), end=" ")
+                                elif key == "Role":
+                                    print("{:15}".format(val), end=" ")
                 else:
                     for line in listOfEmployees:
                         for key,val in line.items():
-                            if key == "ID" or key == "SSN" or key == "Name" or key == "Role":
-                                print(val, end="\t")
+                            if key == "ID":
+                                print("{:5}".format(val), end=" ")
+                            elif key == "SSN":
+                                print("{:15}".format(val), end=" ")
+                            elif key == "Name":
+                                print("{:25}".format(val), end=" ")
+                            elif key == "Role":
+                                print("{:15}".format(val), end=" ")
                         print()
                 print()
                 if self.employee_type == "Specific":
@@ -355,9 +370,9 @@ class GetEmployee():
             emp_list = self.llAPI_in.getEmployees()
             self.print_list(emp_list)
             print()
-            specific_emp = self.llAPI_in.getSpecificEmployee(self.id)
+            self.specific_emp = self.llAPI_in.getSpecificEmployee(self.id)
             #check if input of ID is valid, if not valid then continue
-            if specific_emp == None:
+            if self.specific_emp == None:
                 input("Press enter to input another ID!")
                 print()
                 continue
@@ -365,19 +380,24 @@ class GetEmployee():
                 break
         # Print list of employees and let user choose a specific employee
         while True:
+            self.name = ""
             print(''' ___________________________________________''')
             print('''|         NaN Air - Chosen employee         |''')
             print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ ''')
-            for key, val in specific_emp.items():
-                if key == "SSN" or key == "Name":
+            print()
+            for key, val in self.specific_emp.items():
+                if key == "SSN":
                     print(" {}: {}".format(key,val))
-            print("\n")
+                elif key == "Name":
+                    self.name = val
+                    print(" {}: {}".format(key,val))
+            print()
             print('''                                             ''')
             print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
             print('''| (1) Get working schedule                  |''')
             print('''| (2) Get information                       |''')
             print('''|                                           |''')
-            print('''| (press "b" to go back)                    |''')
+            print('''| (3) Back to homepage                      |''')
             print('''|                                           |''')
             print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')
             print()
@@ -386,22 +406,48 @@ class GetEmployee():
             if user_input == "1":
                 self.get_working_schedule()
             elif user_input == "2":
-                for key, val in specific_emp.items():
+                for key, val in self.specific_emp.items():
                     print(" {}: {}".format(key,val))
                 print()
                 input("Press enter to go back")
                 continue
-            elif user_input == "b":
+            elif user_input == "3":
                 return None
             else:
                 continue
     
     def get_working_schedule(self):
-        pass
-        #Enter year
-        #Enter month
-        #Enter day
-        #Prenta út viku vaktaplan
+        self.date_input = self.get_date_input()
+        voyage_list_week = self.llAPI_in.getVoyagesWeek(self.date_input)
+        print(''' ___________________________________________''')
+        print('''|      {}: {:27}|'''.format("Employee",self.name))
+        print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ ''')
+        print()
+        print("{:30}{:30}{:30}".format("Destination", "Departure", "Arrival"))
+        print("__"*40)
+        for line in voyage_list_week:
+            if line['Captain'] == self.specific_emp['SSN'] or line['Copilot'] == self.specific_emp['SSN'] or \
+                line['FSM'] == self.specific_emp['SSN'] or line['FA1'] == self.specific_emp['SSN'] or \
+                line['FA2'] == self.specific_emp['SSN']:
+                print()
+                for key, val in line.items():
+                    if key == "Destination":
+                        print("{:30}".format(val), end="")
+                    elif key == "Departure":
+                        val = val.replace("T", " ")
+                        print("{:30}".format(val), end="")
+                    elif key == "Arrival":
+                        val = val.replace("T", " ")
+                        print("{:30}".format(str(val)), end="")
+                print()
+            else:
+                print()
+                print("{:^70}".format("!!! LAZY EMPLOYEE ALERT !!! "))
+                print()
+                print("{:^70}".format("Employee not working this week. "))
+                break
+        print("\n\n")
+        input("Press enter to continue")
 
 
     def get_date_input(self):

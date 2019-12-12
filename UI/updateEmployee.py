@@ -104,7 +104,6 @@ class UpdateEmployee():
             elif user_input == "3":
                 print("Can't change name!")
                 continue
-
             elif user_input == "4":
                 self.role = input("Enter role: ")
                 self.updated_info = self.role

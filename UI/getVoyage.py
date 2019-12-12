@@ -76,10 +76,7 @@ class GetVoyage():
                 #print(voyage_list)
                 self.print_choosen_list(voyage_list)
             elif user_input == "2":
-                self.get_year = int(input("Enter year: "))
-                self.get_month = int(input("Enter month (1-12): "))
-                self.get_day = int(input("Enter day (1-31): "))
-                self.date = datetime.date(self.get_year, self.get_month, self.get_day)
+                self.date = self.get_date_input()
                 voyage_list_day = self.llAPI_in.getVoyagesDay(self.date)
                 self.print_choosen_list(voyage_list_day)
                 #Senda date áfram í data layer 
@@ -88,11 +85,8 @@ class GetVoyage():
                 print(''' ___________________________________________''')
                 print('''|             First day of week             |''')
                 print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ ''')
-                self.get_year = int(input("Enter year: "))
-                self.get_month = int(input("Enter month (1-12): "))
-                self.get_day = int(input("Enter day (1-31): "))
                 print()
-                self.date = datetime.date(self.get_year, self.get_month, self.get_day)
+                self.date = self.date = self.get_date_input()
                 voyage_list_week = self.llAPI_in.getVoyagesWeek(self.date)
                 self.print_choosen_list(voyage_list_week)
                 #Senda week áfram í data layer
@@ -112,15 +106,19 @@ class GetVoyage():
                 h_list[0],h_list[1],h_list[2],h_list[3],h_list[4],
                 h_list[5],h_list[6],h_list[7],h_list[8],h_list[9],h_list[10],h_list[11]))
             
+            print("__"*90, "\n")
 
             for line in v_list:
                 print("{:<5}{:<10}{:<10}{:<15}{:<25}{:<25}{:<10}{:<15}{:<15}{:<15}{:<15}{:<15}".format(
                 line[0],line[1],line[2],line[3],line[4],
                 line[5],line[6],line[7],line[8],line[9],line[10],line[11]))
-
+            print("\n\n")
+            input("Press enter to continue")
         else:
             print('No voyages on {}'.format(self.date))
         
+<<<<<<< HEAD
+=======
         input("Press enter to continue")
         
         #line_index = 0
@@ -144,5 +142,27 @@ class GetVoyage():
         #     print("No voyages on selected date!")
         # user_input = input("Press enter to go back")
 
+>>>>>>> 69c482c15efd8f0b948c5bcaf0b068d54a6388eb
 
-    
+    def get_date_input(self):
+        ''' Method that gets date input and check if valid,
+        and returns date in datetime format. '''
+        while True:
+            try:
+                self.year = int(input("Enter year (yyyy): "))
+                self.month = int(input("Enter month (mm): "))
+                self.day = int(input("Enter day (dd): "))
+            except ValueError:
+                print(''' ___________________________''')
+                print('''| Invalid input! try again. |''')
+                print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')                
+                continue
+            print("\n\n")
+            try:
+                self.date = datetime.date(self.year, self.month, self.day)
+                return self.date
+            except ValueError:
+                print(''' __________________________''')
+                print('''| Invalid date! try again. |''')
+                print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾''')                
+                continue

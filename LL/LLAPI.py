@@ -46,6 +46,12 @@ class LLAPI():
 
     def updateVoyage(self):
         return self.voyLL.updateVoyage()
+
+    def getVoyageHeader(self, voyage_list):
+        return self.voyLL.getVoyageHeader(voyage_list)
+
+    def getVoyageValue(self,voyage_list):
+        return self.voyLL.getVoyageValue(voyage_list)
     
     def createPlane(self,plane):
         return self.plaLL.createPlane(plane)
@@ -91,11 +97,6 @@ class LLAPI():
     
     def getChosenEmployee(self, id_list, emp_id):
         return self.empLL.getChosenEmployee(id_list, emp_id)
-    def getVoyageHeader(self, voyage_list):
-        return self.voyLL.getVoyageHeader(voyage_list)
-
-    def getVoyageValue(self,voyage_list):
-        return self.voyLL.getVoyageValue(voyage_list)
 
     def getUnmannedVoyages(self):
         return self.voyLL.getUnmannedVoyages()
