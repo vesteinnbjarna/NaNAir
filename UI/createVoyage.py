@@ -76,11 +76,11 @@ class CreateVoyage():
                     user_input = input("Input: ")
 
             for destination in destination_list:
-                if destination['destination'] == dest_list[int(user_input) - 1]:
+                if destination['Destination'] == dest_list[int(user_input) - 1]:
                     destination_line = destination
-            self.chosen_destinaiton = Destination(destination_line['destination'],destination_line['country'],\
-                destination_line['airport'],destination_line['airtime'],destination_line['distance'],\
-                    destination_line['contact name'],destination_line['contact phone'])
+            self.chosen_destinaiton = Destination(destination_line['Destination'],destination_line['Country'],\
+                destination_line['Airport'],destination_line['Airtime'],destination_line['Distance'],\
+                    destination_line['Contact name'],destination_line['Contact phone'])
             if self.enter_voyage_details() == "Back to home":
                 return "Back to home"
 

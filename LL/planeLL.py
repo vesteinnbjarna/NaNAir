@@ -25,14 +25,14 @@ class PlaneLL ():
         available_planes_list = []
         voyages_on_same_time_list = []
         for voyage in voyage_list:
-            voyage_departure = datetime.datetime.strptime(voyage['departure'], '%Y-%m-%dT%H:%M:%S')
-            voyage_arrival = datetime.datetime.strptime(voyage['arrival'], '%Y-%m-%dT%H:%M:%S')
+            voyage_departure = datetime.datetime.strptime(voyage['Departure'], '%Y-%m-%dT%H:%M:%S')
+            voyage_arrival = datetime.datetime.strptime(voyage['Arrival'], '%Y-%m-%dT%H:%M:%S')
             if (departureDateTime <= voyage_departure <= arrivalDateTime)\
                 or (departureDateTime <= voyage_arrival <= arrivalDateTime):
                 voyages_on_same_time_list.append(voyage)
         unavailable_planes = []
         for voyage in voyages_on_same_time_list:
-            unavailable_planes.append(voyage['aircraft'])
+            unavailable_planes.append(voyage['Aircraft'])
 
         for plane in plane_list:
             if plane['planeInsignia'] not in unavailable_planes:
