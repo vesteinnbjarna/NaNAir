@@ -50,7 +50,9 @@ class CreateEmployee():
                 self.ssn = input("Enter SSN: ")
                 if len(self.ssn) == 10:
                     try:
-                        self.ssn = int(self.ssn)
+                        for char in self.ssn:
+                            int(char)
+                        #self.ssn = int(self.ssn)
                         invalid_input = False
                     except:
                         print()

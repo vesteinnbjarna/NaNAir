@@ -139,7 +139,7 @@ class CreateVoyage():
                 continue 
         self.dateTime = datetime.datetime(year_int,month_int,day_int,hours_int,minutes_int)
         self.get_availalbe_aircraft_list()
-        if self.createVoyageObject() == "Back to home":
+        if self.create_voyage_object() == "Back to home":
             return "Back to home"
 
     def check_input(self, a_str):
@@ -188,7 +188,7 @@ class CreateVoyage():
                 input("Press enter to try again :-)")                    
                 continue
 
-    def createVoyageObject(self):
+    def create_voyage_object(self):
         self.voyage = Voyage(self.chosen_destinaiton, self.chosen_aircraft,self.dateTime)
         if self.review_voyage_info() == "Back to home":
             return "Back to home"

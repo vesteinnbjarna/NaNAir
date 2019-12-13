@@ -47,9 +47,6 @@ class LLAPI():
     def getVoyagesDay(self,date):
         return self.voyLL.getVoyagesDay(date)
 
-    def updateVoyage(self):
-        return self.voyLL.updateVoyage()
-
     def getVoyageHeader(self, voyage_list):
         return self.voyLL.getVoyageHeader(voyage_list)
 

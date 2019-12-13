@@ -9,13 +9,13 @@ class CreatePlane():
         print(' __________________________________________')
         print("| NaN Air - Enter plane information        |")
         print(" ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ ")
-        self.plane_type = self.choosePlaneType()
+        self.plane_type = self.choose_plane_type()
         self.registration = input("Enter aircraft registration: ")
         self.plane = Plane(self.registration,self.plane_type)
         self.display_info()
         return None
 
-    def choosePlaneType(self):
+    def choose_plane_type(self):
         planeType_list = self.llAPI_in.getPlaneType_list()
         while True:
             print()
@@ -26,8 +26,6 @@ class CreatePlane():
             for planeType in planeType_list:
                 print('({})  {:>15} {:>10}'.format(counter,planeType['planeTypeId'],planeType['manufacturer']))
                 counter += 1
-            print()
-            print(' ({})  {:>15}'.format(counter, 'Other'))
             print()
             print("Choose aircraft type")
             user_choice = input("Enter ID: ")
@@ -45,8 +43,6 @@ class CreatePlane():
                 chosenPlaneType_obj = PlaneType(chosenPlaneType_odict['planeTypeId'], chosenPlaneType_odict['manufacturer'],\
                     chosenPlaneType_odict['model'],chosenPlaneType_odict['capacity'])
                 return chosenPlaneType_obj
-            elif user_choice == counter:
-                pass
             else:
                 print()
                 print("Not a valid ID!")

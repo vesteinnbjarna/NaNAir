@@ -9,10 +9,6 @@ class VoyageLL ():
         flightNumber1, flightNumber2 = self.getFlightNumbers(voyage)
         voyage.assingFlightNumber1(flightNumber1)
         voyage.assingFlightNumber2(flightNumber2)
-        routeOut = voyage.getRouteOut()
-        routeIn = voyage.getRouteIn()
-        self.__ioAPI_in.storeRouteOutToFile(routeOut)
-        self.__ioAPI_in.storeRouteInToFile(routeIn)
         return self.__ioAPI_in.storeVoyageToFile(voyage)
 
     def getVoyages(self):
@@ -55,9 +51,6 @@ class VoyageLL ():
                 day_list.append(line)
         return day_list 
 
-    def updateVoyage(self):
-        pass
-
     def getVoyageHeader(self, voyage_list):
         header_list = []
         counter = 0
@@ -84,9 +77,14 @@ class VoyageLL ():
                 v_fsm = line["FSM"]
                 v_fa1 = line["FA1"]
                 v_fa2 = line["FA2"]
-                v_stat = line['Status']
-                value_list.append(
-                    [v_id,v_fn1,v_fn2,v_dest,v_depart,v_arr,v_airc,v_capt,v_cop,v_fsm,v_fa1,v_fa2,v_stat])
+                if len(line) == 13:
+                    v_stat = line['Status']
+                    value_list.append(
+                        [v_id,v_fn1,v_fn2,v_dest,v_depart,v_arr,v_airc,v_capt,v_cop,v_fsm,v_fa1,v_fa2,v_stat])
+                else:
+                    value_list.append(
+                        [v_id,v_fn1,v_fn2,v_dest,v_depart,v_arr,v_airc,v_capt,v_cop,v_fsm,v_fa1,v_fa2])
+                
             return value_list
         except TypeError:
             return None

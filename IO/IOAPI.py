@@ -29,6 +29,10 @@ class IOAPI ():
         return self.voyIO.loadFile()
     
     def storeVoyageToFile(self,voyage):
+        routeOut = voyage.getRouteOut()
+        routeIn = voyage.getRouteIn()
+        self.rouIO.storeRouteOutToFile(routeOut)
+        self.rouIO.storeRouteInToFile(routeIn)
         return self.voyIO.storeVoyageToFile(voyage)
 
     def updateVoyageInFile(self):
