@@ -58,7 +58,7 @@ class PlaneLL ():
                 else:
                     planesNotWorking_list.append(plane)
 
-        return voyage_list
+        return None
 
 
 
