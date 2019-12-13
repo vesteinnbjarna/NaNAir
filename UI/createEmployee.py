@@ -42,11 +42,50 @@ class CreateEmployee():
             print(' _________________________________________')     #will not ask for input and goes back to emp_m
             print("| NaN Air - Enter employee information    |")
             print(" ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ ")
-            self.ssn = input("Enter SSN: ")
+            
+            invalid_input = True
+            #Ask for SSN and check if input is valid.
+            while invalid_input == True:
+                print()
+                self.ssn = input("Enter SSN: ")
+                if len(self.ssn) == 10:
+                    try:
+                        self.ssn = int(self.ssn)
+                        invalid_input = False
+                    except:
+                        print()
+                        print("Invalid SSN! Intigers only allowed!")
+                        print("Try again!")
+                        continue
+                else:
+                    print()
+                    print("SSN must be 10 digits")
+                    continue
+
             self.name = input("Enter name: ")
             self.rank = input("Enter rank: ")
             self.address = input("Enter address: ")
-            self.phone_no = input("Enter phone number: ")
+
+            #Ask for Phone number and check if input is valid.
+            invalid_input = True
+            while invalid_input == True:
+                self.phone_no = input("Enter phone number: ")
+                if len(self.phone_no) == 7:
+                    try:
+                        self.phone_no = int(self.phone_no)
+                        invalid_input = False
+                    except:
+                        print()
+                        print("Invalid phone number! Intigers only allowed!")
+                        print("Try again!")
+                        print()
+                        continue
+                else:
+                    print()
+                    print("Phone number must be 7 digits")
+                    print()
+                    continue
+
             #get licence if pilot
             if self.role == "Pilot":
                 self.license = input("Enter license: ")
@@ -65,13 +104,13 @@ class CreateEmployee():
             print(''' ___________________________________________''')
             print('''|       NaN Air - Review information        |''')
             print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
-            print('''| SSN: {:37}|'''.format(self.ssn))
-            print('''| Name: {:36}|'''.format(self.name))
-            print('''| Role: {:36}|'''.format(self.role))
-            print('''| Rank: {:36}|'''.format(self.rank))
-            print('''| Address: {:33}|'''.format(self.address))
-            print('''| Phone number: {:28}|'''.format(self.phone_no))
-            print('''| License: {:33}|'''.format(self.license))
+            print('''| SSN: {:<37}|'''.format(self.ssn))
+            print('''| Name: {:<36}|'''.format(self.name))
+            print('''| Role: {:<36}|'''.format(self.role))
+            print('''| Rank: {:<36}|'''.format(self.rank))
+            print('''| Address: {:<33}|'''.format(self.address))
+            print('''| Phone number: {:<28}|'''.format(self.phone_no))
+            print('''| License: {:<33}|'''.format(self.license))
             print('''|                                           |''')
             print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
             print('''| (1) Confirm                               |''')
@@ -102,20 +141,36 @@ class CreateEmployee():
             print(''' ___________________________________________''')
             print('''|        NaN Air - Edit information         |''')
             print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
-            print('''| (1) SSN: {:33}|'''.format(self.ssn))
-            print('''| (2) Name: {:32}|'''.format(self.name))
-            print('''| (3) Role: {:32}|'''.format(self.role))
-            print('''| (4) Rank: {:32}|'''.format(self.rank))
-            print('''| (5) Address: {:29}|'''.format(self.address))
-            print('''| (6) Phone number: {:24}|'''.format(self.phone_no))
+            print('''| (1) SSN: {:<33}|'''.format(self.ssn))
+            print('''| (2) Name: {:<32}|'''.format(self.name))
+            print('''| (3) Role: {:<32}|'''.format(self.role))
+            print('''| (4) Rank: {:<32}|'''.format(self.rank))
+            print('''| (5) Address: {:<29}|'''.format(self.address))
+            print('''| (6) Phone number: {:<24}|'''.format(self.phone_no))
             if self.role == "Pilot":
-                print('''| (7) License: {:29}|'''.format(self.license))
+                print('''| (7) License: {:<29}|'''.format(self.license))
             print('''|                                           |''')
             print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ ''')
             user_input = input("Edit selection: ")
             print()
             if user_input == "1":
-                self.ssn = input("Enter SSN: ")
+                invalid_input = True
+                while invalid_input == True:
+                    print()
+                    self.ssn = input("Enter SSN: ")
+                    if len(self.ssn) == 10:
+                        try:
+                            self.ssn = int(self.ssn)
+                            invalid_input = False
+                        except:
+                            print()
+                            print("Invalid SSN! Intigers only allowed!")
+                            print("Try again!")
+                            continue
+                    else:
+                        print()
+                        print("SSN must be 10 digits")
+                        continue
                 if self.display_info() == None:
                     return None
             elif user_input == "2":
@@ -135,7 +190,24 @@ class CreateEmployee():
                 if self.display_info() == None:
                     return None
             elif user_input == "6":
-                self.phone_no = input("Enter phone number: ")
+                invalid_input = True
+                while invalid_input == True:
+                        self.phone_no = input("Enter phone number: ")
+                        if len(self.phone_no) == 7:
+                            try:
+                                self.phone_no = int(self.phone_no)
+                                invalid_input = False
+                            except:
+                                print()
+                                print("Invalid phone number! Intigers only allowed!")
+                                print("Try again!")
+                                print()
+                                continue
+                        else:
+                            print()
+                            print("Phone number must be 7 digits")
+                            print()
+                            continue
                 if self.display_info() == None:
                     return None
             if self.role == "Pilot":
