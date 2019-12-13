@@ -483,7 +483,7 @@ class GetEmployee():
                         val = val.replace("T", " ")
                         print("{:30}".format(str(val)), end="")
                 print()
-            else:
+            elif len(voyage_list_week) == 0:
                 print()
                 print("{:^70}".format("!!! LAZY EMPLOYEE ALERT !!! "))
                 print()

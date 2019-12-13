@@ -78,11 +78,11 @@ class GetVoyage():
             if user_input == "1":
                 voyage_list = self.llAPI_in.getVoyages()
                 #print(voyage_list)
-                self.print_choosen_list(voyage_list)
+                self.print_chosen_list(voyage_list)
             elif user_input == "2":
                 self.date = self.get_date_input()
                 voyage_list_day = self.llAPI_in.getVoyagesDay(self.date)
-                self.print_choosen_list(voyage_list_day)
+                self.print_chosen_list(voyage_list_day)
                 #Senda date áfram í data layer 
             elif user_input == "3":
                 print()
@@ -92,7 +92,7 @@ class GetVoyage():
                 print()
                 self.date = self.date = self.get_date_input()
                 voyage_list_week = self.llAPI_in.getVoyagesWeek(self.date)
-                self.print_choosen_list(voyage_list_week)
+                self.print_chosen_list(voyage_list_week)
                 #Senda week áfram í data layer
             elif user_input == "b":
                 return None
@@ -104,7 +104,7 @@ class GetVoyage():
                 continue
 
 
-    def print_choosen_list(self, list_of_voyages):
+    def print_chosen_list(self, list_of_voyages):
         
         h_list = self.llAPI_in.getVoyageHeader(list_of_voyages)
         v_list = self.llAPI_in.getVoyageValue(list_of_voyages)
@@ -121,6 +121,7 @@ class GetVoyage():
                 line[0],line[1],line[2],line[3],line[4],
                 line[5],line[6],line[7],line[8],line[9],line[10],line[11]))
             print("\n\n")
+            input("Press enter to continue!")
 
         else:
             print('No voyages on {}'.format(self.date))

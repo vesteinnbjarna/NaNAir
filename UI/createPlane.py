@@ -9,13 +9,13 @@ class CreatePlane():
         print(' __________________________________________')
         print("| NaN Air - Enter plane information        |")
         print(" ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ ")
-        self.plane_type = self.choosePlaneType()
+        self.plane_type = self.choose_plane_type()
         self.registration = input("Enter aircraft registration: ")
         self.plane = Plane(self.registration,self.plane_type)
         self.display_info()
         return None
 
-    def choosePlaneType(self):
+    def choose_plane_type(self):
         planeType_list = self.llAPI_in.getPlaneType_list()
         while True:
             print()

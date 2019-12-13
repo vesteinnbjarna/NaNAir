@@ -243,9 +243,9 @@ class UpdateVoyage():
         user_input = input("Input: ")
         print()
         if user_input == "1":
-            self.getPilotsOnVoyage()
+            self.get_pilots_on_voyage()
         elif user_input == "2":
-            self.getFASOnVoyage()
+            self.get_fas_on_voyage()
         elif user_input == "b":
             return None
         else:
@@ -253,9 +253,6 @@ class UpdateVoyage():
         self.replace_employee()
     
     def replace_employee(self):
-        
-        
-
         if self.update_FA == True:          # Ef við förum in í listofAvailableFA þá er þetta satt 
                                             # Og gefur nýja starfsmanninum rétt gildi eftir því sem á við
 
@@ -275,10 +272,6 @@ class UpdateVoyage():
             elif self.user_input == "2":
                 self.cop = self.new_emp_ssn
 
-
-        
-        
-        
         self.find_new_employee()
     
     def find_new_employee(self):
@@ -310,7 +303,7 @@ class UpdateVoyage():
         while legal_input == False:
             
             if user_input == "1":
-                self.updateEmployeeOfVoyage()
+                self.update_employee_of_voyage()
                 legal_input = True
             #self.voyage_confirmation()
 
@@ -352,7 +345,7 @@ class UpdateVoyage():
             self.voyage_confirmation()
 
 
-    def getFASOnVoyage(self):
+    def get_fas_on_voyage(self):
         self.update_FA = True
         self.update_Pilot = False
 
@@ -370,12 +363,12 @@ class UpdateVoyage():
         print()
         self.user_input = input("Input: ") 
         print()
-        self.AvailableFA()
+        self.available_fa()
         
 
 
 
-    def getPilotsOnVoyage(self):
+    def get_pilots_on_voyage(self):
         self.update_Pilot = True
         self.update_FA = False
         
@@ -395,12 +388,12 @@ class UpdateVoyage():
         self.user_input = input("Input: ")
         print()
 
-        self.AvailablePilots()
+        self.available_pilots()
         
 
 
 
-    def AvailableFA(self):
+    def available_fa(self):
         dict_of_avaliable = self.llAPI_in.getAvailabiltyOfFAs(self.date,"Available")
         #print(list_of_avaliableFA)
         h_list = self.llAPI_in.getEmployeeHeader(dict_of_avaliable)
@@ -439,17 +432,11 @@ class UpdateVoyage():
         #print(new_emp_ssn)
 
         self.replace_employee()
-        
-                
+    
 
 
 
-
-
-
-
-
-    def AvailablePilots(self):
+    def available_pilots(self):
         dict_of_avaliable = self.llAPI_in.availablePilotsWithSpecificLicense(self.date,self.planeType)
         h_list = self.llAPI_in.getEmployeeHeader(dict_of_avaliable)
         v_list = self.llAPI_in.getEmployeeValue(dict_of_avaliable)
@@ -488,11 +475,7 @@ class UpdateVoyage():
         self.replace_employee()
 
 
-            
-
-
-
-    def updateEmployeeOfVoyage(self):
+    def update_employee_of_voyage(self):
         if self.update_Pilot == True:
             if self.user_input == "1":
                 self.voyage_obj.assignCaptain(self.new_emp_ssn)
@@ -513,6 +496,3 @@ class UpdateVoyage():
 
         self.llAPI_in.storeCrewToFile(self.voyage_obj)
         self.voyage_confirmation()
-
-
-
