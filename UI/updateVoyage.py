@@ -166,10 +166,10 @@ class UpdateVoyage():
         # Hérna prentast út listi af voyages
         # Fallið sér einnig um að villutjékka inputin hjá usernum - þeas að það sé in range
         # Og í lokin býr það til tilvik af voyage og planeType
-
+        v_list,h_list = self.llAPI_in.getFullyStaffedVoyages()
         self.dict_of_voyages = self.llAPI_in.getVoyages()
-        h_list = self.llAPI_in.getVoyageHeader(self.dict_of_voyages)
-        v_list = self.llAPI_in.getVoyageValue(self.dict_of_voyages)
+        # h_list = self.llAPI_in.getVoyageHeader(self.dict_of_voyages)
+        # v_list = self.llAPI_in.getVoyageValue(self.dict_of_voyages)
         print()
         if v_list!= None and h_list != None:
             print("{:<5}{:<10}{:<10}{:<15}{:<25}{:<25}{:<10}{:<15}{:<15}{:<15}{:<15}{:<15}".format(

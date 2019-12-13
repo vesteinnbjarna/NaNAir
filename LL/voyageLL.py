@@ -85,6 +85,16 @@ class VoyageLL ():
         unmannedVoyagesHeaders_list = self.getVoyageHeader(unmannedVoyages_list)
         return unmannedVoyagesValues_list, unmannedVoyagesHeaders_list
 
+    def getFullyStaffedVoyages(self):
+        voyages_list = self.__ioAPI_in.loadVoyagesFromFile()
+        mannedVoyages_list = []
+        for voyage in voyages_list:
+            if voyage['Captain']:
+                mannedVoyages_list.append(voyage)
+        mannedVoyagesValues_list = self.getVoyageValue(mannedVoyages_list)
+        mannedVoyagesHeaders_list = self.getVoyageHeader(mannedVoyages_list)
+        return mannedVoyagesValues_list, mannedVoyagesHeaders_list
+
     def getFlightNumbers(self,voyage):
         destNumber_str = self.getDestinationNumber(voyage)
         voyages_sameDestSameDay_int = self.getVoy_SameDaySameDest(voyage)

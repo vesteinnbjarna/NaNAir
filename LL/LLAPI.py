@@ -38,6 +38,9 @@ class LLAPI():
     def getVoyages(self):
         return self.voyLL.getVoyages()
 
+    def getFullyStaffedVoyages(self):
+        return self.voyLL.getFullyStaffedVoyages()
+
     def getVoyagesWeek(self, first_day_of_week):
         return self.voyLL.getVoyagesWeek(first_day_of_week)
 
