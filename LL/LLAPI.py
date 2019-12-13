@@ -113,8 +113,9 @@ class LLAPI():
     def storeCrewToFile(self,voyage):
         self.voyLL.storeCrewToFile(voyage)
 
-    def getPlaneStatus(self, chosenPlane, date, time):
-        return self.plaLL.getPlaneStatus(chosenPlane,date,time)
+    def getPlaneStatus(self, dateTime):
+        return self.plaLL.getPlaneStatus(dateTime)
+        
     def createDestinationObject(self,destination_str):
         return self.destLL.createDestinationObject(destination_str)
 

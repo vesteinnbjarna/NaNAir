@@ -5,13 +5,10 @@ class DestinationIO (BaseClassIO):
     def __init__(self,filename):
         self.filename = filename
         self.temp_filename = 'IO/Data/temp_dest.csv'
-    
-    def loadDestinationFromFile(self):
-        pass
 
     def storeDestinationToFile(self,dest):
         #country = Destination.
-        dest_num = self.getDestID()
+        dest_num = self.getDestNumber()
         country = Destination.get_country(dest)
         self.dest = Destination.get_destination(dest)
         airport = Destination.get_airport(dest)
@@ -19,7 +16,7 @@ class DestinationIO (BaseClassIO):
         dist = Destination.get_distance(dest)
         con_name = Destination.get_contact_name(dest)
         con_phone = Destination.get_contact_phone(dest)
-        dest_id = self.get_destination_id()
+        dest_id = self.getDestID()
         
         
         
@@ -57,11 +54,11 @@ class DestinationIO (BaseClassIO):
 
                 
 
-    def get_destination_id(self):
+    def getDestID(self):
         dest_id = self.dest[:3].upper()
         return dest_id
 
-    def getDestID (self):
+    def getDestNumber(self):
         maxList = []
         with open (self.filename, 'r') as f:
             for line in f:

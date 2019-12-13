@@ -56,7 +56,7 @@ class IOAPI ():
         return self.empIO.updateEmployeeInFile(line_index,row_index,updated_info)
 
     def loadRoutesFromFile(self):
-        return self.rouIO.loadRoutesFromFile()
+        return self.rouIO.loadFile()
 
     def storeRouteToFile(self):
         return self.rouIO.storeRouteToFile()

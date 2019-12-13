@@ -1,4 +1,3 @@
-#from IO.IOAPI import IOAPI
 import datetime
 
 class VoyageLL ():
@@ -17,7 +16,19 @@ class VoyageLL ():
         return self.__ioAPI_in.storeVoyageToFile(voyage)
 
     def getVoyages(self):
-        return self.__ioAPI_in.loadVoyagesFromFile()
+        dateTimeNow = datetime.datetime.now()
+        allVoyages = self.__ioAPI_in.loadVoyagesFromFile()
+        for voyage in allVoyages:
+            voyageDeparture = datetime.datetime.strptime(voyage['Departure'], '%Y-%m-%dT%H:%M:%S')
+            voyageArrival = datetime.datetime.strptime(voyage['Arrival'], '%Y-%m-%dT%H:%M:%S')
+            if dateTimeNow < voyageDeparture:
+                voyage['Status'] = 'Not started'
+            elif dateTimeNow > voyageArrival:
+                voyage['Status'] = 'Complete'
+            else:
+                voyage['Status'] = 'In progress'
+
+        return allVoyages #self.__ioAPI_in.loadVoyagesFromFile()
 
     def getVoyagesWeek(self, first_day_of_week):
         list_of_voyages = self.__ioAPI_in.loadVoyagesFromFile()
@@ -40,7 +51,7 @@ class VoyageLL ():
         day_list = []
         for line in list_of_voyages:
             departure_date = line['Departure'][:10]
-            if departure_date == str(date):
+            if departure_date == str(date.date()):
                 day_list.append(line)
         return day_list 
 
@@ -73,8 +84,9 @@ class VoyageLL ():
                 v_fsm = line["FSM"]
                 v_fa1 = line["FA1"]
                 v_fa2 = line["FA2"]
+                v_stat = line['Status']
                 value_list.append(
-                    [v_id,v_fn1,v_fn2,v_dest,v_depart,v_arr,v_airc,v_capt,v_cop,v_fsm,v_fa1,v_fa2])
+                    [v_id,v_fn1,v_fn2,v_dest,v_depart,v_arr,v_airc,v_capt,v_cop,v_fsm,v_fa1,v_fa2,v_stat])
             return value_list
         except TypeError:
             return None
@@ -128,5 +140,3 @@ class VoyageLL ():
 
     def storeCrewToFile(self,voyage):
         self.__ioAPI_in.storeCrewToFile(voyage)
-        routeOut = voyage.getRouteOut()
-        routeIn = voyage.getRouteIn()

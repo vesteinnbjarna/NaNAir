@@ -22,7 +22,8 @@ class GetPlane():
             user_input = input("Input: ")
             print() 
             if user_input == "1":
-                self.print_list()
+                plane_list = self.llAPI_in.getPlanes()
+                self.print_list(plane_list)
             elif user_input == "2":
                 self.get_plane_status()
             elif user_input == "b":
@@ -34,8 +35,7 @@ class GetPlane():
                 input("Press enter to try again :-)")                    
                 continue
 
-    def print_list(self):
-        plane_list = self.llAPI_in.getPlanes()
+    def print_list(self, plane_list):
         counter = 0
         for line in plane_list:
             if counter < 1:
@@ -50,16 +50,34 @@ class GetPlane():
                 print("{:20}".format(val), end=" ")
             print()
         print()
-        user_input = input("Press enter to go back")
+        input("Press enter to go back")
+
+    def print_list_status(self, plane_list):
+        counter = 0
+        for line in plane_list:
+            if counter < 1:
+                for key in line.keys():
+                    print("{:24}".format(key), end=" ")
+                counter += 1
+        print()
+        print("__"*55)
+        print()
+        for line in plane_list:
+            for key,val in line.items():
+                print("{:24}".format(val), end=" ")
+            print()
+        print()
+        input("Press enter to go back")
 
 
 
 ############# GET PLANE STATUS ##################
 
     def get_plane_status(self):
-        self.get_list()
-        plane_status = self.llAPI_in.getPlaneStatus(self.chosen_plane, self.date, self.time)
-
+        dateTime = self.get_date_input()
+        planeStatus = self.llAPI_in.getPlaneStatus(dateTime)
+        self.print_list_status(planeStatus)
+        return None
 
     def get_list(self):
         invalid_input = True
@@ -115,10 +133,10 @@ class GetPlane():
         invalid_input = True
         while invalid_input == True:
             try:
-                self.year = int(input("Enter year (yyyy): "))
-                self.month = int(input("Enter month (mm): "))
-                self.day = int(input("Enter day (dd): "))
-                self.time = input("Enter time (hh:mm): ")
+                year = int(input("Enter year (yyyy): "))
+                month = int(input("Enter month (mm): "))
+                day = int(input("Enter day (dd): "))
+                time = input("Enter time (hh:mm): ")
                 invalid_input = False
             except ValueError:
                 print(''' _________________________''')
@@ -127,8 +145,18 @@ class GetPlane():
                 continue
             print("\n\n")
             try:
-                self.date = datetime.date(self.year, self.month, self.day)
-                return self.date
+                hours = time[:2]
+                minutes = time[3:]
+                if hours[0] == '0':
+                    hours = int(hours[1])
+                else:
+                    hours = int(hours)
+                if minutes[0] == '0':
+                    minutes = int(minutes[1])
+                else:
+                    minutes = int(minutes)
+                self.dateTime = datetime.datetime(year,month,day,hours,minutes)
+                return self.dateTime
             except ValueError:
                 print(''' _________________________''')
                 print('''|Invalid date! try again.|''')

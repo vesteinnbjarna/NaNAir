@@ -1,6 +1,6 @@
 from UI.mainPageUI import MainPageUI 
 
-def main(): 
+def main():  
     a = MainPageUI()
     a.renderMenu()
 

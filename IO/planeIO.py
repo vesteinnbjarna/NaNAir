@@ -4,9 +4,6 @@ from Model.PlaneType import PlaneType
 
 class PlaneIO(BaseClassIO):
 
-    def loadPlanesFromFiles(self):
-        pass
-
     def storePlaneToFile(self,plane_in):
         registration = Plane.get_registration(plane_in)
         planeType_obj = plane_in.get_planeType()

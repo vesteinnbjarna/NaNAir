@@ -57,7 +57,7 @@ class GetVoyage():
                 line[5],line[6],line[7]))
             print()
         print()
-        user_input = input("Press enter to continue!")
+        input("Press enter to continue!")
     
     def get_list_of_voyages(self):
         while True:
@@ -110,21 +110,21 @@ class GetVoyage():
         v_list = self.llAPI_in.getVoyageValue(list_of_voyages)
         print()
         if v_list!= None and h_list != None:
-            print("{:<5}{:<10}{:<10}{:<15}{:<25}{:<25}{:<10}{:<15}{:<15}{:<15}{:<15}{:<15}".format(
+            print("{:<5}{:<10}{:<10}{:<15}{:<25}{:<25}{:<10}{:<15}{:<15}{:<15}{:<15}{:<15}{:<8}".format(
                 h_list[0],h_list[1],h_list[2],h_list[3],h_list[4],
-                h_list[5],h_list[6],h_list[7],h_list[8],h_list[9],h_list[10],h_list[11]))
+                h_list[5],h_list[6],h_list[7],h_list[8],h_list[9],h_list[10],h_list[11],h_list[12]))
             
             print("__"*90, "\n")
 
             for line in v_list:
-                print("{:<5}{:<10}{:<10}{:<15}{:<25}{:<25}{:<10}{:<15}{:<15}{:<15}{:<15}{:<15}".format(
+                print("{:<5}{:<10}{:<10}{:<15}{:<25}{:<25}{:<10}{:<15}{:<15}{:<15}{:<15}{:<15}{:<8}".format(
                 line[0],line[1],line[2],line[3],line[4],
-                line[5],line[6],line[7],line[8],line[9],line[10],line[11]))
+                line[5],line[6],line[7],line[8],line[9],line[10],line[11],line[12]))
             print("\n\n")
 
         else:
             print('No voyages on {}'.format(self.date))
-        
+        input("Press enter to continue")
 
     def get_date_input(self):
         ''' Method that gets date input and check if valid,
@@ -141,7 +141,9 @@ class GetVoyage():
                 continue
             print("\n\n")
             try:
-                self.date = datetime.date(self.year, self.month, self.day)
+                hours = 0
+                minutes = 0
+                self.date = datetime.datetime(self.year, self.month, self.day, hours, minutes)
                 return self.date
             except ValueError:
                 print(''' __________________________''')
