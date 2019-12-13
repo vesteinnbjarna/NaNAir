@@ -10,6 +10,10 @@ class VoyageLL ():
         flightNumber1, flightNumber2 = self.getFlightNumbers(voyage)
         voyage.assingFlightNumber1(flightNumber1)
         voyage.assingFlightNumber2(flightNumber2)
+        routeOut = voyage.getRouteOut()
+        routeIn = voyage.getRouteIn()
+        self.__ioAPI_in.storeRouteOutToFile(routeOut)
+        self.__ioAPI_in.storeRouteInToFile(routeIn)
         return self.__ioAPI_in.storeVoyageToFile(voyage)
 
     def getVoyages(self):
@@ -124,3 +128,5 @@ class VoyageLL ():
 
     def storeCrewToFile(self,voyage):
         self.__ioAPI_in.storeCrewToFile(voyage)
+        routeOut = voyage.getRouteOut()
+        routeIn = voyage.getRouteIn()
