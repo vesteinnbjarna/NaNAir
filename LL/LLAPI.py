@@ -115,6 +115,7 @@ class LLAPI():
 
     def getPlaneStatus(self, chosenPlane, date, time):
         return self.plaLL.getPlaneStatus(chosenPlane,date,time)
+        
     def createDestinationObject(self,destination_str):
         return self.destLL.createDestinationObject(destination_str)
 

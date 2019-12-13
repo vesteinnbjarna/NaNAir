@@ -44,9 +44,6 @@ class VoyageLL ():
                 day_list.append(line)
         return day_list 
 
-    def updateVoyage(self):
-        pass
-
     def getVoyageHeader(self, voyage_list):
         header_list = []
         counter = 0
@@ -128,5 +125,3 @@ class VoyageLL ():
 
     def storeCrewToFile(self,voyage):
         self.__ioAPI_in.storeCrewToFile(voyage)
-        routeOut = voyage.getRouteOut()
-        routeIn = voyage.getRouteIn()
