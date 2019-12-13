@@ -127,7 +127,7 @@ class CreateVoyage():
         day_int = self.check_input(day_str)
         invalid_input = True
         while invalid_input == True:
-            self.time = input("Enter airtime (hh:mm): ")
+            self.time = input("Enter departure time (hh:mm): ")
             try:
                 hours_int = int(self.time[:2])
                 minutes_int = int(self.time[3:])
@@ -199,6 +199,9 @@ class CreateVoyage():
             print('''|                  NaN Air                  |''')
             print('''|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|''')
             print('''| Voyage successfully created!              |''')
+            print('''|                                           |''')
+            print('''|                  __|__                    |''')
+            print('''|              ---@-(")-@---                |''')
             print('''|                                           |''')
             print('''| (1) Create another voyage                 |''')
             print('''| (2) Go back to home page                  |''')

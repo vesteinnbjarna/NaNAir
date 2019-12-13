@@ -3,11 +3,6 @@ from Model.voyage import Voyage
 from Model.Destination import Destination
 
 class VoyageIO (BaseClassIO):
-    #def __init__(self):
-          #self.temp_filename = 
-
-    def loadVoyagesFromFile(self):
-        pass
 
     def calculateArrival(self,voyage):
         departure = voyage.get_Departure()
@@ -36,16 +31,6 @@ class VoyageIO (BaseClassIO):
 
         with open(self.filename,'a') as f:
             f.write(voyage_str)
-
-#id,fn1,fn2,destination,departure,arrival,aircraft,captain,copilot,fsm,fa1,fa2
-#7,8,9,10,11
-    def updateVoyageInFile(self,voyage):
-        pass
-
-
-
-
-
 
     def storeCrewToFile(self,voyage):
         

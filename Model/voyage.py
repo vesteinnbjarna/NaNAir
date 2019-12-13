@@ -23,8 +23,8 @@ class Voyage(Destination):
         self.routeOutArrival = self.calculateRouteOutArrival()
         self.routeInDeparture = self.calculateRouteInDeparture()
         self.arrival = self.calculateArrival()
-        self.routeOut = Route(self.flightNumber1,'Reykjavík',self.destination,self.departure,self.routeOutArrival,self.aircraft)
-        self.routeIn = Route(self.flightNumber2,self.destination,'Reykjavík,',self.routeInDeparture,self.arrival,self.aircraft)
+        self.routeOut = Route(self.flightNumber1,'REY',self.destination,self.departure,self.routeOutArrival,self.aircraft)
+        self.routeIn = Route(self.flightNumber2,self.destination,'REY',self.routeInDeparture,self.arrival,self.aircraft)
 
     def calculateRouteOutArrival(self):
         self.tdelta_airtime = datetime.timedelta(hours=self.airtime.hour,minutes=self.airtime.minute)
@@ -106,3 +106,9 @@ class Voyage(Destination):
 
     def get_ID(self):
         return self.voyageID
+
+    def getRouteOut(self):
+        return self.routeOut
+
+    def getRouteIn(self):
+        return self.routeIn

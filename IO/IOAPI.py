@@ -62,4 +62,10 @@ class IOAPI ():
         return self.rouIO.storeRouteToFile()
 
     def storeCrewToFile(self,voyage):
-        self.voyIO.storeCrewToFile(voyage)
+        return self.voyIO.storeCrewToFile(voyage)
+        
+    def storeRouteOutToFile(self,routeOut):
+        return self.rouIO.storeRouteOutToFile(routeOut)
+
+    def storeRouteInToFile(self,routeIn):
+        return self.rouIO.storeRouteInToFile(routeIn)

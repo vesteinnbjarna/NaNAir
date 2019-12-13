@@ -1,11 +1,11 @@
 class Route():
-    def __init__(self,flightNumber,departingFrom,arrivingAt,departure,arrival,aircraftID):
+    def __init__(self,flightNumber,departingFrom,arrivingAt,departure,arrival,aircraft):
         self.flightNumber = flightNumber
         self.departingFrom = departingFrom
         self.arrivingAt = arrivingAt
         self.departure = departure
         self.arrival = arrival
-        self.aircraftID = aircraftID
+        self.aircraft = aircraft
         self.captain = ''
         self.copilot = ''
         self.fsm = ''
@@ -45,8 +45,8 @@ class Route():
     def getArrival(self):
         return self.arrival
 
-    def getAircraftID(self):
-        return self.aircraftID
+    def getAircraft(self):
+        return self.aircraft
     
     def getCaptain(self):
         return self.captain

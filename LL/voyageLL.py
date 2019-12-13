@@ -40,9 +40,6 @@ class VoyageLL ():
                 day_list.append(line)
         return day_list 
 
-    def updateVoyage(self):
-        pass
-
     def getVoyageHeader(self, voyage_list):
         header_list = []
         counter = 0
