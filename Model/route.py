@@ -1,16 +1,19 @@
 class Route():
-    def __init__(self,flightNumber,departingFrom,arrivingAt,departure,arrival,aircraftID,captain = '',copilot = '',fsm = '',fa1 = '',fa2 = ''):
+    def __init__(self,flightNumber,departingFrom,arrivingAt,departure,arrival,aircraftID):
         self.flightNumber = flightNumber
         self.departingFrom = departingFrom
         self.arrivingAt = arrivingAt
         self.departure = departure
         self.arrival = arrival
         self.aircraftID = aircraftID
-        self.captain = captain
-        self.copilot = copilot
-        self.fsm = fsm
-        self.fa1 = fa1
-        self.fa2 = fa2
+        self.captain = ''
+        self.copilot = ''
+        self.fsm = ''
+        self.fa1 = ''
+        self.fa2 = ''
+
+    def assignFlightNumber(self,flightNumber):
+        self.flightNumber = flightNumber
 
     def assignCaptain(self,captain):
         self.captain = captain
