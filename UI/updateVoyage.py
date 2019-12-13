@@ -313,7 +313,8 @@ class UpdateVoyage():
         while legal_input == False:
             
             if user_input == "1":
-                self.updateEmployeeOfVoyage()
+                if self.updateEmployeeOfVoyage() == None:
+                    return None
                 legal_input = True
             #self.voyage_confirmation()
 
@@ -350,7 +351,7 @@ class UpdateVoyage():
         elif user_input == "2":
             pass
         elif user_input == "3":
-            pass
+            return None
         else:
             self.voyage_confirmation()
 
@@ -499,6 +500,7 @@ class UpdateVoyage():
         if self.update_Pilot == True:
             if self.user_input == "1":
                 self.voyage_obj.assignCaptain(self.new_emp_ssn)
+                
             elif self.user_input == "2":
                 self.voyage_obj.assignCopilot(self.new_emp_ssn)
             else: 
@@ -515,7 +517,8 @@ class UpdateVoyage():
                 self.voyage_obj.assignFA2(self.new_emp_ssn)
 
         self.llAPI_in.storeCrewToFile(self.voyage_obj)
-        self.voyage_confirmation()
+        if self.voyage_confirmation() == None:
+            return None
 
 
 
