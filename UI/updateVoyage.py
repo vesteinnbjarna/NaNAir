@@ -134,7 +134,7 @@ class UpdateVoyage():
                 if self.contact_confirmation() == None:
                     return None
             elif user_input == "2":
-                pass
+                return None
             else:
                 print()
                 print("Invalid input!")

@@ -29,11 +29,11 @@ class VoyageLL ():
     def getVoyagesWeek(self, first_day_of_week):
         list_of_voyages = self.__ioAPI_in.loadVoyagesFromFile()
         list_of_voyages_week = []
-        week_list = [str(first_day_of_week)]
+        week_list = [str(first_day_of_week)[:10]]
         tdelta = datetime.timedelta(days=1)
         nextDay = first_day_of_week + tdelta
         for counter in range(6):
-            week_list.append(str(nextDay))
+            week_list.append(str(nextDay)[:10])
             nextDay += tdelta
         for line in list_of_voyages:
             departure_date = line['Departure'][:10]
