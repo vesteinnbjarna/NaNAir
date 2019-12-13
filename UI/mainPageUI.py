@@ -31,6 +31,8 @@ class MainPageUI():
             elif user_input == "3":
                 self.__planeManagement.renderMenu()
             elif user_input == 'q':
+                input('Are you sure you want to quit?')
+                input('Well if so we hope you come back! And have a nice day :-)')
                 return None
             else:
                 print()
@@ -38,8 +40,3 @@ class MainPageUI():
                 print()
                 input("Press enter to try again :-)")                    
                 continue
-
-
-a = MainPageUI()
-a.renderMenu()
-

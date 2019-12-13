@@ -138,3 +138,12 @@ class VoyageLL ():
 
     def storeCrewToFile(self,voyage):
         self.__ioAPI_in.storeCrewToFile(voyage)
+
+    def checkDateTime(self,dateTime):
+        ''' Returns False if user inputs the date and time of another voyage when creating a voyage. '''
+        voyages_list = self.__ioAPI_in.loadVoyagesFromFile()
+        #dateTimes_list = []
+        for voyage in voyages_list:
+            if str(dateTime) == voyage['Departure'].replace('T', ' '):
+                return False
+        return True

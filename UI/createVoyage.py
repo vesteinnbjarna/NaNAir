@@ -119,25 +119,33 @@ class CreateVoyage():
         #self.date = input("Enter date of departure (yyyy-mm-dd): ")
         #self.time_depart = input("Enter time of departure (hh:mm): ")
 
-        year_str = input("Enter year: ")
-        month_str = input("Enter month: ")
-        day_str = input("Enter day: ")
-        year_int = self.check_input(year_str)
-        month_int = self.check_input(month_str)
-        day_int = self.check_input(day_str)
-        invalid_input = True
-        while invalid_input == True:
+        valid_input = False
+        while valid_input == False:
+            year_str = input("Enter year: ")
+            month_str = input("Enter month: ")
+            day_str = input("Enter day: ")
+            year_int = self.check_input(year_str)
+            month_int = self.check_input(month_str)
+            day_int = self.check_input(day_str)
             self.time = input("Enter departure time (hh:mm): ")
             try:
                 hours_int = int(self.time[:2])
                 minutes_int = int(self.time[3:])
-                invalid_input = False
             except ValueError:
                 print()
                 print(" Invalid airtime, must be integer!")
                 print()
                 continue 
-        self.dateTime = datetime.datetime(year_int,month_int,day_int,hours_int,minutes_int)
+            self.dateTime = datetime.datetime(year_int,month_int,day_int,hours_int,minutes_int)
+            if not self.llAPI_in.checkDateTime(self.dateTime):
+                print()
+                print('Another voyage is departing at this time!')
+                print('Please select another time :-)')
+                print()
+                continue
+            else:
+                valid_input = True
+
         self.get_availalbe_aircraft_list()
         if self.create_voyage_object() == "Back to home":
             return "Back to home"

@@ -59,7 +59,7 @@ class GatherCrew():
                     continue
 
                 for voy in voyage_list:
-                    if voy[0] == user_choice:
+                    if voy[0] == str(user_choice):
                         voyage = voy
                 break      
 
@@ -98,15 +98,16 @@ class GatherCrew():
 
         # User chooses captain with the employee ID.
         print()
-        user_choice = input("Enter ID of captain for voyage: ")
         valid_input = False
         while not valid_input:
+            user_choice = input("Enter ID of captain for voyage: ")
             try:
                 int(user_choice)
                 valid_input = True
             except:
                 print()
                 print('Invalid input! Please enter a valid ID')
+                print()
         while user_choice not in empID_list:
             print()
             print("ID incorrectly selected!")
@@ -124,14 +125,16 @@ class GatherCrew():
         
         #User chooses copilot for voyage with employee ID.
         print()
-        user_choice = input("Enter ID of copilot for voyage: ")
         valid_input = False
         while not valid_input:
+            user_choice = input("Enter ID of copilot for voyage: ")
             try:
                 int(user_choice)
                 valid_input = True
             except:
+                print()
                 print('Invalid input! Please enter a valid ID')
+                print()
         while user_choice not in empID_list:
             print()
             print("ID incorrectly selected!")
@@ -170,15 +173,16 @@ class GatherCrew():
             print(' ({}) {}'.format(fa['ID'], fa['Name']))
             empID_list.append(fa['ID'])
         print()
-        user_choice = input("Enter ID of flight service manager for voyage: ")
         valid_input = False
         while not valid_input:
+            user_choice = input("Enter ID of flight service manager for voyage: ")
             try:
                 int(user_choice)
                 valid_input = True
             except:
                 print()
                 print('Invalid input! Please enter a valid ID')
+                print()
         while user_choice not in empID_list:
             print()
             print("ID incorrectly selected!")
@@ -188,47 +192,23 @@ class GatherCrew():
             print()
         empID_list.remove(user_choice)
 
-        for self.fa in perfectFAs:
-            if self.fa['ID'] == user_choice:
-                self.fsm = self.fa['SSN']
-                self.fsm_name = self.fa['Name']
-                self.voyage_obj.assingFSM(self.fsm)
+        for fa in perfectFAs:
+            if fa['ID'] == user_choice:
+                fsm = fa['SSN']
+                self.fsm_name = fa['Name']
+                self.voyage_obj.assingFSM(fsm)
 
         print()
-        user_choice = input("Enter ID of flight attendant for voyage: ")
         valid_input = False
         while not valid_input:
+            user_choice = input("Enter ID of flight attendant for voyage: ")
             try:
                 int(user_choice)
                 valid_input = True
             except:
                 print()
                 print('Invalid input! Please enter a valid ID')
-        while user_choice not in empID_list:
-            print()
-            print("ID incorrectly selected!")
-            print("Try again!")
-            print()
-            user_choice = input("Enter ID of flight attendant for voyage: ")
-            print()
-        empID_list.remove(user_choice)
-
-        for self.fa in perfectFAs:
-            if self.fa['ID'] == user_choice:
-                self.fa1 = fa['SSN']
-                self.fa1_name = fa['Name']
-                self.voyage_obj.assignFA1(self.fa1)
-
-        print()
-        user_choice = input("Enter ID of flight attendant for voyage: ")
-        print()
-        valid_input = False
-        while not valid_input:
-            try:
-                int(user_choice)
-                valid_input = True
-            except:
-                print('Invalid input! Please enter a valid ID')
+                print()
         while user_choice not in empID_list:
             print()
             print("ID incorrectly selected!")
@@ -240,9 +220,36 @@ class GatherCrew():
 
         for fa in perfectFAs:
             if fa['ID'] == user_choice:
-                self.fa2 = fa['SSN']
+                fa1 = fa['SSN']
+                self.fa1_name = fa['Name']
+                self.voyage_obj.assignFA1(fa1)
+
+        print()
+
+        valid_input = False
+        while not valid_input:
+            user_choice = input("Enter ID of flight attendant for voyage: ")
+            try:
+                int(user_choice)
+                valid_input = True
+            except:
+                print()
+                print('Invalid input! Please enter a valid ID')
+                print()
+        while user_choice not in empID_list:
+            print()
+            print("ID incorrectly selected!")
+            print("Try again!")
+            print()
+            user_choice = input("Enter ID of flight attendant for voyage: ")
+            print()
+        empID_list.remove(user_choice)
+
+        for fa in perfectFAs:
+            if fa['ID'] == user_choice:
+                fa2 = fa['SSN']
                 self.fa2_name = fa['Name']
-                self.voyage_obj.assignFA2(self.fa2)
+                self.voyage_obj.assignFA2(fa2)
         
 
         
@@ -303,5 +310,5 @@ class GatherCrew():
         print('''|    Press enter go to back to homepage!    |''')
         print('''|                                           |''')  
         print(''' ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ ''')
-        user_input = input()
+        input()
         return None

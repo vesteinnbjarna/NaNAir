@@ -116,4 +116,5 @@ class LLAPI():
     def createDestinationObject(self,destination_str):
         return self.destLL.createDestinationObject(destination_str)
 
-    
+    def checkDateTime(self,dateTime):
+        return self.voyLL.checkDateTime(dateTime)

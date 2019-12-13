@@ -468,11 +468,13 @@ class GetEmployee():
         print()
         print("{:30}{:30}{:30}".format("Destination", "Departure", "Arrival"))
         print("__"*40)
+        working = False
         for line in voyage_list_week:
             if line['Captain'] == self.specific_emp['SSN'] or line['Copilot'] == self.specific_emp['SSN'] or \
                 line['FSM'] == self.specific_emp['SSN'] or line['FA1'] == self.specific_emp['SSN'] or \
                 line['FA2'] == self.specific_emp['SSN']:
                 print()
+                working = True
                 for key, val in line.items():
                     if key == "Destination":
                         print("{:30}".format(val), end="")
@@ -483,7 +485,7 @@ class GetEmployee():
                         val = val.replace("T", " ")
                         print("{:30}".format(str(val)), end="")
                 print()
-            elif len(voyage_list_week) == 0:
+            elif working == False:
                 print()
                 print("{:^70}".format("!!! LAZY EMPLOYEE ALERT !!! "))
                 print()

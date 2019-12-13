@@ -62,8 +62,12 @@ class UpdateEmployee():
                 self.ID_list.append(line[0])
             print()
             self.id = input("Enter ID of employee: ") # can also be used to index line in the csv file
-            self.specific_emp = self.llAPI_in.getChosenEmployee(self.ID_list, self.id)
-            self.line_index = self.id
+            while self.id not in self.ID_list:
+                print('Invalid ID! Please enter a valid ID.')
+                self.id = input("Enter ID of employee: ")
+            else:
+                self.specific_emp = self.llAPI_in.getChosenEmployee(self.ID_list, self.id)
+                self.line_index = self.id
 
             print()
             
@@ -72,11 +76,7 @@ class UpdateEmployee():
                 if self.specific_emp == None:
                     input("Press enter to try again!")
                     continue
-
-                else:
-                    if self.update_employee() == None:
-                        return None
-
+                
                 return None
 
     def update_employee(self):
