@@ -2,6 +2,7 @@ from Model.voyage import Voyage
 #from LL.LLAPI import LLAPI
 from Model.plane import Plane
 from Model.employee import Employee
+import datetime
 
 class UpdateVoyage():
 
@@ -209,16 +210,18 @@ class UpdateVoyage():
 
         self.planeType = self.llAPI_in.getPlaneType(self.voy[0][6])
         self.plane_obj = Plane(self.voy[0][6], self.planeType) 
+        self.dep_dt_obj = datetime.datetime.strptime(self.voy[0][4],"%Y-%m-%dT%H:%M:%S")
+        self.dest_obj = self.llAPI_in.createDestinationObject(self.voy[0][3])
 
-        self.voyage_obj = Voyage(self.voy[0][3],self.plane_obj,self.voy[0][4],self.voy[0][0])
+        self.voyage_obj = Voyage(self.dest_obj,self.plane_obj,self.dep_dt_obj,self.voy[0][0])
         self.voyage_obj.assignCaptain(self.voy[0][7])
         self.voyage_obj.assignCopilot(self.voy[0][8])
         self.voyage_obj.assingFSM(self.voy[0][9])
         self.voyage_obj.assignFA1(self.voy[0][10])
         self.voyage_obj.assignFA2(self.voy[0][11])
 
-        self.date = self.voyage_obj.get_Departure()
-        self.date = self.date[:10]
+        self.date = str(self.voyage_obj.get_Departure().date())
+        
         self.captain = self.voyage_obj.get_Captain()
         self.cop = self.voyage_obj.get_Copilot()
         self.fsm = self.voyage_obj.get_FSM()
@@ -287,7 +290,7 @@ class UpdateVoyage():
         self.confirm_voyage_changes()
     
     def confirm_voyage_changes(self):
-
+        destination = self.voyage_obj.get_destination()
         print() 
         print()
         print(''' ___________________________________________''')
@@ -299,7 +302,7 @@ class UpdateVoyage():
         print('''Flight attendant 1:        {}                                        '''.format(self.fa1))
         print('''Flight attendant 2:        {}                                        '''.format(self.fa2))
         print('''Departure time:            {}                                        '''.format(self.voyage_obj.get_Departure()))
-        print('''Destination:               {}                                        '''.format(self.voyage_obj.get_destination()))
+        print('''Destination:               {}                                        '''.format(destination.get_destination()))
         print()
 
         print('''(1) Yes''')
