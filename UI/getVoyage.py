@@ -110,17 +110,27 @@ class GetVoyage():
         v_list = self.llAPI_in.getVoyageValue(list_of_voyages)
         print()
         if v_list!= None and h_list != None:
-            print("{:<5}{:<10}{:<10}{:<15}{:<25}{:<25}{:<10}{:<15}{:<15}{:<15}{:<15}{:<15}{:<8}".format(
-                h_list[0],h_list[1],h_list[2],h_list[3],h_list[4],
-                h_list[5],h_list[6],h_list[7],h_list[8],h_list[9],h_list[10],h_list[11],h_list[12]))
-            
-            print("__"*90, "\n")
-
-            for line in v_list:
+            if len(h_list) == 13:
                 print("{:<5}{:<10}{:<10}{:<15}{:<25}{:<25}{:<10}{:<15}{:<15}{:<15}{:<15}{:<15}{:<8}".format(
-                line[0],line[1],line[2],line[3],line[4],
-                line[5],line[6],line[7],line[8],line[9],line[10],line[11],line[12]))
-            print("\n\n")
+                    h_list[0],h_list[1],h_list[2],h_list[3],h_list[4],
+                    h_list[5],h_list[6],h_list[7],h_list[8],h_list[9],h_list[10],h_list[11],h_list[12]))
+            
+                print("__"*90, "\n")
+
+                for line in v_list:
+                    print("{:<5}{:<10}{:<10}{:<15}{:<25}{:<25}{:<10}{:<15}{:<15}{:<15}{:<15}{:<15}{:<8}".format(
+                    line[0],line[1],line[2],line[3],line[4],
+                    line[5],line[6],line[7],line[8],line[9],line[10],line[11],line[12]))
+                print("\n\n")
+            else:
+                print("{:<5}{:<10}{:<10}{:<15}{:<25}{:<25}{:<10}{:<15}{:<15}{:<15}{:<15}{:<15}".format(
+                h_list[0],h_list[1],h_list[2],h_list[3],h_list[4],
+                h_list[5],h_list[6],h_list[7],h_list[8],h_list[9],h_list[10],h_list[11]))
+
+                for line in v_list:
+                    print("{:<5}{:<10}{:<10}{:<15}{:<25}{:<25}{:<10}{:<15}{:<15}{:<15}{:<15}{:<15}".format(
+                    line[0],line[1],line[2],line[3],line[4],
+                    line[5],line[6],line[7],line[8],line[9],line[10],line[11]))
 
         else:
             print('No voyages on {}'.format(self.date))
